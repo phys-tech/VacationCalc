@@ -10,9 +10,10 @@ namespace VacationCalc.Model
     {
         private Employee CurrentEmployee;
 
-        DaysCalculator(Employee _employee)
+        public DaysCalculator(Employee _employee)
         {
             CurrentEmployee = _employee;
+            FillEmployeeData();
         }
     
         public int TotalDaysOfWork()

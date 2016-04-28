@@ -43,6 +43,14 @@ namespace VacationCalc.Model
             return Employees;   
         }
 
+        private void CalculateAllTheVactions()
+        {
+            foreach (Employee emp in Employees.Values)
+            {
+                DaysCalculator calc = new DaysCalculator(emp);
+            }        
+        }
+
         public void SaveDataToXML()
         {
             XDocument doc = new XDocument(new XElement("Root"));
@@ -69,6 +77,7 @@ namespace VacationCalc.Model
                 int id = GetNewID();
                 Employees.Add(id, new Employee(name, date, type));
             }
+            CalculateAllTheVactions();
         }
     }
 }

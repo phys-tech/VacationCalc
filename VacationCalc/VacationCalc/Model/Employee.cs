@@ -26,6 +26,11 @@ namespace VacationCalc.Model
             AccountType = _type;
         }
 
+        public string GetName()
+        {
+            return Name;
+        }
+
         public DateTime GetHireDate()
         {
             return HireDate;

@@ -28,10 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn3 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewDateTimeColumn gridViewDateTimeColumn2 = new Telerik.WinControls.UI.GridViewDateTimeColumn();
-            Telerik.WinControls.UI.GridViewComboBoxColumn gridViewComboBoxColumn2 = new Telerik.WinControls.UI.GridViewComboBoxColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn4 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn1 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewDateTimeColumn gridViewDateTimeColumn1 = new Telerik.WinControls.UI.GridViewDateTimeColumn();
+            Telerik.WinControls.UI.GridViewComboBoxColumn gridViewComboBoxColumn1 = new Telerik.WinControls.UI.GridViewComboBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn2 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.Data.SortDescriptor sortDescriptor1 = new Telerik.WinControls.Data.SortDescriptor();
             this.gridViewEmployees = new Telerik.WinControls.UI.RadGridView();
             this.menuMain = new Telerik.WinControls.UI.RadMenu();
             this.menuItemTop = new Telerik.WinControls.UI.RadMenuItem();
@@ -39,6 +40,12 @@
             this.panelTools = new Telerik.WinControls.UI.RadPanel();
             this.bSave = new Telerik.WinControls.UI.RadButton();
             this.radButton2 = new Telerik.WinControls.UI.RadButton();
+            this.radButtonElement1 = new Telerik.WinControls.UI.RadButtonElement();
+            this.radProgressBarElement1 = new Telerik.WinControls.UI.RadProgressBarElement();
+            this.radCheckBoxElement1 = new Telerik.WinControls.UI.RadCheckBoxElement();
+            this.radToggleButtonElement1 = new Telerik.WinControls.UI.RadToggleButtonElement();
+            this.radWaitingBarElement1 = new Telerik.WinControls.UI.RadWaitingBarElement();
+            this.radSplitButtonElement1 = new Telerik.WinControls.UI.RadSplitButtonElement();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewEmployees)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewEmployees.MasterTemplate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.menuMain)).BeginInit();
@@ -63,32 +70,37 @@
             // gridViewEmployees
             // 
             this.gridViewEmployees.MasterTemplate.AutoGenerateColumns = false;
-            gridViewTextBoxColumn3.EnableExpressionEditor = false;
-            gridViewTextBoxColumn3.HeaderText = "ФИО";
-            gridViewTextBoxColumn3.Name = "colName";
-            gridViewTextBoxColumn3.Width = 168;
-            gridViewDateTimeColumn2.EnableExpressionEditor = false;
-            gridViewDateTimeColumn2.Format = System.Windows.Forms.DateTimePickerFormat.Long;
-            gridViewDateTimeColumn2.HeaderText = "Дата приема";
-            gridViewDateTimeColumn2.Name = "colHireDate";
-            gridViewDateTimeColumn2.Width = 99;
-            gridViewComboBoxColumn2.EnableExpressionEditor = false;
-            gridViewComboBoxColumn2.HeaderText = "Тип занятости";
-            gridViewComboBoxColumn2.Name = "colAccType";
-            gridViewComboBoxColumn2.Width = 106;
-            gridViewTextBoxColumn4.EnableExpressionEditor = false;
-            gridViewTextBoxColumn4.HeaderText = "Кол-во оставшихся дней отпуска";
-            gridViewTextBoxColumn4.Name = "colVacationLeft";
-            gridViewTextBoxColumn4.ReadOnly = true;
-            gridViewTextBoxColumn4.Width = 234;
+            gridViewTextBoxColumn1.EnableExpressionEditor = false;
+            gridViewTextBoxColumn1.HeaderText = "ФИО";
+            gridViewTextBoxColumn1.Name = "colName";
+            gridViewTextBoxColumn1.SortOrder = Telerik.WinControls.UI.RadSortOrder.Ascending;
+            gridViewTextBoxColumn1.Width = 221;
+            gridViewDateTimeColumn1.EnableExpressionEditor = false;
+            gridViewDateTimeColumn1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            gridViewDateTimeColumn1.HeaderText = "Дата приема";
+            gridViewDateTimeColumn1.Name = "colHireDate";
+            gridViewDateTimeColumn1.Width = 132;
+            gridViewComboBoxColumn1.EnableExpressionEditor = false;
+            gridViewComboBoxColumn1.HeaderText = "Тип занятости";
+            gridViewComboBoxColumn1.Name = "colAccType";
+            gridViewComboBoxColumn1.Width = 106;
+            gridViewTextBoxColumn2.EnableExpressionEditor = false;
+            gridViewTextBoxColumn2.HeaderText = "Кол-во оставшихся дней отпуска";
+            gridViewTextBoxColumn2.Name = "colVacationLeft";
+            gridViewTextBoxColumn2.ReadOnly = true;
+            gridViewTextBoxColumn2.Width = 234;
             this.gridViewEmployees.MasterTemplate.Columns.AddRange(new Telerik.WinControls.UI.GridViewDataColumn[] {
-            gridViewTextBoxColumn3,
-            gridViewDateTimeColumn2,
-            gridViewComboBoxColumn2,
-            gridViewTextBoxColumn4});
+            gridViewTextBoxColumn1,
+            gridViewDateTimeColumn1,
+            gridViewComboBoxColumn1,
+            gridViewTextBoxColumn2});
+            sortDescriptor1.PropertyName = "colName";
+            this.gridViewEmployees.MasterTemplate.SortDescriptors.AddRange(new Telerik.WinControls.Data.SortDescriptor[] {
+            sortDescriptor1});
             this.gridViewEmployees.Name = "gridViewEmployees";
+            this.gridViewEmployees.NewRowEnterKeyMode = Telerik.WinControls.UI.RadGridViewNewRowEnterKeyMode.EnterMovesToNextCell;
             this.gridViewEmployees.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.gridViewEmployees.Size = new System.Drawing.Size(799, 470);
+            this.gridViewEmployees.Size = new System.Drawing.Size(799, 468);
             this.gridViewEmployees.TabIndex = 0;
             this.gridViewEmployees.UserAddedRow += new Telerik.WinControls.UI.GridViewRowEventHandler(this.gridViewEmployees_UserAddedRow);
             // 
@@ -112,9 +124,16 @@
             // 
             // statusStrip
             // 
-            this.statusStrip.Location = new System.Drawing.Point(0, 542);
+            this.statusStrip.Items.AddRange(new Telerik.WinControls.RadItem[] {
+            this.radButtonElement1,
+            this.radProgressBarElement1,
+            this.radCheckBoxElement1,
+            this.radToggleButtonElement1,
+            this.radWaitingBarElement1,
+            this.radSplitButtonElement1});
+            this.statusStrip.Location = new System.Drawing.Point(0, 540);
             this.statusStrip.Name = "statusStrip";
-            this.statusStrip.Size = new System.Drawing.Size(799, 24);
+            this.statusStrip.Size = new System.Drawing.Size(799, 26);
             this.statusStrip.TabIndex = 2;
             this.statusStrip.Text = "radStatusStrip1";
             // 
@@ -123,7 +142,7 @@
             this.panelTools.Controls.Add(this.radButton2);
             this.panelTools.Controls.Add(this.bSave);
             this.panelTools.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelTools.Location = new System.Drawing.Point(0, 490);
+            this.panelTools.Location = new System.Drawing.Point(0, 488);
             this.panelTools.Name = "panelTools";
             this.panelTools.Size = new System.Drawing.Size(799, 52);
             this.panelTools.TabIndex = 3;
@@ -145,6 +164,73 @@
             this.radButton2.TabIndex = 1;
             this.radButton2.Text = "radButton2";
             // 
+            // radButtonElement1
+            // 
+            this.radButtonElement1.AccessibleDescription = "radButtonElement1";
+            this.radButtonElement1.AccessibleName = "radButtonElement1";
+            this.radButtonElement1.Name = "radButtonElement1";
+            this.statusStrip.SetSpring(this.radButtonElement1, false);
+            this.radButtonElement1.Text = "radButtonElement1";
+            this.radButtonElement1.Visibility = Telerik.WinControls.ElementVisibility.Visible;
+            // 
+            // radProgressBarElement1
+            // 
+            this.radProgressBarElement1.Name = "radProgressBarElement1";
+            this.radProgressBarElement1.SeparatorColor1 = System.Drawing.Color.White;
+            this.radProgressBarElement1.SeparatorColor2 = System.Drawing.Color.White;
+            this.radProgressBarElement1.SeparatorColor3 = System.Drawing.Color.White;
+            this.radProgressBarElement1.SeparatorColor4 = System.Drawing.Color.White;
+            this.radProgressBarElement1.SeparatorGradientAngle = 0;
+            this.radProgressBarElement1.SeparatorGradientPercentage1 = 0.4F;
+            this.radProgressBarElement1.SeparatorGradientPercentage2 = 0.6F;
+            this.radProgressBarElement1.SeparatorNumberOfColors = 2;
+            this.statusStrip.SetSpring(this.radProgressBarElement1, false);
+            this.radProgressBarElement1.StepWidth = 14;
+            this.radProgressBarElement1.SweepAngle = 90;
+            this.radProgressBarElement1.Text = "";
+            this.radProgressBarElement1.Visibility = Telerik.WinControls.ElementVisibility.Visible;
+            // 
+            // radCheckBoxElement1
+            // 
+            this.radCheckBoxElement1.AccessibleDescription = "radCheckBoxElement1";
+            this.radCheckBoxElement1.AccessibleName = "radCheckBoxElement1";
+            this.radCheckBoxElement1.Checked = false;
+            this.radCheckBoxElement1.Name = "radCheckBoxElement1";
+            this.statusStrip.SetSpring(this.radCheckBoxElement1, false);
+            this.radCheckBoxElement1.Text = "radCheckBoxElement1";
+            this.radCheckBoxElement1.Visibility = Telerik.WinControls.ElementVisibility.Visible;
+            // 
+            // radToggleButtonElement1
+            // 
+            this.radToggleButtonElement1.AccessibleDescription = "radToggleButtonElement1";
+            this.radToggleButtonElement1.AccessibleName = "radToggleButtonElement1";
+            this.radToggleButtonElement1.Name = "radToggleButtonElement1";
+            this.statusStrip.SetSpring(this.radToggleButtonElement1, false);
+            this.radToggleButtonElement1.Text = "radToggleButtonElement1";
+            this.radToggleButtonElement1.Visibility = Telerik.WinControls.ElementVisibility.Visible;
+            // 
+            // radWaitingBarElement1
+            // 
+            this.radWaitingBarElement1.AccessibleDescription = "radWaitingBarElement1";
+            this.radWaitingBarElement1.AccessibleName = "radWaitingBarElement1";
+            this.radWaitingBarElement1.Name = "radWaitingBarElement1";
+            this.statusStrip.SetSpring(this.radWaitingBarElement1, false);
+            this.radWaitingBarElement1.Text = "radWaitingBarElement1";
+            this.radWaitingBarElement1.Visibility = Telerik.WinControls.ElementVisibility.Visible;
+            // 
+            // radSplitButtonElement1
+            // 
+            this.radSplitButtonElement1.AccessibleDescription = "radSplitButtonElement1";
+            this.radSplitButtonElement1.AccessibleName = "radSplitButtonElement1";
+            this.radSplitButtonElement1.ArrowButtonMinSize = new System.Drawing.Size(12, 12);
+            this.radSplitButtonElement1.DefaultItem = null;
+            this.radSplitButtonElement1.DropDownDirection = Telerik.WinControls.UI.RadDirection.Down;
+            this.radSplitButtonElement1.ExpandArrowButton = false;
+            this.radSplitButtonElement1.Name = "radSplitButtonElement1";
+            this.statusStrip.SetSpring(this.radSplitButtonElement1, false);
+            this.radSplitButtonElement1.Text = "radSplitButtonElement1";
+            this.radSplitButtonElement1.Visibility = Telerik.WinControls.ElementVisibility.Visible;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -161,6 +247,7 @@
             this.RootElement.ApplyShapeToControl = true;
             this.Text = "Расчет отпусков";
             this.ThemeName = "ControlDefault";
+            this.Load += new System.EventHandler(this.MainForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.gridViewEmployees.MasterTemplate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewEmployees)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.menuMain)).EndInit();
@@ -184,6 +271,12 @@
         private Telerik.WinControls.UI.RadPanel panelTools;
         private Telerik.WinControls.UI.RadButton radButton2;
         private Telerik.WinControls.UI.RadButton bSave;
+        private Telerik.WinControls.UI.RadButtonElement radButtonElement1;
+        private Telerik.WinControls.UI.RadProgressBarElement radProgressBarElement1;
+        private Telerik.WinControls.UI.RadCheckBoxElement radCheckBoxElement1;
+        private Telerik.WinControls.UI.RadToggleButtonElement radToggleButtonElement1;
+        private Telerik.WinControls.UI.RadWaitingBarElement radWaitingBarElement1;
+        private Telerik.WinControls.UI.RadSplitButtonElement radSplitButtonElement1;
 
     }
 }

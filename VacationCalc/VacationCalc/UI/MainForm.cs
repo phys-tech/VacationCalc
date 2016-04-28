@@ -33,5 +33,20 @@ namespace VacationCalc
             DateTime date = (DateTime) e.Row.Cells["colHireDate"].Value;
             employeeManager.AddEmployee(name, date, EmploymentType.IP);
         }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            employeeManager.LoadDataFromXml();
+            Dictionary<int, Employee> employees = employeeManager.GetAllEmployees();
+            foreach (var emp in employees.Values)
+            {
+                string name = emp.GetName();
+                DateTime date = emp.GetHireDate();
+                EmploymentType type = emp.GetAccountType();
+                int vacation = emp.GetVacationDaysLeft();
+                object[] row = { name, date, type, vacation};
+                gridViewEmployees.Rows.Add(row);
+            }
+        }
     }
 }

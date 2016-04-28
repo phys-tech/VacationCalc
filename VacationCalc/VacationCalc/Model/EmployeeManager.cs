@@ -10,9 +10,11 @@ using System.IO;
 
 namespace VacationCalc.Model
 {
+    using EmployeeDict = Dictionary<int, Employee>;
+
     public class EmployeeManager
     {
-        private Dictionary<int, Employee> Employees;
+        private EmployeeDict Employees;
         private const string XmlFilename = "EmployeesVacations.xml";
 
         public EmployeeManager()
@@ -36,6 +38,11 @@ namespace VacationCalc.Model
             Employees.Add(id, employee);
         }
 
+        public EmployeeDict GetAllEmployees()
+        {
+            return Employees;   
+        }
+
         public void SaveDataToXML()
         {
             XDocument doc = new XDocument(new XElement("Root"));
@@ -48,6 +55,20 @@ namespace VacationCalc.Model
                 doc.Root.Add(element);
             }            
             doc.Save(XmlFilename);
+        }
+
+        public void LoadDataFromXml()
+        {
+            XDocument doc = XDocument.Load(XmlFilename);
+            foreach (XElement element in doc.Root.Elements())
+            {
+                string name = element.Element("Name").Value.ToString();
+                DateTime date = DateTime.Parse(element.Element("HireDate").Value.ToString());
+                //EmploymentType type = (EmploymentType) (element.Element("AccountType").Value.ToString());
+                EmploymentType type = EmploymentType.IP;
+                int id = GetNewID();
+                Employees.Add(id, new Employee(name, date, type));
+            }
         }
     }
 }

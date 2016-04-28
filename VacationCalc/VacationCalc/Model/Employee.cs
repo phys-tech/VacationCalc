@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace VacationCalc.Model
 {
-    class Employee
+    public class Employee
     {
         // required
         private string Name;

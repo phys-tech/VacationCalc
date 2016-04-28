@@ -27,9 +27,9 @@ namespace VacationCalc.Model
         public int TotalVacationEarned()
         {
             int workingDays = TotalDaysOfWork();
-            int vactionPerYear = CurrentEmployee.GetAccountType().GetVacationDaysPerYear();
-            var vacation = (double) workingDays / 365.0 * vactionPerYear;
-            return vactionPerYear;
+            int vacationPerYear = CurrentEmployee.GetAccountType().GetVacationDaysPerYear();
+            var vacation = (double) workingDays / 365.0 * vacationPerYear;
+            return (int) vacation;
         }
 
         public void FillEmployeeData()

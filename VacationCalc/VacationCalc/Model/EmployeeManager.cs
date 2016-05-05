@@ -72,8 +72,7 @@ namespace VacationCalc.Model
             {
                 string name = element.Element("Name").Value.ToString();
                 DateTime date = DateTime.Parse(element.Element("HireDate").Value.ToString());
-                //EmploymentType type = (EmploymentType) (element.Element("AccountType").Value.ToString());
-                EmploymentType type = EmploymentType.IP;
+                EmploymentType type = (EmploymentType) Enum.Parse(typeof(EmploymentType), element.Element("AccountType").Value.ToString());
                 int id = GetNewID();
                 Employees.Add(id, new Employee(name, date, type));
             }

@@ -63,5 +63,45 @@ namespace VacationCalc.Model
         OOO
     }
 
+    public class TypeDataSource
+    {
+        private EmploymentType EmpType;
+        private int Value;
+        private string Display;
 
+        public TypeDataSource(EmploymentType _value)
+        {
+            EmpType = _value;
+            Value = (int) EmpType;
+            Display = EmpType.GetRussianName();
+        }
+
+        public int iValue
+        {
+            get { return Value; }
+            set { Value = value; }
+        }
+
+        public string sDisplay
+        {
+            get { return Display; }
+            set { Display = value; }
+        }
+    }
+
+    public class EmploymentTypeList
+    {
+        private List<TypeDataSource> DataList;
+        public EmploymentTypeList()
+        {
+            DataList = new List<TypeDataSource>();
+            foreach (EmploymentType t in Enum.GetValues( typeof(EmploymentType) ) )
+                DataList.Add(new TypeDataSource(t));
+        }
+
+        public List<TypeDataSource> GetDataList()
+        {
+            return DataList;
+        }
+    }
 }

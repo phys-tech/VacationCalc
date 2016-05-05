@@ -23,6 +23,29 @@ namespace VacationCalc
             employeeManager = new EmployeeManager();
         }
 
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            employeeManager.LoadDataFromXml();
+            GridViewComboBoxColumn column = gridViewEmployees.Columns["colAccType"] as GridViewComboBoxColumn;
+
+            EmploymentTypeList temp = new EmploymentTypeList();
+            column.DataSource = temp.GetDataList();
+            column.ValueMember = "iValue";
+            column.DisplayMember = "sDisplay";
+
+            Dictionary<int, Employee> employees = employeeManager.GetAllEmployees();
+            foreach (int empID in employees.Keys)
+            {
+                Employee emp = employees[empID];
+                string name = emp.Name;
+                DateTime date = emp.HireDate;
+                EmploymentType type = emp.AccountType;
+                int vacation = emp.GetVacationDaysLeft();
+                object[] row = { empID, name, date, type, vacation };
+                gridViewEmployees.Rows.Add(row);
+            }
+        }
+
         private void bSave_Click(object sender, EventArgs e)
         {
             employeeManager.SaveDataToXML();
@@ -33,29 +56,22 @@ namespace VacationCalc
             string name = e.Row.Cells["colName"].Value.ToString();
             DateTime date = (DateTime) e.Row.Cells["colHireDate"].Value;
             EmploymentType type = (EmploymentType) Enum.Parse(typeof(EmploymentType), e.Row.Cells["colAccType"].Value.ToString());
-            employeeManager.AddEmployee(name, date, type);
+            int id = employeeManager.AddEmployee(name, date, type);
+            int vacation = employeeManager.GetEmployee(id).GetVacationDaysLeft();
+            e.Row.Cells["colVacationLeft"].Value = vacation;
         }
 
-        private void MainForm_Load(object sender, EventArgs e)
+        private void gridViewEmployees_CellValueChanged(object sender, GridViewCellEventArgs e)
         {
-            employeeManager.LoadDataFromXml();
-            GridViewComboBoxColumn column = gridViewEmployees.Columns["colAccType"] as GridViewComboBoxColumn;
-
-            EmploymentTypeList temp = new EmploymentTypeList();
-            column.DataSource = temp.GetDataList();
-            column.ValueMember = "iValue";
-            column.DisplayMember = "sDisplay";
-            
-            Dictionary<int, Employee> employees = employeeManager.GetAllEmployees();
-            foreach (var emp in employees.Values)
-            {
-                string name = emp.GetName();
-                DateTime date = emp.GetHireDate();
-                EmploymentType type = emp.GetAccountType();
-                int vacation = emp.GetVacationDaysLeft();
-                object[] row = { name, date, type, vacation};
-                gridViewEmployees.Rows.Add(row);
-            }
+            int id = int.Parse( e.Row.Cells["colID"].Value.ToString()) ;
+            //MessageBox.Show("ID changed = " + id.ToString());
+            if (e.Column.Name == "colName")
+                employeeManager.ChangeName(id, e.Value.ToString());
+            else if (e.Column.Name == "colHireDate")
+                employeeManager.ChangeDate(id, (DateTime) e.Value);
+            else if (e.Column.Name == "colAccType")
+                employeeManager.ChangeType(id, (EmploymentType) Enum.Parse(typeof(EmploymentType), e.Value.ToString()));
         }
+
     }
 }

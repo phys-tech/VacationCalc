@@ -30,12 +30,18 @@ namespace VacationCalc.Model
                     return id;        
         }
 
-
-        public void AddEmployee(string _name, DateTime _hireDate, EmploymentType _accType)
+        public int AddEmployee(string _name, DateTime _hireDate, EmploymentType _accType)
         {
             int id = GetNewID();
             Employee employee = new Employee(_name, _hireDate, _accType);
             Employees.Add(id, employee);
+            DaysCalculator calc = new DaysCalculator(employee);
+            return id;
+        }
+
+        public Employee GetEmployee(int id)
+        {
+            return Employees.ElementAtOrDefault(id).Value;
         }
 
         public EmployeeDict GetAllEmployees()
@@ -43,7 +49,22 @@ namespace VacationCalc.Model
             return Employees;   
         }
 
-        private void CalculateAllTheVactions()
+        public void ChangeName(int id, string newName)
+        {
+            Employees[id].Name = newName;
+        }
+
+        public void ChangeDate(int id, DateTime newDate)
+        {
+            Employees[id].HireDate = newDate;
+        }
+
+        public void ChangeType(int id, EmploymentType type)
+        {
+            Employees[id].AccountType = type;
+        }
+
+        private void CalculateAllTheVacations()
         {
             foreach (Employee emp in Employees.Values)
             {
@@ -57,9 +78,9 @@ namespace VacationCalc.Model
             foreach (Employee employee in Employees.Values)
             {
                 XElement element = new XElement("Employee",
-                                    new XElement("Name", employee.GetName()),
-                                    new XElement("HireDate", employee.GetHireDate()),
-                                    new XElement("AccountType", employee.GetAccountType()));
+                                    new XElement("Name", employee.Name),
+                                    new XElement("HireDate", employee.HireDate),
+                                    new XElement("AccountType", employee.AccountType));
                 doc.Root.Add(element);
             }            
             doc.Save(XmlFilename);
@@ -76,7 +97,7 @@ namespace VacationCalc.Model
                 int id = GetNewID();
                 Employees.Add(id, new Employee(name, date, type));
             }
-            CalculateAllTheVactions();
+            CalculateAllTheVacations();
         }
     }
 }

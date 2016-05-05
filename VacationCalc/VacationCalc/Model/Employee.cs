@@ -9,9 +9,9 @@ namespace VacationCalc.Model
     public class Employee
     {
         // required
-        private string Name;
-        private DateTime HireDate;
-        private EmploymentType AccountType;
+        private string name;
+        private DateTime hireDate;
+        private EmploymentType accountType;
 
         // calculated
         public int TotalVacationDays;
@@ -21,24 +21,27 @@ namespace VacationCalc.Model
 
         public Employee(string _name, DateTime _hireDate, EmploymentType _type)
         {
-            Name = _name;
-            HireDate = _hireDate;
-            AccountType = _type;
+            name = _name;
+            hireDate = _hireDate;
+            accountType = _type;
         }
 
-        public string GetName()
+        public string Name
         {
-            return Name;
+            get { return name; }
+            set { name = value; }
         }
 
-        public DateTime GetHireDate()
+        public DateTime HireDate
         {
-            return HireDate;
+            get { return hireDate; }
+            set { hireDate = value; }
         }
 
-        public EmploymentType GetAccountType()
-        { 
-            return AccountType;
+        public EmploymentType AccountType
+        {
+            get { return accountType; }
+            set { accountType = value; }            
         }
 
         public int GetVacationDaysLeft()

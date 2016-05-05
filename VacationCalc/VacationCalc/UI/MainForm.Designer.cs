@@ -29,9 +29,10 @@
         private void InitializeComponent()
         {
             Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn1 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn2 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
             Telerik.WinControls.UI.GridViewDateTimeColumn gridViewDateTimeColumn1 = new Telerik.WinControls.UI.GridViewDateTimeColumn();
             Telerik.WinControls.UI.GridViewComboBoxColumn gridViewComboBoxColumn1 = new Telerik.WinControls.UI.GridViewComboBoxColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn2 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn3 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
             Telerik.WinControls.Data.SortDescriptor sortDescriptor1 = new Telerik.WinControls.Data.SortDescriptor();
             this.gridViewEmployees = new Telerik.WinControls.UI.RadGridView();
             this.menuMain = new Telerik.WinControls.UI.RadMenu();
@@ -65,10 +66,14 @@
             // 
             this.gridViewEmployees.MasterTemplate.AutoGenerateColumns = false;
             gridViewTextBoxColumn1.EnableExpressionEditor = false;
-            gridViewTextBoxColumn1.HeaderText = "ФИО";
-            gridViewTextBoxColumn1.Name = "colName";
-            gridViewTextBoxColumn1.SortOrder = Telerik.WinControls.UI.RadSortOrder.Ascending;
-            gridViewTextBoxColumn1.Width = 221;
+            gridViewTextBoxColumn1.HeaderText = "ID";
+            gridViewTextBoxColumn1.Name = "colID";
+            gridViewTextBoxColumn1.ReadOnly = true;
+            gridViewTextBoxColumn2.EnableExpressionEditor = false;
+            gridViewTextBoxColumn2.HeaderText = "ФИО";
+            gridViewTextBoxColumn2.Name = "colName";
+            gridViewTextBoxColumn2.SortOrder = Telerik.WinControls.UI.RadSortOrder.Ascending;
+            gridViewTextBoxColumn2.Width = 221;
             gridViewDateTimeColumn1.EnableExpressionEditor = false;
             gridViewDateTimeColumn1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             gridViewDateTimeColumn1.HeaderText = "Дата приема";
@@ -77,17 +82,18 @@
             gridViewComboBoxColumn1.EnableExpressionEditor = false;
             gridViewComboBoxColumn1.HeaderText = "Тип занятости";
             gridViewComboBoxColumn1.Name = "colAccType";
-            gridViewComboBoxColumn1.Width = 398;
-            gridViewTextBoxColumn2.EnableExpressionEditor = false;
-            gridViewTextBoxColumn2.HeaderText = "Кол-во оставшихся дней отпуска";
-            gridViewTextBoxColumn2.Name = "colVacationLeft";
-            gridViewTextBoxColumn2.ReadOnly = true;
-            gridViewTextBoxColumn2.Width = 234;
+            gridViewComboBoxColumn1.Width = 133;
+            gridViewTextBoxColumn3.EnableExpressionEditor = false;
+            gridViewTextBoxColumn3.HeaderText = "Кол-во оставшихся дней отпуска";
+            gridViewTextBoxColumn3.Name = "colVacationLeft";
+            gridViewTextBoxColumn3.ReadOnly = true;
+            gridViewTextBoxColumn3.Width = 234;
             this.gridViewEmployees.MasterTemplate.Columns.AddRange(new Telerik.WinControls.UI.GridViewDataColumn[] {
             gridViewTextBoxColumn1,
+            gridViewTextBoxColumn2,
             gridViewDateTimeColumn1,
             gridViewComboBoxColumn1,
-            gridViewTextBoxColumn2});
+            gridViewTextBoxColumn3});
             sortDescriptor1.PropertyName = "colName";
             this.gridViewEmployees.MasterTemplate.SortDescriptors.AddRange(new Telerik.WinControls.Data.SortDescriptor[] {
             sortDescriptor1});
@@ -97,6 +103,7 @@
             this.gridViewEmployees.Size = new System.Drawing.Size(799, 470);
             this.gridViewEmployees.TabIndex = 0;
             this.gridViewEmployees.UserAddedRow += new Telerik.WinControls.UI.GridViewRowEventHandler(this.gridViewEmployees_UserAddedRow);
+            this.gridViewEmployees.CellValueChanged += new Telerik.WinControls.UI.GridViewCellEventHandler(this.gridViewEmployees_CellValueChanged);
             // 
             // menuMain
             // 

@@ -18,7 +18,7 @@ namespace VacationCalc.Model
     
         public int TotalDaysOfWork()
         {
-            var days = (DateTime.Today - CurrentEmployee.GetHireDate()).TotalDays;
+            var days = (DateTime.Today - CurrentEmployee.HireDate).TotalDays;
             var floored = Math.Floor(days);
             int result = (int)floored;
             return result;        
@@ -27,7 +27,7 @@ namespace VacationCalc.Model
         public int TotalVacationEarned()
         {
             int workingDays = TotalDaysOfWork();
-            int vacationPerYear = CurrentEmployee.GetAccountType().GetVacationDaysPerYear();
+            int vacationPerYear = CurrentEmployee.AccountType.GetVacationDaysPerYear();
             var vacation = (double) workingDays / 365.0 * vacationPerYear;
             return (int) vacation;
         }

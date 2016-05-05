@@ -12,18 +12,19 @@ namespace VacationCalc.Model
         private string name;
         private DateTime hireDate;
         private EmploymentType accountType;
+        private DaysCalculator calculator;
 
         // calculated
         public int TotalVacationDays;
         public int VacationDaysLeft;
         public int VacationDaysSpent;
 
-
         public Employee(string _name, DateTime _hireDate, EmploymentType _type)
         {
             name = _name;
             hireDate = _hireDate;
             accountType = _type;
+            calculator = new DaysCalculator(this);
         }
 
         public string Name
@@ -35,13 +36,13 @@ namespace VacationCalc.Model
         public DateTime HireDate
         {
             get { return hireDate; }
-            set { hireDate = value; }
+            set { hireDate = value; calculator.FillEmployeeData(); }
         }
 
         public EmploymentType AccountType
         {
             get { return accountType; }
-            set { accountType = value; }            
+            set { accountType = value; calculator.FillEmployeeData(); }            
         }
 
         public int GetVacationDaysLeft()

@@ -59,18 +59,27 @@ namespace VacationCalc
             int id = employeeManager.AddEmployee(name, date, type);
             int vacation = employeeManager.GetEmployee(id).GetVacationDaysLeft();
             e.Row.Cells["colVacationLeft"].Value = vacation;
+            e.Row.Cells["colID"].Value = id;
         }
 
         private void gridViewEmployees_CellValueChanged(object sender, GridViewCellEventArgs e)
         {
-            int id = int.Parse( e.Row.Cells["colID"].Value.ToString()) ;
-            //MessageBox.Show("ID changed = " + id.ToString());
+            // ID equals null only if we are adding new data, so no need for firing an event
+            if (e.Row.Cells["colID"].Value == null)
+                return;
+            // if columns is read-only it means we had changed it programatically, no need for firing an event
+            if (e.Column.ReadOnly)
+                return;
+            
+            int id = int.Parse(e.Row.Cells["colID"].Value.ToString());
             if (e.Column.Name == "colName")
                 employeeManager.ChangeName(id, e.Value.ToString());
             else if (e.Column.Name == "colHireDate")
                 employeeManager.ChangeDate(id, (DateTime) e.Value);
             else if (e.Column.Name == "colAccType")
                 employeeManager.ChangeType(id, (EmploymentType) Enum.Parse(typeof(EmploymentType), e.Value.ToString()));
+
+            e.Row.Cells["colVacationLeft"].Value = employeeManager.GetEmployee(id).GetVacationDaysLeft();
         }
 
     }

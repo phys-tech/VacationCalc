@@ -39,7 +39,7 @@
             this.menuItemTop = new Telerik.WinControls.UI.RadMenuItem();
             this.statusStrip = new Telerik.WinControls.UI.RadStatusStrip();
             this.panelTools = new Telerik.WinControls.UI.RadPanel();
-            this.radButton2 = new Telerik.WinControls.UI.RadButton();
+            this.bTest = new Telerik.WinControls.UI.RadButton();
             this.bSave = new Telerik.WinControls.UI.RadButton();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewEmployees)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewEmployees.MasterTemplate)).BeginInit();
@@ -47,7 +47,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.statusStrip)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelTools)).BeginInit();
             this.panelTools.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.radButton2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bTest)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bSave)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             this.SuspendLayout();
@@ -133,7 +133,7 @@
             // 
             // panelTools
             // 
-            this.panelTools.Controls.Add(this.radButton2);
+            this.panelTools.Controls.Add(this.bTest);
             this.panelTools.Controls.Add(this.bSave);
             this.panelTools.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panelTools.Location = new System.Drawing.Point(0, 490);
@@ -141,13 +141,14 @@
             this.panelTools.Size = new System.Drawing.Size(799, 52);
             this.panelTools.TabIndex = 3;
             // 
-            // radButton2
+            // bTest
             // 
-            this.radButton2.Location = new System.Drawing.Point(235, 6);
-            this.radButton2.Name = "radButton2";
-            this.radButton2.Size = new System.Drawing.Size(128, 40);
-            this.radButton2.TabIndex = 1;
-            this.radButton2.Text = "radButton2";
+            this.bTest.Location = new System.Drawing.Point(235, 6);
+            this.bTest.Name = "bTest";
+            this.bTest.Size = new System.Drawing.Size(128, 40);
+            this.bTest.TabIndex = 1;
+            this.bTest.Text = "Тест";
+            this.bTest.Click += new System.EventHandler(this.bTest_Click);
             // 
             // bSave
             // 
@@ -181,7 +182,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.statusStrip)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelTools)).EndInit();
             this.panelTools.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.radButton2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bTest)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bSave)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
             this.ResumeLayout(false);
@@ -196,7 +197,7 @@
         private Telerik.WinControls.UI.RadMenuItem menuItemTop;
         private Telerik.WinControls.UI.RadStatusStrip statusStrip;
         private Telerik.WinControls.UI.RadPanel panelTools;
-        private Telerik.WinControls.UI.RadButton radButton2;
+        private Telerik.WinControls.UI.RadButton bTest;
         private Telerik.WinControls.UI.RadButton bSave;
 
     }

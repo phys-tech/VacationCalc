@@ -82,5 +82,11 @@ namespace VacationCalc
             e.Row.Cells["colVacationLeft"].Value = employeeManager.GetEmployee(id).GetVacationDaysLeft();
         }
 
+        private void bTest_Click(object sender, EventArgs e)
+        {
+            AddVacationForm test = new AddVacationForm();
+            test.Show();
+        }
+
     }
 }

@@ -75,7 +75,9 @@
             gridViewTextBoxColumn2.SortOrder = Telerik.WinControls.UI.RadSortOrder.Ascending;
             gridViewTextBoxColumn2.Width = 221;
             gridViewDateTimeColumn1.EnableExpressionEditor = false;
-            gridViewDateTimeColumn1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            gridViewDateTimeColumn1.FilteringMode = Telerik.WinControls.UI.GridViewTimeFilteringMode.Date;
+            gridViewDateTimeColumn1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            gridViewDateTimeColumn1.FormatString = "{0:D}";
             gridViewDateTimeColumn1.HeaderText = "Дата приема";
             gridViewDateTimeColumn1.Name = "colHireDate";
             gridViewDateTimeColumn1.Width = 132;

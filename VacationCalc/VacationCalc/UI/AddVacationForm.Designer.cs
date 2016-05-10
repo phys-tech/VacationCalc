@@ -28,58 +28,82 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.radDateTimePicker1 = new Telerik.WinControls.UI.RadDateTimePicker();
-            this.calStartDate = new Telerik.WinControls.UI.RadCalendar();
-            this.calEndDate = new Telerik.WinControls.UI.RadCalendar();
-            ((System.ComponentModel.ISupportInitialize)(this.radDateTimePicker1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.calStartDate)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.calEndDate)).BeginInit();
+            this.calendarDates = new Telerik.WinControls.UI.RadCalendar();
+            this.lTipSelectDates = new Telerik.WinControls.UI.RadLabel();
+            this.lTipDuration = new Telerik.WinControls.UI.RadLabel();
+            this.bOK = new Telerik.WinControls.UI.RadButton();
+            this.tbDuration = new Telerik.WinControls.UI.RadTextBox();
+            ((System.ComponentModel.ISupportInitialize)(this.calendarDates)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lTipSelectDates)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lTipDuration)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bOK)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbDuration)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             this.SuspendLayout();
             // 
-            // radDateTimePicker1
+            // calendarDates
             // 
-            this.radDateTimePicker1.Location = new System.Drawing.Point(462, 12);
-            this.radDateTimePicker1.Name = "radDateTimePicker1";
-            this.radDateTimePicker1.Size = new System.Drawing.Size(164, 20);
-            this.radDateTimePicker1.TabIndex = 2;
-            this.radDateTimePicker1.TabStop = false;
-            this.radDateTimePicker1.Text = "Friday, May 06, 2016";
-            this.radDateTimePicker1.Value = new System.DateTime(2016, 5, 6, 12, 40, 31, 54);
+            this.calendarDates.AllowMultipleSelect = true;
+            this.calendarDates.Culture = new System.Globalization.CultureInfo("ru-RU");
+            this.calendarDates.DayNameFormat = Telerik.WinControls.UI.DayNameFormat.FirstTwoLetters;
+            this.calendarDates.Location = new System.Drawing.Point(28, 61);
+            this.calendarDates.Name = "calendarDates";
+            this.calendarDates.ShowFooter = true;
+            this.calendarDates.Size = new System.Drawing.Size(257, 227);
+            this.calendarDates.TabIndex = 3;
+            this.calendarDates.ZoomFactor = 1F;
+            this.calendarDates.SelectionChanged += new System.EventHandler(this.calStartDate_SelectionChanged);
+            ((Telerik.WinControls.UI.RadCalendarElement)(this.calendarDates.GetChildAt(0))).ZoomFactor = 1F;
+            ((Telerik.WinControls.UI.RadButtonElement)(this.calendarDates.GetChildAt(0).GetChildAt(0).GetChildAt(0).GetChildAt(0).GetChildAt(0))).Text = "Сегодня";
+            ((Telerik.WinControls.UI.RadButtonElement)(this.calendarDates.GetChildAt(0).GetChildAt(0).GetChildAt(0).GetChildAt(0).GetChildAt(1))).Text = "Очистить";
             // 
-            // calStartDate
+            // lTipSelectDates
             // 
-            this.calStartDate.AllowMultipleSelect = true;
-            this.calStartDate.Culture = new System.Globalization.CultureInfo("ru-RU");
-            this.calStartDate.Location = new System.Drawing.Point(38, 59);
-            this.calStartDate.Name = "calStartDate";
-            this.calStartDate.ShowFooter = true;
-            this.calStartDate.Size = new System.Drawing.Size(257, 227);
-            this.calStartDate.TabIndex = 3;
-            this.calStartDate.Text = "radCalendar1";
-            ((Telerik.WinControls.UI.RadButtonElement)(this.calStartDate.GetChildAt(0).GetChildAt(0).GetChildAt(0).GetChildAt(0).GetChildAt(0))).Text = "Сегодня";
-            ((Telerik.WinControls.UI.RadButtonElement)(this.calStartDate.GetChildAt(0).GetChildAt(0).GetChildAt(0).GetChildAt(0).GetChildAt(1))).Text = "Очистить";
+            this.lTipSelectDates.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.lTipSelectDates.Location = new System.Drawing.Point(28, 25);
+            this.lTipSelectDates.Name = "lTipSelectDates";
+            this.lTipSelectDates.Size = new System.Drawing.Size(246, 21);
+            this.lTipSelectDates.TabIndex = 4;
+            this.lTipSelectDates.Text = "Укажите дату начала и конца отпуска:";
             // 
-            // calEndDate
+            // lTipDuration
             // 
-            this.calEndDate.Culture = new System.Globalization.CultureInfo("ru-RU");
-            this.calEndDate.Location = new System.Drawing.Point(320, 59);
-            this.calEndDate.Name = "calEndDate";
-            this.calEndDate.ShowFooter = true;
-            this.calEndDate.Size = new System.Drawing.Size(257, 227);
-            this.calEndDate.TabIndex = 4;
-            this.calEndDate.Text = "radCalendar1";
-            ((Telerik.WinControls.UI.RadButtonElement)(this.calEndDate.GetChildAt(0).GetChildAt(0).GetChildAt(0).GetChildAt(0).GetChildAt(0))).Text = "Сегодня";
-            ((Telerik.WinControls.UI.RadButtonElement)(this.calEndDate.GetChildAt(0).GetChildAt(0).GetChildAt(0).GetChildAt(0).GetChildAt(1))).Text = "Очистить";
+            this.lTipDuration.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.lTipDuration.Location = new System.Drawing.Point(311, 25);
+            this.lTipDuration.Name = "lTipDuration";
+            this.lTipDuration.Size = new System.Drawing.Size(298, 21);
+            this.lTipDuration.TabIndex = 5;
+            this.lTipDuration.Text = "Или просто задайте число потраченных дней:";
+            // 
+            // bOK
+            // 
+            this.bOK.Location = new System.Drawing.Point(234, 321);
+            this.bOK.Name = "bOK";
+            this.bOK.Size = new System.Drawing.Size(159, 37);
+            this.bOK.TabIndex = 7;
+            this.bOK.Text = "ОК";
+            this.bOK.Click += new System.EventHandler(this.bOK_Click);
+            // 
+            // tbDuration
+            // 
+            this.tbDuration.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.tbDuration.Location = new System.Drawing.Point(311, 61);
+            this.tbDuration.Name = "tbDuration";
+            this.tbDuration.Size = new System.Drawing.Size(161, 27);
+            this.tbDuration.TabIndex = 8;
+            this.tbDuration.TabStop = false;
+            this.tbDuration.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // AddVacationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(649, 518);
-            this.Controls.Add(this.calEndDate);
-            this.Controls.Add(this.calStartDate);
-            this.Controls.Add(this.radDateTimePicker1);
+            this.ClientSize = new System.Drawing.Size(627, 383);
+            this.Controls.Add(this.tbDuration);
+            this.Controls.Add(this.bOK);
+            this.Controls.Add(this.lTipDuration);
+            this.Controls.Add(this.lTipSelectDates);
+            this.Controls.Add(this.calendarDates);
             this.Name = "AddVacationForm";
             // 
             // 
@@ -87,9 +111,11 @@
             this.RootElement.ApplyShapeToControl = true;
             this.Text = "Добавление отпуска";
             this.ThemeName = "ControlDefault";
-            ((System.ComponentModel.ISupportInitialize)(this.radDateTimePicker1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.calStartDate)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.calEndDate)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.calendarDates)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lTipSelectDates)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lTipDuration)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bOK)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbDuration)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -98,8 +124,10 @@
 
         #endregion
 
-        private Telerik.WinControls.UI.RadDateTimePicker radDateTimePicker1;
-        private Telerik.WinControls.UI.RadCalendar calStartDate;
-        private Telerik.WinControls.UI.RadCalendar calEndDate;
+        private Telerik.WinControls.UI.RadCalendar calendarDates;
+        private Telerik.WinControls.UI.RadLabel lTipSelectDates;
+        private Telerik.WinControls.UI.RadLabel lTipDuration;
+        private Telerik.WinControls.UI.RadButton bOK;
+        private Telerik.WinControls.UI.RadTextBox tbDuration;
     }
 }

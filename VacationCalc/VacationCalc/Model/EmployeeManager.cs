@@ -64,6 +64,11 @@ namespace VacationCalc.Model
             Employees[id].AccountType = type;
         }
 
+        public void AddVacation(int id, Vacation vacation)
+        {
+            Employees[id].AddVacation(vacation);
+        }
+
         public void SaveDataToXML()
         {
             XDocument doc = new XDocument(new XElement("Root"));

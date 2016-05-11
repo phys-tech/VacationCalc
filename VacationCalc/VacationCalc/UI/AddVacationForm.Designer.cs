@@ -93,6 +93,8 @@
             this.tbDuration.TabIndex = 8;
             this.tbDuration.TabStop = false;
             this.tbDuration.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.tbDuration.TextChanged += new System.EventHandler(this.tbDuration_TextChanged);
+            this.tbDuration.Enter += new System.EventHandler(this.tbDuration_Enter);
             // 
             // AddVacationForm
             // 

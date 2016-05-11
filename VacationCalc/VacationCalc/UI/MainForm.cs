@@ -88,5 +88,13 @@ namespace VacationCalc
             test.Show();
         }
 
+        private void MasterTemplate_CommandCellClick(object sender, EventArgs e)
+        {
+            int row = (sender as GridCommandCellElement).RowIndex;
+            int id = int.Parse(gridViewEmployees.Rows[row].Cells["colID"].Value.ToString());
+            AddVacationForm addVacation = new AddVacationForm(employeeManager, id);
+            addVacation.Show();
+        }
+
     }
 }

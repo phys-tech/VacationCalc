@@ -12,8 +12,18 @@ namespace VacationCalc
 {
     public partial class AddVacationForm : Telerik.WinControls.UI.RadForm
     {
+        private int EmployeeID;
+        private EmployeeManager EmpManager;
+
         public AddVacationForm()
         {
+            InitializeComponent();
+        }
+
+        public AddVacationForm(EmployeeManager manager, int employeeID)
+        {
+            EmpManager = manager;
+            EmployeeID = employeeID;
             InitializeComponent();
         }
 
@@ -31,13 +41,37 @@ namespace VacationCalc
                 tbDuration.Text = span.Days.ToString();                
             }
             else if (dates.Count > 2)
-                calendarDates.SelectedDates.Clear();
+            {
+                calendarDates.SelectedDates.RemoveRange(2, 1);
+                //calendarDates.SelectedDates.Clear();
+            }
         }
 
         private void bOK_Click(object sender, EventArgs e)
         {
-            Vacation vacation;
+            if (tbDuration.Text == "")
+            {
+                MessageBox.Show("Введите значение продолжительности отпуска");
+                return;
+            }
+            Vacation vacation = new Vacation(int.Parse(tbDuration.Text));
+            EmpManager.AddVacation(EmployeeID, vacation);
             this.Close();
+        }
+
+        private void tbDuration_TextChanged(object sender, EventArgs e)
+        {
+            // reset the value, if user tries to enter so symbols instead of numbers
+            string text = tbDuration.Text;
+            int value;
+            if ( !int.TryParse(text, out value) )
+                tbDuration.Text = "";
+        }
+
+        private void tbDuration_Enter(object sender, EventArgs e)
+        {
+            // we may clear info here
+            //MessageBox.Show("Enter textbox ");
         }
     }
 }

@@ -33,6 +33,7 @@
             Telerik.WinControls.UI.GridViewDateTimeColumn gridViewDateTimeColumn1 = new Telerik.WinControls.UI.GridViewDateTimeColumn();
             Telerik.WinControls.UI.GridViewComboBoxColumn gridViewComboBoxColumn1 = new Telerik.WinControls.UI.GridViewComboBoxColumn();
             Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn3 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewCommandColumn gridViewCommandColumn1 = new Telerik.WinControls.UI.GridViewCommandColumn();
             Telerik.WinControls.Data.SortDescriptor sortDescriptor1 = new Telerik.WinControls.Data.SortDescriptor();
             this.gridViewEmployees = new Telerik.WinControls.UI.RadGridView();
             this.menuMain = new Telerik.WinControls.UI.RadMenu();
@@ -69,10 +70,10 @@
             gridViewTextBoxColumn1.HeaderText = "ID";
             gridViewTextBoxColumn1.Name = "colID";
             gridViewTextBoxColumn1.ReadOnly = true;
+            gridViewTextBoxColumn1.SortOrder = Telerik.WinControls.UI.RadSortOrder.Ascending;
             gridViewTextBoxColumn2.EnableExpressionEditor = false;
             gridViewTextBoxColumn2.HeaderText = "ФИО";
             gridViewTextBoxColumn2.Name = "colName";
-            gridViewTextBoxColumn2.SortOrder = Telerik.WinControls.UI.RadSortOrder.Ascending;
             gridViewTextBoxColumn2.Width = 221;
             gridViewDateTimeColumn1.EnableExpressionEditor = false;
             gridViewDateTimeColumn1.FilteringMode = Telerik.WinControls.UI.GridViewTimeFilteringMode.Date;
@@ -80,23 +81,30 @@
             gridViewDateTimeColumn1.FormatString = "{0:D}";
             gridViewDateTimeColumn1.HeaderText = "Дата приема";
             gridViewDateTimeColumn1.Name = "colHireDate";
-            gridViewDateTimeColumn1.Width = 132;
+            gridViewDateTimeColumn1.Width = 121;
             gridViewComboBoxColumn1.EnableExpressionEditor = false;
             gridViewComboBoxColumn1.HeaderText = "Тип занятости";
             gridViewComboBoxColumn1.Name = "colAccType";
-            gridViewComboBoxColumn1.Width = 133;
+            gridViewComboBoxColumn1.Width = 94;
             gridViewTextBoxColumn3.EnableExpressionEditor = false;
             gridViewTextBoxColumn3.HeaderText = "Кол-во оставшихся дней отпуска";
             gridViewTextBoxColumn3.Name = "colVacationLeft";
             gridViewTextBoxColumn3.ReadOnly = true;
-            gridViewTextBoxColumn3.Width = 234;
+            gridViewTextBoxColumn3.Width = 189;
+            gridViewCommandColumn1.DefaultText = "Добавить...";
+            gridViewCommandColumn1.EnableExpressionEditor = false;
+            gridViewCommandColumn1.HeaderText = "Отпуск";
+            gridViewCommandColumn1.Name = "colButton";
+            gridViewCommandColumn1.UseDefaultText = true;
+            gridViewCommandColumn1.Width = 72;
             this.gridViewEmployees.MasterTemplate.Columns.AddRange(new Telerik.WinControls.UI.GridViewDataColumn[] {
             gridViewTextBoxColumn1,
             gridViewTextBoxColumn2,
             gridViewDateTimeColumn1,
             gridViewComboBoxColumn1,
-            gridViewTextBoxColumn3});
-            sortDescriptor1.PropertyName = "colName";
+            gridViewTextBoxColumn3,
+            gridViewCommandColumn1});
+            sortDescriptor1.PropertyName = "colID";
             this.gridViewEmployees.MasterTemplate.SortDescriptors.AddRange(new Telerik.WinControls.Data.SortDescriptor[] {
             sortDescriptor1});
             this.gridViewEmployees.Name = "gridViewEmployees";
@@ -106,6 +114,7 @@
             this.gridViewEmployees.TabIndex = 0;
             this.gridViewEmployees.UserAddedRow += new Telerik.WinControls.UI.GridViewRowEventHandler(this.gridViewEmployees_UserAddedRow);
             this.gridViewEmployees.CellValueChanged += new Telerik.WinControls.UI.GridViewCellEventHandler(this.gridViewEmployees_CellValueChanged);
+            this.gridViewEmployees.CommandCellClick += new Telerik.WinControls.UI.CommandCellClickEventHandler(this.MasterTemplate_CommandCellClick);
             // 
             // menuMain
             // 

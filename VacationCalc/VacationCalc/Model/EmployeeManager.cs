@@ -84,9 +84,13 @@ namespace VacationCalc.Model
                 foreach (Vacation item in list)
                 {
                     XElement vacationElem;
-                    //if (!item.IsDateDefined)
+                    if (!item.IsDateDefined)
                         vacationElem = new XElement("Vacation",
-                                       new XElement("Duration", item.Duration.Days));
+                                       new XAttribute("Duration", item.Duration.Days));
+                    else
+                        vacationElem = new XElement("Vacation",
+                                       new XElement("StartDate", item.StartDate),
+                                       new XElement("EndDate", item.EndDate));
                     element.Element("Vacations").Add(vacationElem);
                 }
                 doc.Root.Add(element);
@@ -107,10 +111,20 @@ namespace VacationCalc.Model
                 XElement vacations = element.Element("Vacations");
                 foreach (XElement vacationElem in vacations.Elements())
                 {
-                    int duration = int.Parse(vacationElem.Element("Duration").Value.ToString());
-                    AddVacation(id, new Vacation(duration));
+                    if (vacationElem.HasAttributes)
+                    {
+                        int duration = int.Parse(vacationElem.Attribute("Duration").Value.ToString());
+                        AddVacation(id, new Vacation(duration));
+                    }
+                    else
+                    {
+                        DateTime start = DateTime.Parse(vacationElem.Element("StartDate").Value.ToString());
+                        DateTime end = DateTime.Parse(vacationElem.Element("EndDate").Value.ToString());
+                        AddVacation(id, new Vacation(start, end));
+                    }
                 }
             }
         }
+
     }
 }

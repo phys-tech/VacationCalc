@@ -15,8 +15,8 @@ namespace VacationCalc.Model
 
         public Vacation(DateTime _startDate, DateTime _endDate)
         {
-            startDate = _startDate;
-            endDate = _endDate;
+            startDate = (_startDate < _endDate) ? (_startDate) : (_endDate);
+            endDate = (_startDate < _endDate) ? (_endDate) : (_startDate);
             duration = endDate - startDate;
             IsDateDefined = true;
         }

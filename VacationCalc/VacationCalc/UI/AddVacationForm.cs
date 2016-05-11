@@ -29,43 +29,52 @@ namespace VacationCalc
 
         private void calStartDate_SelectionChanged(object sender, EventArgs e)
         {
-            //DateTime date = calendarDates.SelectedDate;
+            DateTime currentSelection = calendarDates.SelectedDate;
             var dates = calendarDates.SelectedDates;
             if (dates.Count == 2)
             {
-                //string date1 = dates[0].ToShortDateString();
-                //string date2 = dates[1].ToShortDateString();
-                //MessageBox.Show("Selection changed " + date1 + " " + date2);
                 TimeSpan span = dates[0] - dates[1];
                 span = span.Duration();
-                tbDuration.Text = span.Days.ToString();                
+                tbDuration.Text = span.Days.ToString();
             }
             else if (dates.Count > 2)
             {
-                calendarDates.SelectedDates.RemoveRange(2, 1);
-                //calendarDates.SelectedDates.Clear();
+                calendarDates.SelectedDates.Clear();
+                calendarDates.SelectedDate = currentSelection;
+                tbDuration.Text = "";
             }
+            else if (dates.Count == 0)
+                tbDuration.Text = "";
         }
 
         private void bOK_Click(object sender, EventArgs e)
         {
             if (tbDuration.Text == "")
             {
-                MessageBox.Show("Введите значение продолжительности отпуска");
+                MessageBox.Show("Введите значение продолжительности отпуска", "Ошибка");
                 return;
             }
-            Vacation vacation = new Vacation(int.Parse(tbDuration.Text));
+
+            Vacation vacation;
+            if (calendarDates.SelectedDates.Count == 2)
+                vacation = new Vacation(calendarDates.SelectedDates[0], calendarDates.SelectedDates[1]);
+            else
+                vacation = new Vacation(int.Parse(tbDuration.Text));
+
             EmpManager.AddVacation(EmployeeID, vacation);
             this.Close();
         }
 
         private void tbDuration_TextChanged(object sender, EventArgs e)
         {
-            // reset the value, if user tries to enter so symbols instead of numbers
+            // reset the value, if user tries to enter some symbols instead of numbers
             string text = tbDuration.Text;
             int value;
             if ( !int.TryParse(text, out value) )
                 tbDuration.Text = "";
+
+            // todo - reset calendar here
+            //calendarDates.SelectedDates.Clear();
         }
 
         private void tbDuration_Enter(object sender, EventArgs e)

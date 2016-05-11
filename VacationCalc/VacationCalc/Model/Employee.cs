@@ -18,7 +18,7 @@ namespace VacationCalc.Model
         // calculated
         public int TotalVacationDays;
         public int VacationDaysLeft;
-        public int VacationDaysSpent;
+        //public int VacationDaysSpent;
 
         public Employee(string _name, DateTime _hireDate, EmploymentType _type)
         {
@@ -50,6 +50,21 @@ namespace VacationCalc.Model
         public void AddVacation(Vacation vacation)
         {
             vacationList.Add(vacation);
+        }
+
+        public List<Vacation> GetVacationsList()
+        {
+            return vacationList;
+        }
+
+        public int VacationDaysSpent()
+        {
+            int days = 0;
+            foreach (Vacation item in vacationList)
+            {
+                days += item.Duration.Days;
+            }
+            return days;
         }
 
         public int GetVacationDaysLeft()

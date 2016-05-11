@@ -39,5 +39,10 @@ namespace VacationCalc.Model
             set { endDate = value; }
         }
 
+        public TimeSpan Duration
+        {
+            get { return duration; }
+        }
+
     }
 }

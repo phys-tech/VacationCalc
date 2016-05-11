@@ -77,9 +77,20 @@ namespace VacationCalc.Model
                 XElement element = new XElement("Employee",
                                     new XElement("Name", employee.Name),
                                     new XElement("HireDate", employee.HireDate),
-                                    new XElement("AccountType", employee.AccountType));
+                                    new XElement("AccountType", employee.AccountType),
+                                    new XElement("VacationsDaysSpent", employee.VacationDaysSpent()),
+                                    new XElement("Vacations"));
+                var list = employee.GetVacationsList();
+                foreach (Vacation item in list)
+                {
+                    XElement vacationElem;
+                    //if (!item.IsDateDefined)
+                        vacationElem = new XElement("Vacation",
+                                       new XElement("Duration", item.Duration.Days));
+                    element.Element("Vacations").Add(vacationElem);
+                }
                 doc.Root.Add(element);
-            }            
+            }
             doc.Save(XmlFilename);
         }
 
@@ -93,6 +104,12 @@ namespace VacationCalc.Model
                 EmploymentType type = (EmploymentType) Enum.Parse(typeof(EmploymentType), element.Element("AccountType").Value.ToString());
                 int id = GetNewID();
                 Employees.Add(id, new Employee(name, date, type));
+                XElement vacations = element.Element("Vacations");
+                foreach (XElement vacationElem in vacations.Elements())
+                {
+                    int duration = int.Parse(vacationElem.Element("Duration").Value.ToString());
+                    AddVacation(id, new Vacation(duration));
+                }
             }
         }
     }

@@ -29,7 +29,8 @@ namespace VacationCalc
             if (dates.Count == 2)
             {
                 TimeSpan span = dates[0] - dates[1];
-                span = span.Duration();
+                // we're adding 1 day, because we want to count the last day also
+                span = span.Duration().Add(new TimeSpan(1,0,0,0));      
                 tbDuration.Text = span.Days.ToString();
             }
             else if (dates.Count > 2)

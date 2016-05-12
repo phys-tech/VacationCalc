@@ -15,11 +15,6 @@ namespace VacationCalc
         private int EmployeeID;
         private EmployeeManager EmpManager;
 
-        public AddVacationForm()
-        {
-            InitializeComponent();
-        }
-
         public AddVacationForm(EmployeeManager manager, int employeeID)
         {
             EmpManager = manager;

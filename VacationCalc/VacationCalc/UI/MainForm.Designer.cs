@@ -40,7 +40,6 @@
             this.menuItemTop = new Telerik.WinControls.UI.RadMenuItem();
             this.statusStrip = new Telerik.WinControls.UI.RadStatusStrip();
             this.panelTools = new Telerik.WinControls.UI.RadPanel();
-            this.bTest = new Telerik.WinControls.UI.RadButton();
             this.bSave = new Telerik.WinControls.UI.RadButton();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewEmployees)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewEmployees.MasterTemplate)).BeginInit();
@@ -48,7 +47,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.statusStrip)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelTools)).BeginInit();
             this.panelTools.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bTest)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bSave)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             this.SuspendLayout();
@@ -68,6 +66,7 @@
             this.gridViewEmployees.MasterTemplate.AutoGenerateColumns = false;
             gridViewTextBoxColumn1.EnableExpressionEditor = false;
             gridViewTextBoxColumn1.HeaderText = "ID";
+            gridViewTextBoxColumn1.IsVisible = false;
             gridViewTextBoxColumn1.Name = "colID";
             gridViewTextBoxColumn1.ReadOnly = true;
             gridViewTextBoxColumn1.SortOrder = Telerik.WinControls.UI.RadSortOrder.Ascending;
@@ -144,7 +143,6 @@
             // 
             // panelTools
             // 
-            this.panelTools.Controls.Add(this.bTest);
             this.panelTools.Controls.Add(this.bSave);
             this.panelTools.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panelTools.Location = new System.Drawing.Point(0, 490);
@@ -152,18 +150,9 @@
             this.panelTools.Size = new System.Drawing.Size(799, 52);
             this.panelTools.TabIndex = 3;
             // 
-            // bTest
-            // 
-            this.bTest.Location = new System.Drawing.Point(235, 6);
-            this.bTest.Name = "bTest";
-            this.bTest.Size = new System.Drawing.Size(128, 40);
-            this.bTest.TabIndex = 1;
-            this.bTest.Text = "Тест";
-            this.bTest.Click += new System.EventHandler(this.bTest_Click);
-            // 
             // bSave
             // 
-            this.bSave.Location = new System.Drawing.Point(402, 6);
+            this.bSave.Location = new System.Drawing.Point(335, 6);
             this.bSave.Name = "bSave";
             this.bSave.Size = new System.Drawing.Size(128, 40);
             this.bSave.TabIndex = 0;
@@ -193,7 +182,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.statusStrip)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelTools)).EndInit();
             this.panelTools.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.bTest)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bSave)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
             this.ResumeLayout(false);
@@ -208,7 +196,6 @@
         private Telerik.WinControls.UI.RadMenuItem menuItemTop;
         private Telerik.WinControls.UI.RadStatusStrip statusStrip;
         private Telerik.WinControls.UI.RadPanel panelTools;
-        private Telerik.WinControls.UI.RadButton bTest;
         private Telerik.WinControls.UI.RadButton bSave;
 
     }

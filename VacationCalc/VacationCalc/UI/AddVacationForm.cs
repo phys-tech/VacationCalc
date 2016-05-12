@@ -62,6 +62,7 @@ namespace VacationCalc
                 vacation = new Vacation(int.Parse(tbDuration.Text));
 
             EmpManager.AddVacation(EmployeeID, vacation);
+            this.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.Close();
         }
 
@@ -72,15 +73,12 @@ namespace VacationCalc
             int value;
             if ( !int.TryParse(text, out value) )
                 tbDuration.Text = "";
-
-            // todo - reset calendar here
-            //calendarDates.SelectedDates.Clear();
         }
 
         private void tbDuration_Enter(object sender, EventArgs e)
         {
-            // we may clear info here
-            //MessageBox.Show("Enter textbox ");
+            // we may clear info here            
+            calendarDates.SelectedDates.Clear();
         }
     }
 }

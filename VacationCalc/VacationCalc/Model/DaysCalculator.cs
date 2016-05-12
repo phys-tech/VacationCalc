@@ -35,7 +35,8 @@ namespace VacationCalc.Model
         public void FillEmployeeData()
         {
             CurrentEmployee.TotalVacationDays = TotalVacationEarned();
-            CurrentEmployee.VacationDaysLeft = CurrentEmployee.TotalVacationDays;
+            int spent = CurrentEmployee.VacationDaysSpent();
+            CurrentEmployee.VacationDaysLeft = CurrentEmployee.TotalVacationDays - spent;
         }
     
     }

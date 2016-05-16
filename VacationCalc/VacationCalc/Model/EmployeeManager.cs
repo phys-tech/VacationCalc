@@ -131,5 +131,19 @@ namespace VacationCalc.Model
             }
         }
 
+        public int NumberOfEmployees()
+        {
+            return Employees.Count;
+        }
+
+        public int NumberOfEmployeesOnVacation()
+        {
+            int onVacation = 0;
+            foreach (Employee emp in Employees.Values)
+                if (emp.IsOnVacation())
+                    onVacation++;
+            return onVacation;
+        }
+
     }
 }

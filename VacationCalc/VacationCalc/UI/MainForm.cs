@@ -44,6 +44,13 @@ namespace VacationCalc
                 object[] row = { empID, name, date, type, vacation };
                 gridViewEmployees.Rows.Add(row);
             }
+            UpdateStatusStrip();
+        }
+
+        private void UpdateStatusStrip()
+        {
+            statusLabel.Text = "Всего сотрудников: " + employeeManager.NumberOfEmployees();
+            statusLabel2.Text = "В отпуске: " + employeeManager.NumberOfEmployeesOnVacation();
         }
 
         private void bSave_Click(object sender, EventArgs e)
@@ -60,12 +67,14 @@ namespace VacationCalc
             int vacation = employeeManager.GetEmployee(id).GetVacationDaysLeft();
             e.Row.Cells["colVacationLeft"].Value = vacation;
             e.Row.Cells["colID"].Value = id;
+            UpdateStatusStrip();
         }
 
         private void gridViewEmployees_UserDeletingRow(object sender, GridViewRowCancelEventArgs e)
         {
             int id = int.Parse(e.Rows[0].Cells["colID"].Value.ToString());
             employeeManager.DeleteEmployee(id);
+            UpdateStatusStrip();
         }
 
         private void gridViewEmployees_CellValueChanged(object sender, GridViewCellEventArgs e)
@@ -98,6 +107,7 @@ namespace VacationCalc
             {
                 int vacationLeft = employeeManager.GetEmployee(id).GetVacationDaysLeft();
                 gridViewEmployees.Rows[row].Cells["colVacationLeft"].Value = vacationLeft;
+                UpdateStatusStrip();
             }
         }
 

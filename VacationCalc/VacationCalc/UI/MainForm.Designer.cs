@@ -41,6 +41,8 @@
             this.statusStrip = new Telerik.WinControls.UI.RadStatusStrip();
             this.panelTools = new Telerik.WinControls.UI.RadPanel();
             this.bSave = new Telerik.WinControls.UI.RadButton();
+            this.statusLabel = new Telerik.WinControls.UI.RadLabelElement();
+            this.statusLabel2 = new Telerik.WinControls.UI.RadLabelElement();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewEmployees)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewEmployees.MasterTemplate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.menuMain)).BeginInit();
@@ -66,6 +68,7 @@
             this.gridViewEmployees.MasterTemplate.AutoGenerateColumns = false;
             gridViewTextBoxColumn1.EnableExpressionEditor = false;
             gridViewTextBoxColumn1.HeaderText = "ID";
+            gridViewTextBoxColumn1.IsVisible = false;
             gridViewTextBoxColumn1.Name = "colID";
             gridViewTextBoxColumn1.ReadOnly = true;
             gridViewTextBoxColumn1.SortOrder = Telerik.WinControls.UI.RadSortOrder.Ascending;
@@ -135,6 +138,9 @@
             // 
             // statusStrip
             // 
+            this.statusStrip.Items.AddRange(new Telerik.WinControls.RadItem[] {
+            this.statusLabel,
+            this.statusLabel2});
             this.statusStrip.Location = new System.Drawing.Point(0, 542);
             this.statusStrip.Name = "statusStrip";
             this.statusStrip.Size = new System.Drawing.Size(799, 24);
@@ -158,6 +164,26 @@
             this.bSave.TabIndex = 0;
             this.bSave.Text = "Сохранить";
             this.bSave.Click += new System.EventHandler(this.bSave_Click);
+            // 
+            // statusLabel
+            // 
+            this.statusLabel.AccessibleDescription = "statusLabel";
+            this.statusLabel.AccessibleName = "statusLabel";
+            this.statusLabel.Name = "statusLabel";
+            this.statusStrip.SetSpring(this.statusLabel, false);
+            this.statusLabel.Text = "NumberOfEmpl";
+            this.statusLabel.TextWrap = true;
+            this.statusLabel.Visibility = Telerik.WinControls.ElementVisibility.Visible;
+            // 
+            // statusLabel2
+            // 
+            this.statusLabel2.AccessibleDescription = "statusLabel2";
+            this.statusLabel2.AccessibleName = "statusLabel2";
+            this.statusLabel2.Name = "statusLabel2";
+            this.statusStrip.SetSpring(this.statusLabel2, false);
+            this.statusLabel2.Text = "NumberOfOnVacation";
+            this.statusLabel2.TextWrap = true;
+            this.statusLabel2.Visibility = Telerik.WinControls.ElementVisibility.Visible;
             // 
             // MainForm
             // 
@@ -197,6 +223,8 @@
         private Telerik.WinControls.UI.RadStatusStrip statusStrip;
         private Telerik.WinControls.UI.RadPanel panelTools;
         private Telerik.WinControls.UI.RadButton bSave;
+        private Telerik.WinControls.UI.RadLabelElement statusLabel;
+        private Telerik.WinControls.UI.RadLabelElement statusLabel2;
 
     }
 }

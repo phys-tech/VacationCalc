@@ -71,6 +71,16 @@ namespace VacationCalc.Model
         {
             return VacationDaysLeft;
         }
+
+        public bool IsOnVacation()
+        { 
+            DateTime today = DateTime.Today;
+            foreach (Vacation vacation in vacationList)
+                if (vacation.IsDateDefined)
+                    if (vacation.StartDate <= today && vacation.EndDate >= today)
+                        return true;
+            return false;
+        }
     }
 
 }

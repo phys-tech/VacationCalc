@@ -53,6 +53,12 @@ namespace VacationCalc
             statusLabel2.Text = "В отпуске: " + employeeManager.NumberOfEmployeesOnVacation();
         }
 
+        private void UpdateVacationDays(int employeeID, int rowIndex)
+        {
+            int vacationLeft = employeeManager.GetEmployee(employeeID).GetVacationDaysLeft();
+            gridViewEmployees.Rows[rowIndex].Cells["colVacationLeft"].Value = vacationLeft;
+        }
+
         private void bSave_Click(object sender, EventArgs e)
         {
             employeeManager.SaveDataToXML();
@@ -64,9 +70,8 @@ namespace VacationCalc
             DateTime date = (DateTime) e.Row.Cells["colHireDate"].Value;
             EmploymentType type = (EmploymentType) Enum.Parse(typeof(EmploymentType), e.Row.Cells["colAccType"].Value.ToString());
             int id = employeeManager.AddEmployee(name, date, type);
-            int vacation = employeeManager.GetEmployee(id).GetVacationDaysLeft();
-            e.Row.Cells["colVacationLeft"].Value = vacation;
             e.Row.Cells["colID"].Value = id;
+            UpdateVacationDays(id, e.Row.Index);
             UpdateStatusStrip();
         }
 
@@ -94,7 +99,7 @@ namespace VacationCalc
             else if (e.Column.Name == "colAccType")
                 employeeManager.ChangeType(id, (EmploymentType) Enum.Parse(typeof(EmploymentType), e.Value.ToString()));
 
-            e.Row.Cells["colVacationLeft"].Value = employeeManager.GetEmployee(id).GetVacationDaysLeft();
+            UpdateVacationDays(id, e.RowIndex);
         }
 
         private void MasterTemplate_CommandCellClick(object sender, EventArgs e)
@@ -105,8 +110,7 @@ namespace VacationCalc
             DialogResult dr = addVacation.ShowDialog();
             if (dr == System.Windows.Forms.DialogResult.OK)
             {
-                int vacationLeft = employeeManager.GetEmployee(id).GetVacationDaysLeft();
-                gridViewEmployees.Rows[row].Cells["colVacationLeft"].Value = vacationLeft;
+                UpdateVacationDays(id, row);
                 UpdateStatusStrip();
             }
         }

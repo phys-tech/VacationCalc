@@ -22,7 +22,7 @@ namespace VacationCalc
             InitializeComponent();
         }
 
-        private void calStartDate_SelectionChanged(object sender, EventArgs e)
+        private void calendarDates_SelectionChanged(object sender, EventArgs e)
         {
             DateTime currentSelection = calendarDates.SelectedDate;
             var dates = calendarDates.SelectedDates;
@@ -58,7 +58,6 @@ namespace VacationCalc
                 vacation = new Vacation(int.Parse(tbDuration.Text));
 
             EmpManager.AddVacation(EmployeeID, vacation);
-            this.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.Close();
         }
 
@@ -73,8 +72,13 @@ namespace VacationCalc
 
         private void tbDuration_Enter(object sender, EventArgs e)
         {
-            // we may clear info here            
+            // we may clear info here
             calendarDates.SelectedDates.Clear();
+        }
+
+        private void bCancel_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

@@ -62,6 +62,12 @@ namespace VacationCalc
             e.Row.Cells["colID"].Value = id;
         }
 
+        private void gridViewEmployees_UserDeletingRow(object sender, GridViewRowCancelEventArgs e)
+        {
+            int id = int.Parse(e.Rows[0].Cells["colID"].Value.ToString());
+            employeeManager.DeleteEmployee(id);
+        }
+
         private void gridViewEmployees_CellValueChanged(object sender, GridViewCellEventArgs e)
         {
             // ID equals null only if we are adding new data, so no need for firing an event

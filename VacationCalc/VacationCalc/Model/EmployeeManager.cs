@@ -44,6 +44,11 @@ namespace VacationCalc.Model
             return Employees.ElementAtOrDefault(id).Value;
         }
 
+        public void DeleteEmployee(int id)
+        {
+            Employees.Remove(id);
+        }
+
         public EmployeeDict GetAllEmployees()
         {
             return Employees;   

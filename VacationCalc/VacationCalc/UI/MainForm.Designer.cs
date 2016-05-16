@@ -66,6 +66,7 @@
             // gridViewEmployees
             // 
             this.gridViewEmployees.MasterTemplate.AutoGenerateColumns = false;
+            this.gridViewEmployees.MasterTemplate.AutoSizeColumnsMode = Telerik.WinControls.UI.GridViewAutoSizeColumnsMode.Fill;
             gridViewTextBoxColumn1.EnableExpressionEditor = false;
             gridViewTextBoxColumn1.HeaderText = "ID";
             gridViewTextBoxColumn1.IsVisible = false;
@@ -75,29 +76,29 @@
             gridViewTextBoxColumn2.EnableExpressionEditor = false;
             gridViewTextBoxColumn2.HeaderText = "ФИО";
             gridViewTextBoxColumn2.Name = "colName";
-            gridViewTextBoxColumn2.Width = 221;
+            gridViewTextBoxColumn2.Width = 248;
             gridViewDateTimeColumn1.EnableExpressionEditor = false;
             gridViewDateTimeColumn1.FilteringMode = Telerik.WinControls.UI.GridViewTimeFilteringMode.Date;
             gridViewDateTimeColumn1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             gridViewDateTimeColumn1.FormatString = "{0:D}";
             gridViewDateTimeColumn1.HeaderText = "Дата приема";
             gridViewDateTimeColumn1.Name = "colHireDate";
-            gridViewDateTimeColumn1.Width = 121;
+            gridViewDateTimeColumn1.Width = 136;
             gridViewComboBoxColumn1.EnableExpressionEditor = false;
             gridViewComboBoxColumn1.HeaderText = "Тип занятости";
             gridViewComboBoxColumn1.Name = "colAccType";
-            gridViewComboBoxColumn1.Width = 94;
+            gridViewComboBoxColumn1.Width = 106;
             gridViewTextBoxColumn3.EnableExpressionEditor = false;
             gridViewTextBoxColumn3.HeaderText = "Кол-во оставшихся дней отпуска";
             gridViewTextBoxColumn3.Name = "colVacationLeft";
             gridViewTextBoxColumn3.ReadOnly = true;
-            gridViewTextBoxColumn3.Width = 189;
+            gridViewTextBoxColumn3.Width = 212;
             gridViewCommandColumn1.DefaultText = "Добавить...";
             gridViewCommandColumn1.EnableExpressionEditor = false;
             gridViewCommandColumn1.HeaderText = "Отпуск";
             gridViewCommandColumn1.Name = "colButton";
             gridViewCommandColumn1.UseDefaultText = true;
-            gridViewCommandColumn1.Width = 72;
+            gridViewCommandColumn1.Width = 80;
             this.gridViewEmployees.MasterTemplate.Columns.AddRange(new Telerik.WinControls.UI.GridViewDataColumn[] {
             gridViewTextBoxColumn1,
             gridViewTextBoxColumn2,

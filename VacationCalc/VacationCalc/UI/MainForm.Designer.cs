@@ -39,10 +39,10 @@
             this.menuMain = new Telerik.WinControls.UI.RadMenu();
             this.menuItemTop = new Telerik.WinControls.UI.RadMenuItem();
             this.statusStrip = new Telerik.WinControls.UI.RadStatusStrip();
-            this.panelTools = new Telerik.WinControls.UI.RadPanel();
-            this.bSave = new Telerik.WinControls.UI.RadButton();
             this.statusLabel = new Telerik.WinControls.UI.RadLabelElement();
             this.statusLabel2 = new Telerik.WinControls.UI.RadLabelElement();
+            this.panelTools = new Telerik.WinControls.UI.RadPanel();
+            this.bSave = new Telerik.WinControls.UI.RadButton();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewEmployees)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewEmployees.MasterTemplate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.menuMain)).BeginInit();
@@ -118,6 +118,7 @@
             this.gridViewEmployees.UserDeletingRow += new Telerik.WinControls.UI.GridViewRowCancelEventHandler(this.gridViewEmployees_UserDeletingRow);
             this.gridViewEmployees.CellValueChanged += new Telerik.WinControls.UI.GridViewCellEventHandler(this.gridViewEmployees_CellValueChanged);
             this.gridViewEmployees.CommandCellClick += new Telerik.WinControls.UI.CommandCellClickEventHandler(this.MasterTemplate_CommandCellClick);
+            this.gridViewEmployees.DoubleClick += new System.EventHandler(this.gridViewEmployees_DoubleClick);
             // 
             // menuMain
             // 
@@ -148,24 +149,6 @@
             this.statusStrip.TabIndex = 2;
             this.statusStrip.Text = "radStatusStrip1";
             // 
-            // panelTools
-            // 
-            this.panelTools.Controls.Add(this.bSave);
-            this.panelTools.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelTools.Location = new System.Drawing.Point(0, 490);
-            this.panelTools.Name = "panelTools";
-            this.panelTools.Size = new System.Drawing.Size(799, 52);
-            this.panelTools.TabIndex = 3;
-            // 
-            // bSave
-            // 
-            this.bSave.Location = new System.Drawing.Point(335, 6);
-            this.bSave.Name = "bSave";
-            this.bSave.Size = new System.Drawing.Size(128, 40);
-            this.bSave.TabIndex = 0;
-            this.bSave.Text = "Сохранить";
-            this.bSave.Click += new System.EventHandler(this.bSave_Click);
-            // 
             // statusLabel
             // 
             this.statusLabel.AccessibleDescription = "statusLabel";
@@ -185,6 +168,24 @@
             this.statusLabel2.Text = "NumberOfOnVacation";
             this.statusLabel2.TextWrap = true;
             this.statusLabel2.Visibility = Telerik.WinControls.ElementVisibility.Visible;
+            // 
+            // panelTools
+            // 
+            this.panelTools.Controls.Add(this.bSave);
+            this.panelTools.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panelTools.Location = new System.Drawing.Point(0, 490);
+            this.panelTools.Name = "panelTools";
+            this.panelTools.Size = new System.Drawing.Size(799, 52);
+            this.panelTools.TabIndex = 3;
+            // 
+            // bSave
+            // 
+            this.bSave.Location = new System.Drawing.Point(335, 6);
+            this.bSave.Name = "bSave";
+            this.bSave.Size = new System.Drawing.Size(128, 40);
+            this.bSave.TabIndex = 0;
+            this.bSave.Text = "Сохранить";
+            this.bSave.Click += new System.EventHandler(this.bSave_Click);
             // 
             // MainForm
             // 

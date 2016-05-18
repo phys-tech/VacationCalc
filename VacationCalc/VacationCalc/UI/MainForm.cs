@@ -106,7 +106,7 @@ namespace VacationCalc
         {
             int row = (sender as GridCommandCellElement).RowIndex;
             int id = int.Parse(gridViewEmployees.Rows[row].Cells["colID"].Value.ToString());
-            AddVacationForm addVacation = new AddVacationForm(employeeManager, id);
+            AddVacationForm addVacation = new AddVacationForm(employeeManager.GetEmployee(id));
             DialogResult dr = addVacation.ShowDialog();
             if (dr == System.Windows.Forms.DialogResult.OK)
             {

@@ -12,13 +12,11 @@ namespace VacationCalc
 {
     public partial class AddVacationForm : Telerik.WinControls.UI.RadForm
     {
-        private int EmployeeID;
-        private EmployeeManager EmpManager;
+        private Employee employee;
 
-        public AddVacationForm(EmployeeManager manager, int employeeID)
+        public AddVacationForm(Employee _employee)
         {
-            EmpManager = manager;
-            EmployeeID = employeeID;
+            employee = _employee;
             InitializeComponent();
         }
 
@@ -57,7 +55,7 @@ namespace VacationCalc
             else
                 vacation = new Vacation(int.Parse(tbDuration.Text));
 
-            EmpManager.AddVacation(EmployeeID, vacation);
+            employee.AddVacation(vacation);
             this.Close();
         }
 

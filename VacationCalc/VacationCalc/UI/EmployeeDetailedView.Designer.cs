@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn7 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewDateTimeColumn gridViewDateTimeColumn7 = new Telerik.WinControls.UI.GridViewDateTimeColumn();
-            Telerik.WinControls.UI.GridViewDateTimeColumn gridViewDateTimeColumn8 = new Telerik.WinControls.UI.GridViewDateTimeColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn8 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn1 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewDateTimeColumn gridViewDateTimeColumn1 = new Telerik.WinControls.UI.GridViewDateTimeColumn();
+            Telerik.WinControls.UI.GridViewDateTimeColumn gridViewDateTimeColumn2 = new Telerik.WinControls.UI.GridViewDateTimeColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn2 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EmployeeDetailedView));
             this.gridViewVacations = new Telerik.WinControls.UI.RadGridView();
             this.panelTop = new Telerik.WinControls.UI.RadPanel();
@@ -85,31 +85,36 @@
             // 
             this.gridViewVacations.MasterTemplate.AllowDragToGroup = false;
             this.gridViewVacations.MasterTemplate.AutoSizeColumnsMode = Telerik.WinControls.UI.GridViewAutoSizeColumnsMode.Fill;
-            gridViewTextBoxColumn7.EnableExpressionEditor = false;
-            gridViewTextBoxColumn7.HeaderText = "Номер";
-            gridViewTextBoxColumn7.Name = "colNumber";
-            gridViewTextBoxColumn7.Width = 81;
-            gridViewDateTimeColumn7.EnableExpressionEditor = false;
-            gridViewDateTimeColumn7.Format = System.Windows.Forms.DateTimePickerFormat.Long;
-            gridViewDateTimeColumn7.FormatString = "{0:D}";
-            gridViewDateTimeColumn7.HeaderText = "Начало отпуска";
-            gridViewDateTimeColumn7.Name = "colStartDate";
-            gridViewDateTimeColumn7.Width = 136;
-            gridViewDateTimeColumn8.EnableExpressionEditor = false;
-            gridViewDateTimeColumn8.Format = System.Windows.Forms.DateTimePickerFormat.Long;
-            gridViewDateTimeColumn8.FormatString = "{0:D}";
-            gridViewDateTimeColumn8.HeaderText = "Конец отпуска";
-            gridViewDateTimeColumn8.Name = "colEndDate";
-            gridViewDateTimeColumn8.Width = 144;
-            gridViewTextBoxColumn8.EnableExpressionEditor = false;
-            gridViewTextBoxColumn8.HeaderText = "Продолжительность";
-            gridViewTextBoxColumn8.Name = "colDuration";
-            gridViewTextBoxColumn8.Width = 171;
+            gridViewTextBoxColumn1.AllowResize = false;
+            gridViewTextBoxColumn1.EnableExpressionEditor = false;
+            gridViewTextBoxColumn1.HeaderText = "Номер";
+            gridViewTextBoxColumn1.IsPinned = true;
+            gridViewTextBoxColumn1.Name = "colNumber";
+            gridViewTextBoxColumn1.PinPosition = Telerik.WinControls.UI.PinnedColumnPosition.Left;
+            gridViewTextBoxColumn1.ReadOnly = true;
+            gridViewTextBoxColumn1.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            gridViewTextBoxColumn1.Width = 92;
+            gridViewDateTimeColumn1.EnableExpressionEditor = false;
+            gridViewDateTimeColumn1.Format = System.Windows.Forms.DateTimePickerFormat.Long;
+            gridViewDateTimeColumn1.FormatString = "{0:D}";
+            gridViewDateTimeColumn1.HeaderText = "Начало отпуска";
+            gridViewDateTimeColumn1.Name = "colStartDate";
+            gridViewDateTimeColumn1.Width = 132;
+            gridViewDateTimeColumn2.EnableExpressionEditor = false;
+            gridViewDateTimeColumn2.Format = System.Windows.Forms.DateTimePickerFormat.Long;
+            gridViewDateTimeColumn2.FormatString = "{0:D}";
+            gridViewDateTimeColumn2.HeaderText = "Конец отпуска";
+            gridViewDateTimeColumn2.Name = "colEndDate";
+            gridViewDateTimeColumn2.Width = 140;
+            gridViewTextBoxColumn2.EnableExpressionEditor = false;
+            gridViewTextBoxColumn2.HeaderText = "Продолжительность";
+            gridViewTextBoxColumn2.Name = "colDuration";
+            gridViewTextBoxColumn2.Width = 168;
             this.gridViewVacations.MasterTemplate.Columns.AddRange(new Telerik.WinControls.UI.GridViewDataColumn[] {
-            gridViewTextBoxColumn7,
-            gridViewDateTimeColumn7,
-            gridViewDateTimeColumn8,
-            gridViewTextBoxColumn8});
+            gridViewTextBoxColumn1,
+            gridViewDateTimeColumn1,
+            gridViewDateTimeColumn2,
+            gridViewTextBoxColumn2});
             this.gridViewVacations.Name = "gridViewVacations";
             this.gridViewVacations.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.gridViewVacations.Size = new System.Drawing.Size(577, 273);

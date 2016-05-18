@@ -55,8 +55,9 @@ namespace VacationCalc
             else
                 vacation = new Vacation(int.Parse(tbDuration.Text));
 
-            employee.AddVacation(vacation);
-            this.Close();
+            bool valid = employee.AddVacation(vacation);
+            if (!valid)
+                MessageBox.Show("Даты отпуска пересекаются с уже существующим отпуском", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         private void tbDuration_TextChanged(object sender, EventArgs e)

@@ -46,10 +46,22 @@ namespace VacationCalc.Model
             set { accountType = value; calculator.FillEmployeeData(); }
         }
 
-        public void AddVacation(Vacation vacation)
+        public bool AddVacation(Vacation newVacation)
         {
-            vacationList.Add(vacation);
+            if (newVacation.IsDateDefined)
+            {
+                // check that new vacation days are not interfering with previous vacations
+                foreach (Vacation existing in vacationList)
+                {
+                    if (newVacation.StartDate >= existing.StartDate && newVacation.StartDate <= existing.EndDate)
+                        return false;
+                    else if (newVacation.EndDate >= existing.StartDate && newVacation.EndDate <= existing.EndDate)
+                        return false;
+                }
+            }
+            vacationList.Add(newVacation);
             calculator.FillEmployeeData();
+            return true;
         }
 
         public void DeleteVacation(Vacation vacation)
@@ -76,9 +88,7 @@ namespace VacationCalc.Model
         {
             int days = 0;
             foreach (Vacation item in vacationList)
-            {
                 days += item.Duration.Days;
-            }
             return days;
         }
 

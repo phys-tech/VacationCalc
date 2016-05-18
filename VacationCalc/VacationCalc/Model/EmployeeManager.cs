@@ -69,9 +69,9 @@ namespace VacationCalc.Model
             Employees[id].AccountType = type;
         }
 
-        public void AddVacation(int id, Vacation vacation)
+        public bool AddVacation(int id, Vacation vacation)
         {
-            Employees[id].AddVacation(vacation);
+            return Employees[id].AddVacation(vacation);
         }
 
         public void SaveDataToXML()
@@ -83,7 +83,6 @@ namespace VacationCalc.Model
                                     new XElement("Name", employee.Name),
                                     new XElement("HireDate", employee.HireDate),
                                     new XElement("AccountType", employee.AccountType),
-                                    new XElement("VacationsDaysSpent", employee.VacationDaysSpent()),
                                     new XElement("Vacations"));
                 var list = employee.GetVacationsList();
                 foreach (Vacation item in list)

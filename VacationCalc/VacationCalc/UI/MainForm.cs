@@ -115,7 +115,7 @@ namespace VacationCalc
             }
         }
 
-        private void gridViewEmployees_DoubleClick(object sender, EventArgs e)
+        private void bDetailedView_Click(object sender, EventArgs e)
         {
             int row = gridViewEmployees.SelectedRows[0].Index;
             int id = int.Parse(gridViewEmployees.Rows[row].Cells["colID"].Value.ToString());

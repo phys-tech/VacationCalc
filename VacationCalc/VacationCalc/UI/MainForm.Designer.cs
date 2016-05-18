@@ -42,6 +42,7 @@
             this.statusLabel = new Telerik.WinControls.UI.RadLabelElement();
             this.statusLabel2 = new Telerik.WinControls.UI.RadLabelElement();
             this.panelTools = new Telerik.WinControls.UI.RadPanel();
+            this.bDetailedView = new Telerik.WinControls.UI.RadButton();
             this.bSave = new Telerik.WinControls.UI.RadButton();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewEmployees)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewEmployees.MasterTemplate)).BeginInit();
@@ -49,6 +50,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.statusStrip)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelTools)).BeginInit();
             this.panelTools.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bDetailedView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bSave)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             this.SuspendLayout();
@@ -118,7 +120,7 @@
             this.gridViewEmployees.UserDeletingRow += new Telerik.WinControls.UI.GridViewRowCancelEventHandler(this.gridViewEmployees_UserDeletingRow);
             this.gridViewEmployees.CellValueChanged += new Telerik.WinControls.UI.GridViewCellEventHandler(this.gridViewEmployees_CellValueChanged);
             this.gridViewEmployees.CommandCellClick += new Telerik.WinControls.UI.CommandCellClickEventHandler(this.MasterTemplate_CommandCellClick);
-            this.gridViewEmployees.DoubleClick += new System.EventHandler(this.gridViewEmployees_DoubleClick);
+            this.gridViewEmployees.DoubleClick += new System.EventHandler(this.bDetailedView_Click);
             // 
             // menuMain
             // 
@@ -171,6 +173,7 @@
             // 
             // panelTools
             // 
+            this.panelTools.Controls.Add(this.bDetailedView);
             this.panelTools.Controls.Add(this.bSave);
             this.panelTools.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panelTools.Location = new System.Drawing.Point(0, 490);
@@ -178,9 +181,20 @@
             this.panelTools.Size = new System.Drawing.Size(799, 52);
             this.panelTools.TabIndex = 3;
             // 
+            // bDetailedView
+            // 
+            this.bDetailedView.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.bDetailedView.Location = new System.Drawing.Point(268, 6);
+            this.bDetailedView.Name = "bDetailedView";
+            this.bDetailedView.Size = new System.Drawing.Size(128, 40);
+            this.bDetailedView.TabIndex = 4;
+            this.bDetailedView.Text = "Просмотр";
+            this.bDetailedView.Click += new System.EventHandler(this.bDetailedView_Click);
+            // 
             // bSave
             // 
-            this.bSave.Location = new System.Drawing.Point(335, 6);
+            this.bSave.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.bSave.Location = new System.Drawing.Point(402, 6);
             this.bSave.Name = "bSave";
             this.bSave.Size = new System.Drawing.Size(128, 40);
             this.bSave.TabIndex = 0;
@@ -210,6 +224,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.statusStrip)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelTools)).EndInit();
             this.panelTools.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.bDetailedView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bSave)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
             this.ResumeLayout(false);
@@ -227,6 +242,7 @@
         private Telerik.WinControls.UI.RadButton bSave;
         private Telerik.WinControls.UI.RadLabelElement statusLabel;
         private Telerik.WinControls.UI.RadLabelElement statusLabel2;
+        private Telerik.WinControls.UI.RadButton bDetailedView;
 
     }
 }

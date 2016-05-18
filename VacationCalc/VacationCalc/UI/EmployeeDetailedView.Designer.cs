@@ -36,8 +36,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EmployeeDetailedView));
             this.gridViewVacations = new Telerik.WinControls.UI.RadGridView();
             this.panelTop = new Telerik.WinControls.UI.RadPanel();
-            this.lAccountType = new Telerik.WinControls.UI.RadLabel();
-            this.lHireDate = new Telerik.WinControls.UI.RadLabel();
             this.lEmployeeName = new Telerik.WinControls.UI.RadLabel();
             this.panelBottom = new Telerik.WinControls.UI.RadPanel();
             this.bOK = new Telerik.WinControls.UI.RadButton();
@@ -60,8 +58,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridViewVacations.MasterTemplate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelTop)).BeginInit();
             this.panelTop.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.lAccountType)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lHireDate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lEmployeeName)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelBottom)).BeginInit();
             this.panelBottom.SuspendLayout();
@@ -120,37 +116,18 @@
             this.gridViewVacations.Size = new System.Drawing.Size(577, 273);
             this.gridViewVacations.TabIndex = 2;
             this.gridViewVacations.Text = "radGridView1";
+            this.gridViewVacations.UserDeletingRow += new Telerik.WinControls.UI.GridViewRowCancelEventHandler(this.gridViewVacations_UserDeletingRow);
             // 
             // panelTop
             // 
             this.panelTop.Controls.Add(this.lOnVacation);
             this.panelTop.Controls.Add(this.comBarInfo);
-            this.panelTop.Controls.Add(this.lAccountType);
-            this.panelTop.Controls.Add(this.lHireDate);
             this.panelTop.Controls.Add(this.lEmployeeName);
             this.panelTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelTop.Location = new System.Drawing.Point(0, 0);
             this.panelTop.Name = "panelTop";
             this.panelTop.Size = new System.Drawing.Size(577, 116);
             this.panelTop.TabIndex = 3;
-            // 
-            // lAccountType
-            // 
-            this.lAccountType.Location = new System.Drawing.Point(270, 3);
-            this.lAccountType.Name = "lAccountType";
-            this.lAccountType.Size = new System.Drawing.Size(28, 18);
-            this.lAccountType.TabIndex = 3;
-            this.lAccountType.Text = "Тип ";
-            this.lAccountType.Visible = false;
-            // 
-            // lHireDate
-            // 
-            this.lHireDate.Location = new System.Drawing.Point(304, 3);
-            this.lHireDate.Name = "lHireDate";
-            this.lHireDate.Size = new System.Drawing.Size(73, 18);
-            this.lHireDate.TabIndex = 2;
-            this.lHireDate.Text = "Дата приема";
-            this.lHireDate.Visible = false;
             // 
             // lEmployeeName
             // 
@@ -174,7 +151,7 @@
             // 
             this.bOK.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.bOK.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.bOK.Location = new System.Drawing.Point(245, 11);
+            this.bOK.Location = new System.Drawing.Point(233, 11);
             this.bOK.Name = "bOK";
             this.bOK.Size = new System.Drawing.Size(110, 36);
             this.bOK.TabIndex = 2;
@@ -191,12 +168,16 @@
             this.comBarRow2});
             this.comBarInfo.Size = new System.Drawing.Size(577, 60);
             this.comBarInfo.TabIndex = 4;
-            this.comBarInfo.Text = "radCommandBar1";
             // 
             // comBarRow1
             // 
             this.comBarRow1.BorderBottomWidth = 0F;
             this.comBarRow1.BorderBoxStyle = Telerik.WinControls.BorderBoxStyle.SingleBorder;
+            this.comBarRow1.BorderLeftWidth = 0F;
+            this.comBarRow1.BorderRightWidth = 0F;
+            this.comBarRow1.BorderTopWidth = 0F;
+            this.comBarRow1.BorderWidth = 0F;
+            this.comBarRow1.FitToSizeMode = Telerik.WinControls.RadFitToSizeMode.FitToParentPadding;
             this.comBarRow1.HorizontalLineWidth = 1;
             this.comBarRow1.MinSize = new System.Drawing.Size(25, 25);
             this.comBarRow1.Strips.AddRange(new Telerik.WinControls.UI.CommandBarStripElement[] {
@@ -205,6 +186,7 @@
             // comBarStrip1
             // 
             this.comBarStrip1.DisplayName = "commandBarStripElement1";
+            this.comBarStrip1.FitToSizeMode = Telerik.WinControls.RadFitToSizeMode.FitToParentBounds;
             // 
             // 
             // 
@@ -255,6 +237,12 @@
             // 
             // comBarRow2
             // 
+            this.comBarRow2.BorderBottomWidth = 0F;
+            this.comBarRow2.BorderLeftWidth = 0F;
+            this.comBarRow2.BorderRightWidth = 0F;
+            this.comBarRow2.BorderTopWidth = 0F;
+            this.comBarRow2.BorderWidth = 0F;
+            this.comBarRow2.FitToSizeMode = Telerik.WinControls.RadFitToSizeMode.FitToParentPadding;
             this.comBarRow2.MinSize = new System.Drawing.Size(25, 25);
             this.comBarRow2.Strips.AddRange(new Telerik.WinControls.UI.CommandBarStripElement[] {
             this.comBarStrip2});
@@ -262,6 +250,7 @@
             // comBarStrip2
             // 
             this.comBarStrip2.DisplayName = "commandBarStripElement2";
+            this.comBarStrip2.FitToSizeMode = Telerik.WinControls.RadFitToSizeMode.FitToParentBounds;
             this.comBarStrip2.Items.AddRange(new Telerik.WinControls.UI.RadCommandBarBaseItem[] {
             this.comBarLabelTotalVacation,
             this.comBarSeparator2,
@@ -335,7 +324,6 @@
             this.lOnVacation.Image = ((System.Drawing.Image)(resources.GetObject("lOnVacation.Image")));
             this.lOnVacation.ImageIndex = 0;
             this.lOnVacation.ImageList = this.imageList;
-            this.lOnVacation.ImageScalingSize = new System.Drawing.Size(32, 32);
             this.lOnVacation.Location = new System.Drawing.Point(451, 3);
             this.lOnVacation.Name = "lOnVacation";
             this.lOnVacation.Size = new System.Drawing.Size(123, 66);
@@ -366,8 +354,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelTop)).EndInit();
             this.panelTop.ResumeLayout(false);
             this.panelTop.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.lAccountType)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lHireDate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lEmployeeName)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelBottom)).EndInit();
             this.panelBottom.ResumeLayout(false);
@@ -386,8 +372,6 @@
         private Telerik.WinControls.UI.RadLabel lEmployeeName;
         private Telerik.WinControls.UI.RadPanel panelBottom;
         private Telerik.WinControls.UI.RadButton bOK;
-        private Telerik.WinControls.UI.RadLabel lAccountType;
-        private Telerik.WinControls.UI.RadLabel lHireDate;
         private Telerik.WinControls.UI.RadCommandBar comBarInfo;
         private Telerik.WinControls.UI.CommandBarRowElement comBarRow1;
         private Telerik.WinControls.UI.CommandBarStripElement comBarStrip1;

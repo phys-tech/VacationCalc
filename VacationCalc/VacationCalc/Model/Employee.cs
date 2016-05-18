@@ -52,6 +52,21 @@ namespace VacationCalc.Model
             calculator.FillEmployeeData();
         }
 
+        public void DeleteVacation(Vacation vacation)
+        {
+            if (vacation.IsDateDefined)
+            {
+                var deleters = vacationList.Where(item => item.StartDate == vacation.StartDate && item.EndDate == vacation.EndDate);
+                vacationList.Remove(deleters.First());
+            }
+            else
+            {
+                var deleters = vacationList.Where(item => item.Duration == vacation.Duration);
+                vacationList.Remove(deleters.First());
+            }
+            calculator.FillEmployeeData();
+        }
+
         public List<Vacation> GetVacationsList()
         {
             return vacationList;

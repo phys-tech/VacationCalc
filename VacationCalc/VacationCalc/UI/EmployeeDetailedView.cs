@@ -29,10 +29,7 @@ namespace VacationCalc
             lEmployeeName.Text = employee.Name;
             comBarLabelHireDate.Text = "Принят: " + employee.HireDate.ToLongDateString();
             comBarLabelType.Text = employee.AccountType.GetRussianName();
-            comBarLabelTotalVacation.Text = "Дней отпуска всего: " + employee.TotalVacationDays.ToString();
-            comBarLabelVacationSpent.Text = "Отгуляно: " + employee.VacationDaysSpent();
-            comBarLabelVacationLeft.Text = "Осталось: " + employee.VacationDaysLeft;
-            lOnVacation.Visible = employee.IsOnVacation();
+            UpdateVacationInfo();
 
             List<Vacation> list = employee.GetVacationsList();
             int number = 1;
@@ -46,10 +43,33 @@ namespace VacationCalc
                 gridViewVacations.Rows.Add(row);
                 number++;
             }
-
-            // old stuff, to delete
-            lHireDate.Text = "Принят: " + employee.HireDate.ToLongDateString();
-            lAccountType.Text = employee.AccountType.GetRussianName();
         }
+
+        private void UpdateVacationInfo()
+        {
+            comBarLabelTotalVacation.Text = "Дней отпуска всего: " + employee.TotalVacationDays.ToString();
+            comBarLabelVacationSpent.Text = "Отгуляно: " + employee.VacationDaysSpent();
+            comBarLabelVacationLeft.Text = "Осталось: " + employee.VacationDaysLeft;
+            lOnVacation.Visible = employee.IsOnVacation();
+        }
+
+        private void gridViewVacations_UserDeletingRow(object sender, Telerik.WinControls.UI.GridViewRowCancelEventArgs e)
+        {
+            Vacation vacation;
+            if (e.Rows[0].Cells["colStartDate"].Value != null)
+            {
+                DateTime start = (DateTime)e.Rows[0].Cells["colStartDate"].Value;
+                DateTime end = (DateTime)e.Rows[0].Cells["colEndDate"].Value;
+                vacation = new Vacation(start, end);
+            }
+            else
+            {
+                int duration = int.Parse(e.Rows[0].Cells["colDuration"].Value.ToString());
+                vacation = new Vacation(duration);
+            }
+            employee.DeleteVacation(vacation);
+            UpdateVacationInfo();
+        }
+
     }
 }

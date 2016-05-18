@@ -121,7 +121,12 @@ namespace VacationCalc
             int id = int.Parse(gridViewEmployees.Rows[row].Cells["colID"].Value.ToString());
             Employee emp = employeeManager.GetEmployee(id);
             EmployeeDetailedView view = new EmployeeDetailedView(emp);
-            view.Show();
+            DialogResult dr = view.ShowDialog();
+            if (dr == System.Windows.Forms.DialogResult.OK)
+            {
+                UpdateVacationDays(id, row);
+                UpdateStatusStrip();
+            }
         }
 
     }

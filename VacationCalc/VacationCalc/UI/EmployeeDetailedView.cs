@@ -29,6 +29,15 @@ namespace VacationCalc
             lEmployeeName.Text = employee.Name;
             lHireDate.Text = "Принят: " + employee.HireDate.ToLongDateString();
             lAccountType.Text = employee.AccountType.GetRussianName();
+
+            comBarLabelHireDate.Text = "Принят: " + employee.HireDate.ToLongDateString();
+            comBarLabelType.Text = employee.AccountType.GetRussianName();
+            comBarLabelTotalVacation.Text = "Дней отпуска всего: " + employee.TotalVacationDays.ToString();
+            comBarLabelVacationSpent.Text = "Отгуляно: " + employee.VacationDaysSpent();
+            comBarLabelVacationLeft.Text = "Осталось: " + employee.VacationDaysLeft;
+
+            lOnVacation.Visible = employee.IsOnVacation();
+
             List<Vacation> list = employee.GetVacationsList();
             int number = 1;
             foreach (Vacation vacation in list)

@@ -36,9 +36,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EmployeeDetailedView));
             this.gridViewVacations = new Telerik.WinControls.UI.RadGridView();
             this.panelTop = new Telerik.WinControls.UI.RadPanel();
-            this.lEmployeeName = new Telerik.WinControls.UI.RadLabel();
-            this.panelBottom = new Telerik.WinControls.UI.RadPanel();
-            this.bOK = new Telerik.WinControls.UI.RadButton();
+            this.lOnVacation = new Telerik.WinControls.UI.RadLabel();
+            this.imageList = new System.Windows.Forms.ImageList(this.components);
             this.comBarInfo = new Telerik.WinControls.UI.RadCommandBar();
             this.comBarRow1 = new Telerik.WinControls.UI.CommandBarRowElement();
             this.comBarStrip1 = new Telerik.WinControls.UI.CommandBarStripElement();
@@ -48,22 +47,23 @@
             this.comBarRow2 = new Telerik.WinControls.UI.CommandBarRowElement();
             this.comBarStrip2 = new Telerik.WinControls.UI.CommandBarStripElement();
             this.comBarLabelTotalVacation = new Telerik.WinControls.UI.CommandBarLabel();
-            this.comBarLabelVacationSpent = new Telerik.WinControls.UI.CommandBarLabel();
-            this.comBarLabelVacationLeft = new Telerik.WinControls.UI.CommandBarLabel();
             this.comBarSeparator2 = new Telerik.WinControls.UI.CommandBarSeparator();
+            this.comBarLabelVacationSpent = new Telerik.WinControls.UI.CommandBarLabel();
             this.comBarSeparator3 = new Telerik.WinControls.UI.CommandBarSeparator();
-            this.imageList = new System.Windows.Forms.ImageList(this.components);
-            this.lOnVacation = new Telerik.WinControls.UI.RadLabel();
+            this.comBarLabelVacationLeft = new Telerik.WinControls.UI.CommandBarLabel();
+            this.lEmployeeName = new Telerik.WinControls.UI.RadLabel();
+            this.panelBottom = new Telerik.WinControls.UI.RadPanel();
+            this.bOK = new Telerik.WinControls.UI.RadButton();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewVacations)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewVacations.MasterTemplate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelTop)).BeginInit();
             this.panelTop.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.lOnVacation)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.comBarInfo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lEmployeeName)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelBottom)).BeginInit();
             this.panelBottom.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bOK)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.comBarInfo)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lOnVacation)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             this.SuspendLayout();
             // 
@@ -79,6 +79,7 @@
             // 
             // gridViewVacations
             // 
+            this.gridViewVacations.MasterTemplate.AddNewRowPosition = Telerik.WinControls.UI.SystemRowPosition.Bottom;
             this.gridViewVacations.MasterTemplate.AllowDragToGroup = false;
             this.gridViewVacations.MasterTemplate.AutoSizeColumnsMode = Telerik.WinControls.UI.GridViewAutoSizeColumnsMode.Fill;
             gridViewTextBoxColumn1.AllowResize = false;
@@ -95,17 +96,17 @@
             gridViewDateTimeColumn1.FormatString = "{0:D}";
             gridViewDateTimeColumn1.HeaderText = "Начало отпуска";
             gridViewDateTimeColumn1.Name = "colStartDate";
-            gridViewDateTimeColumn1.Width = 132;
+            gridViewDateTimeColumn1.Width = 140;
             gridViewDateTimeColumn2.EnableExpressionEditor = false;
             gridViewDateTimeColumn2.Format = System.Windows.Forms.DateTimePickerFormat.Long;
             gridViewDateTimeColumn2.FormatString = "{0:D}";
             gridViewDateTimeColumn2.HeaderText = "Конец отпуска";
             gridViewDateTimeColumn2.Name = "colEndDate";
-            gridViewDateTimeColumn2.Width = 140;
+            gridViewDateTimeColumn2.Width = 149;
             gridViewTextBoxColumn2.EnableExpressionEditor = false;
             gridViewTextBoxColumn2.HeaderText = "Продолжительность";
             gridViewTextBoxColumn2.Name = "colDuration";
-            gridViewTextBoxColumn2.Width = 168;
+            gridViewTextBoxColumn2.Width = 178;
             this.gridViewVacations.MasterTemplate.Columns.AddRange(new Telerik.WinControls.UI.GridViewDataColumn[] {
             gridViewTextBoxColumn1,
             gridViewDateTimeColumn1,
@@ -116,7 +117,9 @@
             this.gridViewVacations.Size = new System.Drawing.Size(577, 273);
             this.gridViewVacations.TabIndex = 2;
             this.gridViewVacations.Text = "radGridView1";
+            this.gridViewVacations.UserAddingRow += new Telerik.WinControls.UI.GridViewRowCancelEventHandler(this.MasterTemplate_UserAddingRow);
             this.gridViewVacations.UserDeletingRow += new Telerik.WinControls.UI.GridViewRowCancelEventHandler(this.gridViewVacations_UserDeletingRow);
+            this.gridViewVacations.CellValueChanged += new Telerik.WinControls.UI.GridViewCellEventHandler(this.gridViewVacations_CellValueChanged);
             // 
             // panelTop
             // 
@@ -129,34 +132,26 @@
             this.panelTop.Size = new System.Drawing.Size(577, 116);
             this.panelTop.TabIndex = 3;
             // 
-            // lEmployeeName
+            // lOnVacation
             // 
-            this.lEmployeeName.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lEmployeeName.Location = new System.Drawing.Point(76, 12);
-            this.lEmployeeName.Name = "lEmployeeName";
-            this.lEmployeeName.Size = new System.Drawing.Size(124, 25);
-            this.lEmployeeName.TabIndex = 1;
-            this.lEmployeeName.Text = "Имя работника";
+            this.lOnVacation.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lOnVacation.Image = ((System.Drawing.Image)(resources.GetObject("lOnVacation.Image")));
+            this.lOnVacation.ImageIndex = 0;
+            this.lOnVacation.ImageList = this.imageList;
+            this.lOnVacation.Location = new System.Drawing.Point(451, 3);
+            this.lOnVacation.Name = "lOnVacation";
+            this.lOnVacation.Size = new System.Drawing.Size(123, 66);
+            this.lOnVacation.SmallImageList = this.imageList;
+            this.lOnVacation.TabIndex = 5;
+            this.lOnVacation.Text = "В отпуске!";
+            this.lOnVacation.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lOnVacation.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             // 
-            // panelBottom
+            // imageList
             // 
-            this.panelBottom.Controls.Add(this.bOK);
-            this.panelBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelBottom.Location = new System.Drawing.Point(0, 389);
-            this.panelBottom.Name = "panelBottom";
-            this.panelBottom.Size = new System.Drawing.Size(577, 58);
-            this.panelBottom.TabIndex = 4;
-            // 
-            // bOK
-            // 
-            this.bOK.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.bOK.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.bOK.Location = new System.Drawing.Point(233, 11);
-            this.bOK.Name = "bOK";
-            this.bOK.Size = new System.Drawing.Size(110, 36);
-            this.bOK.TabIndex = 2;
-            this.bOK.Text = "ОК";
-            this.bOK.Click += new System.EventHandler(this.bOK_Click);
+            this.imageList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList.ImageStream")));
+            this.imageList.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageList.Images.SetKeyName(0, "OnVacation.png");
             // 
             // comBarInfo
             // 
@@ -219,7 +214,6 @@
             this.comBarSeparator1.AccessibleName = "commandBarSeparator1";
             this.comBarSeparator1.DisplayName = "commandBarSeparator1";
             this.comBarSeparator1.Name = "comBarSeparator1";
-            this.comBarSeparator1.Text = "";
             this.comBarSeparator1.Visibility = Telerik.WinControls.ElementVisibility.Visible;
             this.comBarSeparator1.VisibleInOverflowMenu = false;
             // 
@@ -273,6 +267,15 @@
             this.comBarLabelTotalVacation.Text = "Всего отпуска:";
             this.comBarLabelTotalVacation.Visibility = Telerik.WinControls.ElementVisibility.Visible;
             // 
+            // comBarSeparator2
+            // 
+            this.comBarSeparator2.AccessibleDescription = "commandBarSeparator2";
+            this.comBarSeparator2.AccessibleName = "commandBarSeparator2";
+            this.comBarSeparator2.DisplayName = "commandBarSeparator2";
+            this.comBarSeparator2.Name = "comBarSeparator2";
+            this.comBarSeparator2.Visibility = Telerik.WinControls.ElementVisibility.Visible;
+            this.comBarSeparator2.VisibleInOverflowMenu = false;
+            // 
             // comBarLabelVacationSpent
             // 
             this.comBarLabelVacationSpent.AccessibleDescription = "Отгуляно:";
@@ -281,6 +284,15 @@
             this.comBarLabelVacationSpent.Name = "comBarLabelVacationSpent";
             this.comBarLabelVacationSpent.Text = "Отгуляно:";
             this.comBarLabelVacationSpent.Visibility = Telerik.WinControls.ElementVisibility.Visible;
+            // 
+            // comBarSeparator3
+            // 
+            this.comBarSeparator3.AccessibleDescription = "commandBarSeparator3";
+            this.comBarSeparator3.AccessibleName = "commandBarSeparator3";
+            this.comBarSeparator3.DisplayName = "commandBarSeparator3";
+            this.comBarSeparator3.Name = "comBarSeparator3";
+            this.comBarSeparator3.Visibility = Telerik.WinControls.ElementVisibility.Visible;
+            this.comBarSeparator3.VisibleInOverflowMenu = false;
             // 
             // comBarLabelVacationLeft
             // 
@@ -292,46 +304,34 @@
             this.comBarLabelVacationLeft.Visibility = Telerik.WinControls.ElementVisibility.Visible;
             this.comBarLabelVacationLeft.VisibleInOverflowMenu = false;
             // 
-            // comBarSeparator2
+            // lEmployeeName
             // 
-            this.comBarSeparator2.AccessibleDescription = "commandBarSeparator2";
-            this.comBarSeparator2.AccessibleName = "commandBarSeparator2";
-            this.comBarSeparator2.DisplayName = "commandBarSeparator2";
-            this.comBarSeparator2.Name = "comBarSeparator2";
-            this.comBarSeparator2.Text = "";
-            this.comBarSeparator2.Visibility = Telerik.WinControls.ElementVisibility.Visible;
-            this.comBarSeparator2.VisibleInOverflowMenu = false;
+            this.lEmployeeName.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lEmployeeName.Location = new System.Drawing.Point(76, 12);
+            this.lEmployeeName.Name = "lEmployeeName";
+            this.lEmployeeName.Size = new System.Drawing.Size(124, 25);
+            this.lEmployeeName.TabIndex = 1;
+            this.lEmployeeName.Text = "Имя работника";
             // 
-            // comBarSeparator3
+            // panelBottom
             // 
-            this.comBarSeparator3.AccessibleDescription = "commandBarSeparator3";
-            this.comBarSeparator3.AccessibleName = "commandBarSeparator3";
-            this.comBarSeparator3.DisplayName = "commandBarSeparator3";
-            this.comBarSeparator3.Name = "comBarSeparator3";
-            this.comBarSeparator3.Text = "";
-            this.comBarSeparator3.Visibility = Telerik.WinControls.ElementVisibility.Visible;
-            this.comBarSeparator3.VisibleInOverflowMenu = false;
+            this.panelBottom.Controls.Add(this.bOK);
+            this.panelBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panelBottom.Location = new System.Drawing.Point(0, 389);
+            this.panelBottom.Name = "panelBottom";
+            this.panelBottom.Size = new System.Drawing.Size(577, 58);
+            this.panelBottom.TabIndex = 4;
             // 
-            // imageList
+            // bOK
             // 
-            this.imageList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList.ImageStream")));
-            this.imageList.TransparentColor = System.Drawing.Color.Transparent;
-            this.imageList.Images.SetKeyName(0, "OnVacation.png");
-            // 
-            // lOnVacation
-            // 
-            this.lOnVacation.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.lOnVacation.Image = ((System.Drawing.Image)(resources.GetObject("lOnVacation.Image")));
-            this.lOnVacation.ImageIndex = 0;
-            this.lOnVacation.ImageList = this.imageList;
-            this.lOnVacation.Location = new System.Drawing.Point(451, 3);
-            this.lOnVacation.Name = "lOnVacation";
-            this.lOnVacation.Size = new System.Drawing.Size(123, 66);
-            this.lOnVacation.SmallImageList = this.imageList;
-            this.lOnVacation.TabIndex = 5;
-            this.lOnVacation.Text = "В отпуске!";
-            this.lOnVacation.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            this.lOnVacation.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.bOK.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.bOK.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.bOK.Location = new System.Drawing.Point(233, 11);
+            this.bOK.Name = "bOK";
+            this.bOK.Size = new System.Drawing.Size(110, 36);
+            this.bOK.TabIndex = 2;
+            this.bOK.Text = "ОК";
+            this.bOK.Click += new System.EventHandler(this.bOK_Click);
             // 
             // EmployeeDetailedView
             // 
@@ -354,12 +354,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelTop)).EndInit();
             this.panelTop.ResumeLayout(false);
             this.panelTop.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.lOnVacation)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.comBarInfo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lEmployeeName)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelBottom)).EndInit();
             this.panelBottom.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.bOK)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.comBarInfo)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lOnVacation)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
             this.ResumeLayout(false);
 

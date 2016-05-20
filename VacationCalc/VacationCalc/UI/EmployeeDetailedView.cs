@@ -71,5 +71,34 @@ namespace VacationCalc
             UpdateVacationInfo();
         }
 
+        private void gridViewVacations_ValueChanged(object sender, EventArgs e)
+        {
+        }
+
+        private void gridViewVacations_CellValueChanged(object sender, Telerik.WinControls.UI.GridViewCellEventArgs e)
+        {
+            if ( (e.Column.Name == "colStartDate" && e.Row.Cells["colEndDate"].Value != null) ||
+                  (e.Column.Name == "colEndDate" && e.Row.Cells["colStartDate"].Value != null))
+            {
+                DateTime start = (DateTime)e.Row.Cells["colStartDate"].Value;
+                DateTime end = (DateTime)e.Row.Cells["colEndDate"].Value;
+                TimeSpan duration = end - start;
+                duration = duration.Add(new TimeSpan(1, 0, 0, 0));
+                e.Row.Cells["colDuration"].Value = duration.Days;
+            }
+        }
+
+        private void MasterTemplate_UserAddingRow(object sender, Telerik.WinControls.UI.GridViewRowCancelEventArgs e)
+        {
+            DateTime start = (DateTime)e.Rows[0].Cells["colStartDate"].Value;
+            DateTime end = (DateTime)e.Rows[0].Cells["colEndDate"].Value;
+            Vacation newVacation = new Vacation(start, end);
+            if (!employee.AddVacation(newVacation))
+            {
+                MessageBox.Show("Даты отпуска пересекаются с уже существующим отпуском", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                e.Cancel = true;
+            }
+        }
+
     }
 }

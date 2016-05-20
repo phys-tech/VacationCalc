@@ -79,7 +79,6 @@
             // 
             // bOK
             // 
-            this.bOK.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.bOK.Location = new System.Drawing.Point(173, 389);
             this.bOK.Name = "bOK";
             this.bOK.Size = new System.Drawing.Size(125, 37);

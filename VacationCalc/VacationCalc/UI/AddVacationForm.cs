@@ -14,9 +14,11 @@ namespace VacationCalc
     {
         private Employee employee;
 
-        public AddVacationForm(Employee _employee)
+        public AddVacationForm(Employee _employee, Point position)
         {
             employee = _employee;
+            this.StartPosition = FormStartPosition.Manual;
+            this.Location = position;
             InitializeComponent();
         }
 
@@ -57,7 +59,12 @@ namespace VacationCalc
 
             bool valid = employee.AddVacation(vacation);
             if (!valid)
+            {
                 MessageBox.Show("Даты отпуска пересекаются с уже существующим отпуском", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            this.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.Close();
         }
 
         private void tbDuration_TextChanged(object sender, EventArgs e)

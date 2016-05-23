@@ -90,13 +90,35 @@ namespace VacationCalc
 
         private void MasterTemplate_UserAddingRow(object sender, Telerik.WinControls.UI.GridViewRowCancelEventArgs e)
         {
-            DateTime start = (DateTime)e.Rows[0].Cells["colStartDate"].Value;
-            DateTime end = (DateTime)e.Rows[0].Cells["colEndDate"].Value;
-            Vacation newVacation = new Vacation(start, end);
-            if (!employee.AddVacation(newVacation))
+            if (e.Rows[0].Cells["colEndDate"].Value != null && e.Rows[0].Cells["colStartDate"].Value != null)
             {
-                MessageBox.Show("Даты отпуска пересекаются с уже существующим отпуском", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                DateTime start = (DateTime)e.Rows[0].Cells["colStartDate"].Value;
+                DateTime end = (DateTime)e.Rows[0].Cells["colEndDate"].Value;
+                Vacation newVacation = new Vacation(start, end);
+                if (!employee.AddVacation(newVacation))
+                {
+                    MessageBox.Show("Даты отпуска пересекаются с уже существующим отпуском", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    e.Cancel = true;
+                }
+            }
+            else
+            {
+                MessageBox.Show("Заполните обе даты отпуска!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 e.Cancel = true;
+            }
+        }
+
+        private void gridViewVacations_CellEditorInitialized(object sender, Telerik.WinControls.UI.GridViewCellEventArgs e)
+        {
+            if (e.Column.Name == "colStartDate" && e.Row.Cells["colEndDate"].Value != null)
+            {
+                if (e.Value == null)
+                    e.ActiveEditor.Value = ((DateTime)e.Row.Cells["colEndDate"].Value).AddDays(-5.0);
+            }
+            if (e.Column.Name == "colEndDate" && e.Row.Cells["colStartDate"].Value != null)
+            {
+                if (e.Value == null)
+                    e.ActiveEditor.Value = ((DateTime)e.Row.Cells["colStartDate"].Value).AddDays(5.0);
             }
         }
 

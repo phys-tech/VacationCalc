@@ -7,8 +7,10 @@ using System.Text;
 using System.Windows.Forms;
 using Telerik.WinControls;
 using Telerik.WinControls.UI;
+using Telerik.WinControls.UI.Localization;
 
 using VacationCalc.Model;
+using VacationCalc.UI;
 
 namespace VacationCalc
 {
@@ -25,6 +27,7 @@ namespace VacationCalc
 
         private void MainForm_Load(object sender, EventArgs e)
         {
+            RadGridLocalizationProvider.CurrentProvider = new RussianGridViewLocalization();
             employeeManager.LoadDataFromXml();
             GridViewComboBoxColumn column = gridViewEmployees.Columns["colAccType"] as GridViewComboBoxColumn;
 

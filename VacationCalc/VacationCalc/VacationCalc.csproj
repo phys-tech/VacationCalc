@@ -82,6 +82,7 @@
     <Compile Include="UI\EmployeeDetailedView.Designer.cs">
       <DependentUpon>EmployeeDetailedView.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\Localization.cs" />
     <Compile Include="UI\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>

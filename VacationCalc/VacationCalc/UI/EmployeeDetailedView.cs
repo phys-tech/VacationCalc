@@ -53,6 +53,28 @@ namespace VacationCalc
             lOnVacation.Visible = employee.IsOnVacation();
         }
 
+        private void MasterTemplate_UserAddingRow(object sender, Telerik.WinControls.UI.GridViewRowCancelEventArgs e)
+        {
+            if (e.Rows[0].Cells["colEndDate"].Value != null && e.Rows[0].Cells["colStartDate"].Value != null)
+            {
+                DateTime start = (DateTime)e.Rows[0].Cells["colStartDate"].Value;
+                DateTime end = (DateTime)e.Rows[0].Cells["colEndDate"].Value;
+                Vacation newVacation = new Vacation(start, end);
+                if (!employee.AddVacation(newVacation))
+                {
+                    MessageBox.Show("Даты отпуска пересекаются с уже существующим отпуском", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    e.Cancel = true;
+                }
+                else
+                    UpdateVacationInfo();
+            }
+            else
+            {
+                MessageBox.Show("Заполните обе даты отпуска!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                e.Cancel = true;
+            }
+        }
+
         private void gridViewVacations_UserDeletingRow(object sender, Telerik.WinControls.UI.GridViewRowCancelEventArgs e)
         {
             Vacation vacation;
@@ -71,10 +93,6 @@ namespace VacationCalc
             UpdateVacationInfo();
         }
 
-        private void gridViewVacations_ValueChanged(object sender, EventArgs e)
-        {
-        }
-
         private void gridViewVacations_CellValueChanged(object sender, Telerik.WinControls.UI.GridViewCellEventArgs e)
         {
             if ( (e.Column.Name == "colStartDate" && e.Row.Cells["colEndDate"].Value != null) ||
@@ -85,26 +103,13 @@ namespace VacationCalc
                 TimeSpan duration = end - start;
                 duration = duration.Add(new TimeSpan(1, 0, 0, 0));
                 e.Row.Cells["colDuration"].Value = duration.Days;
-            }
-        }
 
-        private void MasterTemplate_UserAddingRow(object sender, Telerik.WinControls.UI.GridViewRowCancelEventArgs e)
-        {
-            if (e.Rows[0].Cells["colEndDate"].Value != null && e.Rows[0].Cells["colStartDate"].Value != null)
-            {
-                DateTime start = (DateTime)e.Rows[0].Cells["colStartDate"].Value;
-                DateTime end = (DateTime)e.Rows[0].Cells["colEndDate"].Value;
-                Vacation newVacation = new Vacation(start, end);
-                if (!employee.AddVacation(newVacation))
-                {
-                    MessageBox.Show("Даты отпуска пересекаются с уже существующим отпуском", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    e.Cancel = true;
-                }
-            }
-            else
-            {
-                MessageBox.Show("Заполните обе даты отпуска!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                e.Cancel = true;
+                // change dates here
+                if (e.Column.Name == "colStartDate")
+                    employee.ChangeStartDate(start, end);
+                if (e.Column.Name == "colEndDate")
+                    employee.ChangeEndDate(start, end);
+                UpdateVacationInfo();
             }
         }
 

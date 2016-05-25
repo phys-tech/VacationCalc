@@ -157,12 +157,12 @@
             // comBarInfo
             // 
             this.comBarInfo.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.comBarInfo.Location = new System.Drawing.Point(0, 56);
+            this.comBarInfo.Location = new System.Drawing.Point(0, 31);
             this.comBarInfo.Name = "comBarInfo";
             this.comBarInfo.Rows.AddRange(new Telerik.WinControls.UI.CommandBarRowElement[] {
             this.comBarRow1,
             this.comBarRow2});
-            this.comBarInfo.Size = new System.Drawing.Size(577, 60);
+            this.comBarInfo.Size = new System.Drawing.Size(577, 85);
             this.comBarInfo.TabIndex = 4;
             // 
             // comBarRow1

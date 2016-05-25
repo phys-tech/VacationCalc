@@ -31,18 +31,24 @@ namespace VacationCalc.Model
         public DateTime StartDate
         {
             get { return startDate; }
-            set { startDate = value; }
+            set { startDate = value; RecalcDuration(); }
         }
 
         public DateTime EndDate
         {
             get { return endDate; }
-            set { endDate = value; }
+            set { endDate = value; RecalcDuration(); }
         }
 
         public TimeSpan Duration
         {
             get { return duration; }
+        }
+
+        private void RecalcDuration()
+        {
+            duration = endDate - startDate;
+            duration = duration.Add(new TimeSpan(1, 0, 0, 0));
         }
 
     }

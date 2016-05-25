@@ -79,6 +79,34 @@ namespace VacationCalc.Model
             calculator.FillEmployeeData();
         }
 
+        public bool ChangeStartDate(DateTime newStart, DateTime endDate)
+        {
+            foreach (Vacation vacation in vacationList)
+            {
+                if (vacation.EndDate == endDate)
+                {
+                    vacation.StartDate = newStart;
+                    calculator.FillEmployeeData();
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public bool ChangeEndDate(DateTime startDate, DateTime newEnd)
+        {
+            foreach (Vacation vacation in vacationList)
+            {
+                if (vacation.StartDate == startDate)
+                {
+                    vacation.EndDate = newEnd;
+                    calculator.FillEmployeeData();
+                    return true;
+                }
+            }
+            return false;        
+        }
+
         public List<Vacation> GetVacationsList()
         {
             return vacationList;

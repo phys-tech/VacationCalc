@@ -70,13 +70,21 @@ namespace VacationCalc
 
         private void gridViewEmployees_UserAddingRow(object sender, GridViewRowCancelEventArgs e)
         {
-            string name = e.Rows[0].Cells["colName"].Value.ToString();
-            DateTime date = (DateTime)e.Rows[0].Cells["colHireDate"].Value;
-            EmploymentType type = (EmploymentType)Enum.Parse(typeof(EmploymentType), e.Rows[0].Cells["colAccType"].Value.ToString());
-            int id = employeeManager.AddEmployee(name, date, type);
-            e.Rows[0].Cells["colID"].Value = id;
-            UpdateVacationDays(id, e.Rows[0]);
-            UpdateStatusStrip();
+            if (e.Rows[0].Cells["colName"].Value != null && e.Rows[0].Cells["colHireDate"].Value != null && e.Rows[0].Cells["colAccType"].Value != null)
+            {
+                string name = e.Rows[0].Cells["colName"].Value.ToString();
+                DateTime date = (DateTime)e.Rows[0].Cells["colHireDate"].Value;
+                EmploymentType type = (EmploymentType)Enum.Parse(typeof(EmploymentType), e.Rows[0].Cells["colAccType"].Value.ToString());
+                int id = employeeManager.AddEmployee(name, date, type);
+                e.Rows[0].Cells["colID"].Value = id;
+                UpdateVacationDays(id, e.Rows[0]);
+                UpdateStatusStrip();
+            }
+            else
+            {
+                MessageBox.Show("Заполните все данные о сотруднике!");
+                e.Cancel = true;
+            }
         }
 
         private void gridViewEmployees_UserDeletingRow(object sender, GridViewRowCancelEventArgs e)

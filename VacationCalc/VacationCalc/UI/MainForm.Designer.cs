@@ -117,11 +117,10 @@
             this.gridViewEmployees.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.gridViewEmployees.Size = new System.Drawing.Size(799, 470);
             this.gridViewEmployees.TabIndex = 0;
-            this.gridViewEmployees.UserAddedRow += new Telerik.WinControls.UI.GridViewRowEventHandler(this.gridViewEmployees_UserAddedRow);
+            this.gridViewEmployees.UserAddingRow += new Telerik.WinControls.UI.GridViewRowCancelEventHandler(this.gridViewEmployees_UserAddingRow);
             this.gridViewEmployees.UserDeletingRow += new Telerik.WinControls.UI.GridViewRowCancelEventHandler(this.gridViewEmployees_UserDeletingRow);
             this.gridViewEmployees.CellValueChanged += new Telerik.WinControls.UI.GridViewCellEventHandler(this.gridViewEmployees_CellValueChanged);
             this.gridViewEmployees.CommandCellClick += new Telerik.WinControls.UI.CommandCellClickEventHandler(this.MasterTemplate_CommandCellClick);
-            this.gridViewEmployees.DoubleClick += new System.EventHandler(this.bDetailedView_Click);
             // 
             // menuMain
             // 

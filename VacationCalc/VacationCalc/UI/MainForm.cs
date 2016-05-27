@@ -68,14 +68,14 @@ namespace VacationCalc
             employeeManager.SaveDataToXML();
         }
 
-        private void gridViewEmployees_UserAddedRow(object sender, Telerik.WinControls.UI.GridViewRowEventArgs e)
+        private void gridViewEmployees_UserAddingRow(object sender, GridViewRowCancelEventArgs e)
         {
-            string name = e.Row.Cells["colName"].Value.ToString();
-            DateTime date = (DateTime) e.Row.Cells["colHireDate"].Value;
-            EmploymentType type = (EmploymentType) Enum.Parse(typeof(EmploymentType), e.Row.Cells["colAccType"].Value.ToString());
+            string name = e.Rows[0].Cells["colName"].Value.ToString();
+            DateTime date = (DateTime)e.Rows[0].Cells["colHireDate"].Value;
+            EmploymentType type = (EmploymentType)Enum.Parse(typeof(EmploymentType), e.Rows[0].Cells["colAccType"].Value.ToString());
             int id = employeeManager.AddEmployee(name, date, type);
-            e.Row.Cells["colID"].Value = id;
-            UpdateVacationDays(id, e.Row);
+            e.Rows[0].Cells["colID"].Value = id;
+            UpdateVacationDays(id, e.Rows[0]);
             UpdateStatusStrip();
         }
 
@@ -89,6 +89,7 @@ namespace VacationCalc
         private void gridViewEmployees_CellValueChanged(object sender, GridViewCellEventArgs e)
         {
             // ID equals null only if we are adding new data, so no need for firing an event
+            
             if (e.Row.Cells["colID"].Value == null)
                 return;
             // if columns is read-only it means we had changed it programatically, no need for firing an event

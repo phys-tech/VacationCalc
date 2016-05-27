@@ -122,7 +122,7 @@ namespace VacationCalc
 
         private void gridViewVacations_CellValidating(object sender, Telerik.WinControls.UI.CellValidatingEventArgs e)
         {
-            //if (e.OldValue != e.Value)
+            if (e.OldValue != e.Value)
             {
                 if (e.Row.Cells["colStartDate"].Value != null && e.Row.Cells["colEndDate"].Value != null)
                 {

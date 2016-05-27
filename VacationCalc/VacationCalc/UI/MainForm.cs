@@ -56,10 +56,11 @@ namespace VacationCalc
             statusLabel2.Text = "В отпуске: " + employeeManager.NumberOfEmployeesOnVacation();
         }
 
-        private void UpdateVacationDays(int employeeID, int rowIndex)
+        private void UpdateVacationDays(int employeeID, GridViewRowInfo row)
         {
             int vacationLeft = employeeManager.GetEmployee(employeeID).GetVacationDaysLeft();
-            gridViewEmployees.Rows[rowIndex].Cells["colVacationLeft"].Value = vacationLeft;
+            //var shit = gridViewEmployees.Rows[rowIndex];
+            row.Cells["colVacationLeft"].Value = vacationLeft;
         }
 
         private void bSave_Click(object sender, EventArgs e)
@@ -74,7 +75,7 @@ namespace VacationCalc
             EmploymentType type = (EmploymentType) Enum.Parse(typeof(EmploymentType), e.Row.Cells["colAccType"].Value.ToString());
             int id = employeeManager.AddEmployee(name, date, type);
             e.Row.Cells["colID"].Value = id;
-            UpdateVacationDays(id, e.Row.Index);
+            UpdateVacationDays(id, e.Row);
             UpdateStatusStrip();
         }
 
@@ -102,34 +103,33 @@ namespace VacationCalc
             else if (e.Column.Name == "colAccType")
                 employeeManager.ChangeType(id, (EmploymentType) Enum.Parse(typeof(EmploymentType), e.Value.ToString()));
 
-            UpdateVacationDays(id, e.RowIndex);
+            UpdateVacationDays(id, e.Row);
         }
 
         private void MasterTemplate_CommandCellClick(object sender, EventArgs e)
         {
-            int row = (sender as GridCommandCellElement).RowIndex;
-            int id = int.Parse(gridViewEmployees.Rows[row].Cells["colID"].Value.ToString());
+            var Row = (sender as GridCommandCellElement).RowInfo;
+            int id = int.Parse(Row.Cells["colID"].Value.ToString());
             Point startPosition = this.Location;
             startPosition.X += this.Width;
             AddVacationForm addVacation = new AddVacationForm(employeeManager.GetEmployee(id), startPosition);
             DialogResult dr = addVacation.ShowDialog();
             if (dr == System.Windows.Forms.DialogResult.OK)
             {
-                UpdateVacationDays(id, row);
+                UpdateVacationDays(id, Row);
                 UpdateStatusStrip();
             }
         }
 
         private void bDetailedView_Click(object sender, EventArgs e)
         {
-            int row = gridViewEmployees.SelectedRows[0].Index;
-            int id = int.Parse(gridViewEmployees.Rows[row].Cells["colID"].Value.ToString());
+            int id = int.Parse(gridViewEmployees.SelectedRows[0].Cells["colID"].Value.ToString());
             Employee emp = employeeManager.GetEmployee(id);
             EmployeeDetailedView view = new EmployeeDetailedView(emp);
             DialogResult dr = view.ShowDialog();
             if (dr == System.Windows.Forms.DialogResult.OK)
             {
-                UpdateVacationDays(id, row);
+                UpdateVacationDays(id, gridViewEmployees.SelectedRows[0]);
                 UpdateStatusStrip();
             }
         }

@@ -28,6 +28,17 @@ namespace VacationCalc.Model
             IsDateDefined = false;
         }
 
+        public Vacation(Vacation copy)
+        {
+            if (copy.IsDateDefined)
+            {
+                startDate = copy.startDate;
+                endDate = copy.endDate;
+                duration = copy.duration;
+                IsDateDefined = copy.IsDateDefined;
+            }
+        }
+
         public DateTime StartDate
         {
             get { return startDate; }

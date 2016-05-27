@@ -103,13 +103,6 @@ namespace VacationCalc
                 TimeSpan duration = end - start;
                 duration = duration.Add(new TimeSpan(1, 0, 0, 0));
                 e.Row.Cells["colDuration"].Value = duration.Days;
-
-                // change dates here
-                if (e.Column.Name == "colStartDate")
-                    employee.ChangeStartDate(start, end);
-                if (e.Column.Name == "colEndDate")
-                    employee.ChangeEndDate(start, end);
-                UpdateVacationInfo();
             }
         }
 
@@ -124,6 +117,36 @@ namespace VacationCalc
             {
                 if (e.Value == null)
                     e.ActiveEditor.Value = ((DateTime)e.Row.Cells["colStartDate"].Value).AddDays(5.0);
+            }
+        }
+
+        private void gridViewVacations_CellValidating(object sender, Telerik.WinControls.UI.CellValidatingEventArgs e)
+        {
+            //if (e.OldValue != e.Value)
+            {
+                if (e.Row.Cells["colStartDate"].Value != null && e.Row.Cells["colEndDate"].Value != null)
+                {
+                    bool ok = true;
+                    DateTime start = (DateTime)e.Row.Cells["colStartDate"].Value;
+                    DateTime end = (DateTime)e.Row.Cells["colEndDate"].Value;
+                    if (e.Column.Name == "colStartDate")
+                    {
+                        start = (DateTime)e.Value;
+                        ok = employee.ChangeStartDate(start, end);
+                    }
+                    if (e.Column.Name == "colEndDate")
+                    {
+                        end = (DateTime)e.Value;
+                        ok = employee.ChangeEndDate(start, end);
+                    }
+
+                    if (!ok)
+                    {
+                        MessageBox.Show("Даты отпуска пересекаются с уже существующим отпуском", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        e.Cancel = true;
+                    }
+                    UpdateVacationInfo();
+                }
             }
         }
 

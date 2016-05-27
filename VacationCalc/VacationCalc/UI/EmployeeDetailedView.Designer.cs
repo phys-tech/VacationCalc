@@ -118,6 +118,7 @@
             this.gridViewVacations.TabIndex = 2;
             this.gridViewVacations.Text = "radGridView1";
             this.gridViewVacations.CellEditorInitialized += new Telerik.WinControls.UI.GridViewCellEventHandler(this.gridViewVacations_CellEditorInitialized);
+            this.gridViewVacations.CellValidating += new Telerik.WinControls.UI.CellValidatingEventHandler(this.gridViewVacations_CellValidating);
             this.gridViewVacations.UserAddingRow += new Telerik.WinControls.UI.GridViewRowCancelEventHandler(this.MasterTemplate_UserAddingRow);
             this.gridViewVacations.UserDeletingRow += new Telerik.WinControls.UI.GridViewRowCancelEventHandler(this.gridViewVacations_UserDeletingRow);
             this.gridViewVacations.CellValueChanged += new Telerik.WinControls.UI.GridViewCellEventHandler(this.gridViewVacations_CellValueChanged);
@@ -157,12 +158,12 @@
             // comBarInfo
             // 
             this.comBarInfo.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.comBarInfo.Location = new System.Drawing.Point(0, 31);
+            this.comBarInfo.Location = new System.Drawing.Point(0, 56);
             this.comBarInfo.Name = "comBarInfo";
             this.comBarInfo.Rows.AddRange(new Telerik.WinControls.UI.CommandBarRowElement[] {
             this.comBarRow1,
             this.comBarRow2});
-            this.comBarInfo.Size = new System.Drawing.Size(577, 85);
+            this.comBarInfo.Size = new System.Drawing.Size(577, 60);
             this.comBarInfo.TabIndex = 4;
             // 
             // comBarRow1

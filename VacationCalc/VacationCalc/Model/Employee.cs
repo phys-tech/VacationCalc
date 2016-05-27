@@ -49,16 +49,9 @@ namespace VacationCalc.Model
         public bool AddVacation(Vacation newVacation)
         {
             if (newVacation.IsDateDefined)
-            {
-                // check that new vacation days are not interfering with previous vacations
-                foreach (Vacation existing in vacationList)
-                {
-                    if (newVacation.StartDate >= existing.StartDate && newVacation.StartDate <= existing.EndDate)
-                        return false;
-                    else if (newVacation.EndDate >= existing.StartDate && newVacation.EndDate <= existing.EndDate)
-                        return false;
-                }
-            }
+                if (IsVacationInterfering(newVacation))
+                    return false;
+
             vacationList.Add(newVacation);
             calculator.FillEmployeeData();
             return true;
@@ -81,30 +74,56 @@ namespace VacationCalc.Model
 
         public bool ChangeStartDate(DateTime newStart, DateTime endDate)
         {
-            foreach (Vacation vacation in vacationList)
+            var oldVacationList = vacationList.Where(item => item.EndDate == endDate);
+            Vacation newVacation = new Vacation(newStart, endDate);
+            Vacation oldVacationCopy = new Vacation(oldVacationList.First());
+
+            DeleteVacation(oldVacationList.First());
+            if (AddVacation(newVacation))
             {
-                if (vacation.EndDate == endDate)
-                {
-                    vacation.StartDate = newStart;
-                    calculator.FillEmployeeData();
-                    return true;
-                }
+                calculator.FillEmployeeData();
+                return true;
             }
-            return false;
+            else
+            {
+                AddVacation(oldVacationCopy);
+                return false;
+            }
         }
 
         public bool ChangeEndDate(DateTime startDate, DateTime newEnd)
         {
-            foreach (Vacation vacation in vacationList)
+            var oldVacationList = vacationList.Where(item => item.StartDate == startDate);
+            Vacation newVacation = new Vacation(startDate, newEnd);
+            Vacation oldVacationCopy = new Vacation(oldVacationList.First());
+
+            DeleteVacation(oldVacationList.First());
+            if (AddVacation(newVacation))
             {
-                if (vacation.StartDate == startDate)
-                {
-                    vacation.EndDate = newEnd;
-                    calculator.FillEmployeeData();
-                    return true;
-                }
+                calculator.FillEmployeeData();
+                return true;
             }
-            return false;        
+            else
+            {
+                AddVacation(oldVacationCopy);
+                return false;
+            }
+        }
+
+        private bool IsVacationInterfering(Vacation candidate)
+        {
+            foreach (Vacation existing in vacationList)
+            {
+                if (candidate.StartDate >= existing.StartDate && candidate.StartDate <= existing.EndDate)
+                    return true;
+                if (candidate.EndDate >= existing.StartDate && candidate.EndDate <= existing.EndDate)
+                    return true;
+                if (existing.StartDate >= candidate.StartDate && existing.StartDate <= candidate.EndDate)
+                    return true;
+                if (existing.EndDate >= candidate.StartDate && existing.EndDate <= candidate.EndDate)
+                    return true;
+            }
+            return false;
         }
 
         public List<Vacation> GetVacationsList()

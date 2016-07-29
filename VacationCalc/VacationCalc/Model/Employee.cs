@@ -135,7 +135,25 @@ namespace VacationCalc.Model
         {
             int days = 0;
             foreach (Vacation item in vacationList)
-                days += item.Duration.Days;
+            {
+                if (item.IsDateDefined)
+                    days += VacationDuration(item.StartDate, item.EndDate);
+                else
+                    days += item.Duration.Days;
+            }
+            return days;
+        }
+
+        public int VacationDuration(DateTime start, DateTime end)
+        {
+            int days = 0;
+            if (accountType == EmploymentType.OOO)
+                days += new Vacation(start, end).Duration.Days;
+
+            else if (accountType == EmploymentType.IP)
+                for (DateTime current = start; current <= end; current = current.AddDays(1.0))
+                    if (current.DayOfWeek != DayOfWeek.Saturday && current.DayOfWeek != DayOfWeek.Sunday)
+                        days++;
             return days;
         }
 

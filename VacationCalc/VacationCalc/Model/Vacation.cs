@@ -17,8 +17,7 @@ namespace VacationCalc.Model
         {
             startDate = (_startDate < _endDate) ? (_startDate) : (_endDate);
             endDate = (_startDate < _endDate) ? (_endDate) : (_startDate);
-            duration = endDate - startDate;
-            duration = duration.Add(new TimeSpan(1,0,0,0));
+            RecalcDuration();
             IsDateDefined = true;
         }
 

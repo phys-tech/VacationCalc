@@ -100,9 +100,7 @@ namespace VacationCalc
             {
                 DateTime start = (DateTime)e.Row.Cells["colStartDate"].Value;
                 DateTime end = (DateTime)e.Row.Cells["colEndDate"].Value;
-                TimeSpan duration = end - start;
-                duration = duration.Add(new TimeSpan(1, 0, 0, 0));
-                e.Row.Cells["colDuration"].Value = duration.Days;
+                e.Row.Cells["colDuration"].Value = employee.VacationDuration(start, end);
             }
         }
 

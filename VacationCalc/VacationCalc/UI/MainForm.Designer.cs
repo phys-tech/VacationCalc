@@ -34,6 +34,7 @@
             Telerik.WinControls.UI.GridViewComboBoxColumn gridViewComboBoxColumn1 = new Telerik.WinControls.UI.GridViewComboBoxColumn();
             Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn3 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
             Telerik.WinControls.UI.GridViewCommandColumn gridViewCommandColumn1 = new Telerik.WinControls.UI.GridViewCommandColumn();
+            Telerik.WinControls.UI.GridViewCommandColumn gridViewCommandColumn2 = new Telerik.WinControls.UI.GridViewCommandColumn();
             Telerik.WinControls.Data.SortDescriptor sortDescriptor1 = new Telerik.WinControls.Data.SortDescriptor();
             this.gridViewEmployees = new Telerik.WinControls.UI.RadGridView();
             this.menuMain = new Telerik.WinControls.UI.RadMenu();
@@ -75,41 +76,47 @@
             gridViewTextBoxColumn1.IsVisible = false;
             gridViewTextBoxColumn1.Name = "colID";
             gridViewTextBoxColumn1.ReadOnly = true;
-            gridViewTextBoxColumn1.SortOrder = Telerik.WinControls.UI.RadSortOrder.Ascending;
             gridViewTextBoxColumn2.EnableExpressionEditor = false;
             gridViewTextBoxColumn2.HeaderText = "ФИО";
             gridViewTextBoxColumn2.Name = "colName";
-            gridViewTextBoxColumn2.Width = 248;
+            gridViewTextBoxColumn2.Width = 230;
             gridViewDateTimeColumn1.EnableExpressionEditor = false;
             gridViewDateTimeColumn1.FilteringMode = Telerik.WinControls.UI.GridViewTimeFilteringMode.Date;
             gridViewDateTimeColumn1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             gridViewDateTimeColumn1.FormatString = "{0:D}";
             gridViewDateTimeColumn1.HeaderText = "Дата приема";
             gridViewDateTimeColumn1.Name = "colHireDate";
-            gridViewDateTimeColumn1.Width = 136;
+            gridViewDateTimeColumn1.Width = 125;
             gridViewComboBoxColumn1.EnableExpressionEditor = false;
             gridViewComboBoxColumn1.HeaderText = "Тип занятости";
             gridViewComboBoxColumn1.Name = "colAccType";
-            gridViewComboBoxColumn1.Width = 106;
+            gridViewComboBoxColumn1.Width = 98;
             gridViewTextBoxColumn3.EnableExpressionEditor = false;
             gridViewTextBoxColumn3.HeaderText = "Кол-во оставшихся дней отпуска";
             gridViewTextBoxColumn3.Name = "colVacationLeft";
             gridViewTextBoxColumn3.ReadOnly = true;
-            gridViewTextBoxColumn3.Width = 212;
+            gridViewTextBoxColumn3.Width = 195;
             gridViewCommandColumn1.DefaultText = "Добавить...";
             gridViewCommandColumn1.EnableExpressionEditor = false;
             gridViewCommandColumn1.HeaderText = "Отпуск";
-            gridViewCommandColumn1.Name = "colButton";
+            gridViewCommandColumn1.Name = "colAddVacation";
             gridViewCommandColumn1.UseDefaultText = true;
-            gridViewCommandColumn1.Width = 80;
+            gridViewCommandColumn1.Width = 74;
+            gridViewCommandColumn2.DefaultText = "Просмотр";
+            gridViewCommandColumn2.EnableExpressionEditor = false;
+            gridViewCommandColumn2.HeaderText = "Инфо";
+            gridViewCommandColumn2.Name = "colView";
+            gridViewCommandColumn2.UseDefaultText = true;
+            gridViewCommandColumn2.Width = 61;
             this.gridViewEmployees.MasterTemplate.Columns.AddRange(new Telerik.WinControls.UI.GridViewDataColumn[] {
             gridViewTextBoxColumn1,
             gridViewTextBoxColumn2,
             gridViewDateTimeColumn1,
             gridViewComboBoxColumn1,
             gridViewTextBoxColumn3,
-            gridViewCommandColumn1});
-            sortDescriptor1.PropertyName = "colID";
+            gridViewCommandColumn1,
+            gridViewCommandColumn2});
+            sortDescriptor1.PropertyName = "colButton";
             this.gridViewEmployees.MasterTemplate.SortDescriptors.AddRange(new Telerik.WinControls.Data.SortDescriptor[] {
             sortDescriptor1});
             this.gridViewEmployees.Name = "gridViewEmployees";

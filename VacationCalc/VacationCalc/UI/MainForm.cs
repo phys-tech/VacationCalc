@@ -118,12 +118,24 @@ namespace VacationCalc
         private void MasterTemplate_CommandCellClick(object sender, EventArgs e)
         {
             var Row = (sender as GridCommandCellElement).RowInfo;
+            var column = (sender as GridCommandCellElement).ColumnInfo;
             int id = int.Parse(Row.Cells["colID"].Value.ToString());
-            Point startPosition = this.Location;
-            startPosition.X += this.Width;
-            AddVacationForm addVacation = new AddVacationForm(employeeManager.GetEmployee(id), startPosition);
-            DialogResult dr = addVacation.ShowDialog();
-            if (dr == System.Windows.Forms.DialogResult.OK)
+            Employee emp = employeeManager.GetEmployee(id);
+            DialogResult result = DialogResult.Cancel;
+            if (column.Name == "colView")
+            {
+                EmployeeDetailedView view = new EmployeeDetailedView(emp);
+                result = view.ShowDialog();
+            }
+            else if (column.Name == "colAddVacation")
+            {
+                Point startPosition = this.Location;
+                startPosition.X += this.Width;
+                AddVacationForm addVacation = new AddVacationForm(emp, startPosition);
+                result = addVacation.ShowDialog();
+            }
+
+            if (result == System.Windows.Forms.DialogResult.OK)
             {
                 UpdateVacationDays(id, Row);
                 UpdateStatusStrip();

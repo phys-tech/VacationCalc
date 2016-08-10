@@ -37,7 +37,7 @@ namespace VacationCalc
             {
                 object[] row;
                 if (vacation.IsDateDefined)
-                    row = new object[4] { number, vacation.StartDate, vacation.EndDate, vacation.Duration.Days };
+                    row = new object[4] { number, vacation.StartDate, vacation.EndDate, employee.VacationDuration(vacation.StartDate, vacation.EndDate) };
                 else
                     row = new object[4] { number, null, null, vacation.Duration.Days };
                 gridViewVacations.Rows.Add(row);

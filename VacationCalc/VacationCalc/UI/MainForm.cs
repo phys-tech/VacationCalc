@@ -59,13 +59,7 @@ namespace VacationCalc
         private void UpdateVacationDays(int employeeID, GridViewRowInfo row)
         {
             int vacationLeft = employeeManager.GetEmployee(employeeID).GetVacationDaysLeft();
-            //var shit = gridViewEmployees.Rows[rowIndex];
             row.Cells["colVacationLeft"].Value = vacationLeft;
-        }
-
-        private void bSave_Click(object sender, EventArgs e)
-        {
-            employeeManager.SaveDataToXML();
         }
 
         private void gridViewEmployees_UserAddingRow(object sender, GridViewRowCancelEventArgs e)
@@ -97,7 +91,6 @@ namespace VacationCalc
         private void gridViewEmployees_CellValueChanged(object sender, GridViewCellEventArgs e)
         {
             // ID equals null only if we are adding new data, so no need for firing an event
-            
             if (e.Row.Cells["colID"].Value == null)
                 return;
             // if columns is read-only it means we had changed it programatically, no need for firing an event
@@ -142,17 +135,9 @@ namespace VacationCalc
             }
         }
 
-        private void bDetailedView_Click(object sender, EventArgs e)
+        private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
         {
-            int id = int.Parse(gridViewEmployees.SelectedRows[0].Cells["colID"].Value.ToString());
-            Employee emp = employeeManager.GetEmployee(id);
-            EmployeeDetailedView view = new EmployeeDetailedView(emp);
-            DialogResult dr = view.ShowDialog();
-            if (dr == System.Windows.Forms.DialogResult.OK)
-            {
-                UpdateVacationDays(id, gridViewEmployees.SelectedRows[0]);
-                UpdateStatusStrip();
-            }
+            employeeManager.SaveDataToXML();
         }
 
     }

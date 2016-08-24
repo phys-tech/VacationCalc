@@ -28,10 +28,10 @@ namespace VacationCalc
             var dates = calendarDates.SelectedDates;
             if (dates.Count == 2)
             {
-                TimeSpan span = dates[0] - dates[1];
-                // we're adding 1 day, because we want to count the last day also
-                span = span.Duration().Add(new TimeSpan(1,0,0,0));      
-                tbDuration.Text = span.Days.ToString();
+                DateTime start = (dates[0] < dates[1]) ? (dates[0]) : (dates[1]);
+                DateTime end = (dates[0] < dates[1]) ? (dates[1]) : (dates[0]);
+                int duration = employee.VacationDuration(start, end);
+                tbDuration.Text = duration.ToString();
             }
             else if (dates.Count > 2)
             {

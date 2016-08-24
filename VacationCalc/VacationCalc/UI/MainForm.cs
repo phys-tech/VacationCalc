@@ -52,8 +52,10 @@ namespace VacationCalc
 
         private void UpdateStatusStrip()
         {
-            statusLabel.Text = "Всего сотрудников: " + employeeManager.NumberOfEmployees();
-            statusLabel2.Text = "В отпуске: " + employeeManager.NumberOfEmployeesOnVacation();
+            string empOnVacation;
+            statusNumOfEmloyees.Text = "Всего сотрудников: " + employeeManager.NumberOfEmployees();
+            statusOnVacation.Text = "В отпуске: " + employeeManager.NumberOfEmployeesOnVacation(out empOnVacation);
+            statusOnVacation.ToolTipText = empOnVacation;
         }
 
         private void UpdateVacationDays(int employeeID, GridViewRowInfo row)

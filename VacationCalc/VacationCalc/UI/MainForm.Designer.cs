@@ -28,20 +28,20 @@
         /// </summary>
         private void InitializeComponent()
         {
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn10 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn11 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewDateTimeColumn gridViewDateTimeColumn4 = new Telerik.WinControls.UI.GridViewDateTimeColumn();
-            Telerik.WinControls.UI.GridViewComboBoxColumn gridViewComboBoxColumn4 = new Telerik.WinControls.UI.GridViewComboBoxColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn12 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewCommandColumn gridViewCommandColumn7 = new Telerik.WinControls.UI.GridViewCommandColumn();
-            Telerik.WinControls.UI.GridViewCommandColumn gridViewCommandColumn8 = new Telerik.WinControls.UI.GridViewCommandColumn();
-            Telerik.WinControls.Data.SortDescriptor sortDescriptor4 = new Telerik.WinControls.Data.SortDescriptor();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn1 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn2 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewDateTimeColumn gridViewDateTimeColumn1 = new Telerik.WinControls.UI.GridViewDateTimeColumn();
+            Telerik.WinControls.UI.GridViewComboBoxColumn gridViewComboBoxColumn1 = new Telerik.WinControls.UI.GridViewComboBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn3 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewCommandColumn gridViewCommandColumn1 = new Telerik.WinControls.UI.GridViewCommandColumn();
+            Telerik.WinControls.UI.GridViewCommandColumn gridViewCommandColumn2 = new Telerik.WinControls.UI.GridViewCommandColumn();
+            Telerik.WinControls.Data.SortDescriptor sortDescriptor1 = new Telerik.WinControls.Data.SortDescriptor();
             this.gridViewEmployees = new Telerik.WinControls.UI.RadGridView();
             this.menuMain = new Telerik.WinControls.UI.RadMenu();
             this.menuItemTop = new Telerik.WinControls.UI.RadMenuItem();
             this.statusStrip = new Telerik.WinControls.UI.RadStatusStrip();
-            this.statusLabel = new Telerik.WinControls.UI.RadLabelElement();
-            this.statusLabel2 = new Telerik.WinControls.UI.RadLabelElement();
+            this.statusNumOfEmloyees = new Telerik.WinControls.UI.RadLabelElement();
+            this.statusOnVacation = new Telerik.WinControls.UI.RadLabelElement();
             this.panelTools = new Telerik.WinControls.UI.RadPanel();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewEmployees)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewEmployees.MasterTemplate)).BeginInit();
@@ -66,54 +66,54 @@
             this.gridViewEmployees.MasterTemplate.AddNewRowPosition = Telerik.WinControls.UI.SystemRowPosition.Bottom;
             this.gridViewEmployees.MasterTemplate.AutoGenerateColumns = false;
             this.gridViewEmployees.MasterTemplate.AutoSizeColumnsMode = Telerik.WinControls.UI.GridViewAutoSizeColumnsMode.Fill;
-            gridViewTextBoxColumn10.EnableExpressionEditor = false;
-            gridViewTextBoxColumn10.HeaderText = "ID";
-            gridViewTextBoxColumn10.IsVisible = false;
-            gridViewTextBoxColumn10.Name = "colID";
-            gridViewTextBoxColumn10.ReadOnly = true;
-            gridViewTextBoxColumn11.EnableExpressionEditor = false;
-            gridViewTextBoxColumn11.HeaderText = "ФИО";
-            gridViewTextBoxColumn11.Name = "colName";
-            gridViewTextBoxColumn11.Width = 230;
-            gridViewDateTimeColumn4.EnableExpressionEditor = false;
-            gridViewDateTimeColumn4.FilteringMode = Telerik.WinControls.UI.GridViewTimeFilteringMode.Date;
-            gridViewDateTimeColumn4.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            gridViewDateTimeColumn4.FormatString = "{0:D}";
-            gridViewDateTimeColumn4.HeaderText = "Дата приема";
-            gridViewDateTimeColumn4.Name = "colHireDate";
-            gridViewDateTimeColumn4.Width = 125;
-            gridViewComboBoxColumn4.EnableExpressionEditor = false;
-            gridViewComboBoxColumn4.HeaderText = "Тип занятости";
-            gridViewComboBoxColumn4.Name = "colAccType";
-            gridViewComboBoxColumn4.Width = 98;
-            gridViewTextBoxColumn12.EnableExpressionEditor = false;
-            gridViewTextBoxColumn12.HeaderText = "Кол-во оставшихся дней отпуска";
-            gridViewTextBoxColumn12.Name = "colVacationLeft";
-            gridViewTextBoxColumn12.ReadOnly = true;
-            gridViewTextBoxColumn12.Width = 195;
-            gridViewCommandColumn7.DefaultText = "Добавить...";
-            gridViewCommandColumn7.EnableExpressionEditor = false;
-            gridViewCommandColumn7.HeaderText = "Отпуск";
-            gridViewCommandColumn7.Name = "colAddVacation";
-            gridViewCommandColumn7.UseDefaultText = true;
-            gridViewCommandColumn7.Width = 74;
-            gridViewCommandColumn8.DefaultText = "Просмотр";
-            gridViewCommandColumn8.EnableExpressionEditor = false;
-            gridViewCommandColumn8.HeaderText = "Инфо";
-            gridViewCommandColumn8.Name = "colView";
-            gridViewCommandColumn8.UseDefaultText = true;
-            gridViewCommandColumn8.Width = 61;
+            gridViewTextBoxColumn1.EnableExpressionEditor = false;
+            gridViewTextBoxColumn1.HeaderText = "ID";
+            gridViewTextBoxColumn1.IsVisible = false;
+            gridViewTextBoxColumn1.Name = "colID";
+            gridViewTextBoxColumn1.ReadOnly = true;
+            gridViewTextBoxColumn2.EnableExpressionEditor = false;
+            gridViewTextBoxColumn2.HeaderText = "ФИО";
+            gridViewTextBoxColumn2.Name = "colName";
+            gridViewTextBoxColumn2.Width = 230;
+            gridViewDateTimeColumn1.EnableExpressionEditor = false;
+            gridViewDateTimeColumn1.FilteringMode = Telerik.WinControls.UI.GridViewTimeFilteringMode.Date;
+            gridViewDateTimeColumn1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            gridViewDateTimeColumn1.FormatString = "{0:D}";
+            gridViewDateTimeColumn1.HeaderText = "Дата приема";
+            gridViewDateTimeColumn1.Name = "colHireDate";
+            gridViewDateTimeColumn1.Width = 125;
+            gridViewComboBoxColumn1.EnableExpressionEditor = false;
+            gridViewComboBoxColumn1.HeaderText = "Тип занятости";
+            gridViewComboBoxColumn1.Name = "colAccType";
+            gridViewComboBoxColumn1.Width = 98;
+            gridViewTextBoxColumn3.EnableExpressionEditor = false;
+            gridViewTextBoxColumn3.HeaderText = "Кол-во оставшихся дней отпуска";
+            gridViewTextBoxColumn3.Name = "colVacationLeft";
+            gridViewTextBoxColumn3.ReadOnly = true;
+            gridViewTextBoxColumn3.Width = 195;
+            gridViewCommandColumn1.DefaultText = "Добавить...";
+            gridViewCommandColumn1.EnableExpressionEditor = false;
+            gridViewCommandColumn1.HeaderText = "Отпуск";
+            gridViewCommandColumn1.Name = "colAddVacation";
+            gridViewCommandColumn1.UseDefaultText = true;
+            gridViewCommandColumn1.Width = 74;
+            gridViewCommandColumn2.DefaultText = "Просмотр";
+            gridViewCommandColumn2.EnableExpressionEditor = false;
+            gridViewCommandColumn2.HeaderText = "Инфо";
+            gridViewCommandColumn2.Name = "colView";
+            gridViewCommandColumn2.UseDefaultText = true;
+            gridViewCommandColumn2.Width = 61;
             this.gridViewEmployees.MasterTemplate.Columns.AddRange(new Telerik.WinControls.UI.GridViewDataColumn[] {
-            gridViewTextBoxColumn10,
-            gridViewTextBoxColumn11,
-            gridViewDateTimeColumn4,
-            gridViewComboBoxColumn4,
-            gridViewTextBoxColumn12,
-            gridViewCommandColumn7,
-            gridViewCommandColumn8});
-            sortDescriptor4.PropertyName = "colButton";
+            gridViewTextBoxColumn1,
+            gridViewTextBoxColumn2,
+            gridViewDateTimeColumn1,
+            gridViewComboBoxColumn1,
+            gridViewTextBoxColumn3,
+            gridViewCommandColumn1,
+            gridViewCommandColumn2});
+            sortDescriptor1.PropertyName = "colButton";
             this.gridViewEmployees.MasterTemplate.SortDescriptors.AddRange(new Telerik.WinControls.Data.SortDescriptor[] {
-            sortDescriptor4});
+            sortDescriptor1});
             this.gridViewEmployees.Name = "gridViewEmployees";
             this.gridViewEmployees.NewRowEnterKeyMode = Telerik.WinControls.UI.RadGridViewNewRowEnterKeyMode.EnterMovesToNextCell;
             this.gridViewEmployees.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -145,33 +145,34 @@
             // statusStrip
             // 
             this.statusStrip.Items.AddRange(new Telerik.WinControls.RadItem[] {
-            this.statusLabel,
-            this.statusLabel2});
+            this.statusNumOfEmloyees,
+            this.statusOnVacation});
             this.statusStrip.Location = new System.Drawing.Point(0, 542);
             this.statusStrip.Name = "statusStrip";
             this.statusStrip.Size = new System.Drawing.Size(799, 24);
             this.statusStrip.TabIndex = 2;
             this.statusStrip.Text = "radStatusStrip1";
             // 
-            // statusLabel
+            // statusNumOfEmloyees
             // 
-            this.statusLabel.AccessibleDescription = "statusLabel";
-            this.statusLabel.AccessibleName = "statusLabel";
-            this.statusLabel.Name = "statusLabel";
-            this.statusStrip.SetSpring(this.statusLabel, false);
-            this.statusLabel.Text = "NumberOfEmpl";
-            this.statusLabel.TextWrap = true;
-            this.statusLabel.Visibility = Telerik.WinControls.ElementVisibility.Visible;
+            this.statusNumOfEmloyees.AccessibleDescription = "statusLabel";
+            this.statusNumOfEmloyees.AccessibleName = "statusLabel";
+            this.statusNumOfEmloyees.Name = "statusNumOfEmloyees";
+            this.statusStrip.SetSpring(this.statusNumOfEmloyees, false);
+            this.statusNumOfEmloyees.Text = "NumberOfEmpl";
+            this.statusNumOfEmloyees.TextWrap = true;
+            this.statusNumOfEmloyees.Visibility = Telerik.WinControls.ElementVisibility.Visible;
             // 
-            // statusLabel2
+            // statusOnVacation
             // 
-            this.statusLabel2.AccessibleDescription = "statusLabel2";
-            this.statusLabel2.AccessibleName = "statusLabel2";
-            this.statusLabel2.Name = "statusLabel2";
-            this.statusStrip.SetSpring(this.statusLabel2, false);
-            this.statusLabel2.Text = "NumberOfOnVacation";
-            this.statusLabel2.TextWrap = true;
-            this.statusLabel2.Visibility = Telerik.WinControls.ElementVisibility.Visible;
+            this.statusOnVacation.AccessibleDescription = "statusLabel2";
+            this.statusOnVacation.AccessibleName = "statusLabel2";
+            this.statusOnVacation.Name = "statusOnVacation";
+            this.statusStrip.SetSpring(this.statusOnVacation, false);
+            this.statusOnVacation.Text = "NumberOfOnVacation";
+            this.statusOnVacation.TextWrap = true;
+            this.statusOnVacation.ToolTipText = "WTF man";
+            this.statusOnVacation.Visibility = Telerik.WinControls.ElementVisibility.Visible;
             // 
             // panelTools
             // 
@@ -217,8 +218,8 @@
         private Telerik.WinControls.UI.RadMenuItem menuItemTop;
         private Telerik.WinControls.UI.RadStatusStrip statusStrip;
         private Telerik.WinControls.UI.RadPanel panelTools;
-        private Telerik.WinControls.UI.RadLabelElement statusLabel;
-        private Telerik.WinControls.UI.RadLabelElement statusLabel2;
+        private Telerik.WinControls.UI.RadLabelElement statusNumOfEmloyees;
+        private Telerik.WinControls.UI.RadLabelElement statusOnVacation;
 
     }
 }

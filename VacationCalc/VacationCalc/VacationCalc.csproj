@@ -65,6 +65,7 @@
     <Reference Include="Telerik.WinControls.GridView, Version=2013.1.220.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
       <Private>True</Private>
     </Reference>
+    <Reference Include="Telerik.WinControls.RichTextBox, Version=2013.1.220.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL" />
     <Reference Include="Telerik.WinControls.UI, Version=2013.1.220.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
       <Private>True</Private>
     </Reference>
@@ -90,6 +91,12 @@
     <Compile Include="UI\EmployeeDetailedView.Designer.cs">
       <DependentUpon>EmployeeDetailedView.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\HolidaysForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\HolidaysForm.Designer.cs">
+      <DependentUpon>HolidaysForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\Localization.cs" />
     <Compile Include="UI\MainForm.cs">
       <SubType>Form</SubType>
@@ -104,6 +111,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\EmployeeDetailedView.resx">
       <DependentUpon>EmployeeDetailedView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\HolidaysForm.resx">
+      <DependentUpon>HolidaysForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>

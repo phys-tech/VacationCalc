@@ -142,5 +142,11 @@ namespace VacationCalc
             employeeManager.SaveDataToXML();
         }
 
+        private void menuHolidaysCalendar_Click(object sender, EventArgs e)
+        {
+            HolidaysForm holidays = new HolidaysForm();
+            holidays.Show();
+        }
+
     }
 }

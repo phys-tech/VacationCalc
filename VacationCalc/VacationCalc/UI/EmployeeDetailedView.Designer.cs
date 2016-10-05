@@ -54,6 +54,8 @@
             this.lEmployeeName = new Telerik.WinControls.UI.RadLabel();
             this.panelBottom = new Telerik.WinControls.UI.RadPanel();
             this.bOK = new Telerik.WinControls.UI.RadButton();
+            this.lFired = new Telerik.WinControls.UI.RadLabel();
+            this.bFireHire = new Telerik.WinControls.UI.RadButton();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewVacations)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewVacations.MasterTemplate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelTop)).BeginInit();
@@ -64,6 +66,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelBottom)).BeginInit();
             this.panelBottom.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bOK)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lFired)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bFireHire)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             this.SuspendLayout();
             // 
@@ -125,6 +129,7 @@
             // 
             // panelTop
             // 
+            this.panelTop.Controls.Add(this.lFired);
             this.panelTop.Controls.Add(this.lOnVacation);
             this.panelTop.Controls.Add(this.comBarInfo);
             this.panelTop.Controls.Add(this.lEmployeeName);
@@ -317,6 +322,7 @@
             // 
             // panelBottom
             // 
+            this.panelBottom.Controls.Add(this.bFireHire);
             this.panelBottom.Controls.Add(this.bOK);
             this.panelBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panelBottom.Location = new System.Drawing.Point(0, 389);
@@ -334,6 +340,24 @@
             this.bOK.TabIndex = 2;
             this.bOK.Text = "ОК";
             this.bOK.Click += new System.EventHandler(this.bOK_Click);
+            // 
+            // lFired
+            // 
+            this.lFired.Font = new System.Drawing.Font("Segoe UI", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))));
+            this.lFired.Location = new System.Drawing.Point(371, 12);
+            this.lFired.Name = "lFired";
+            this.lFired.Size = new System.Drawing.Size(74, 25);
+            this.lFired.TabIndex = 6;
+            this.lFired.Text = "УВОЛЕН";
+            // 
+            // bFireHire
+            // 
+            this.bFireHire.Location = new System.Drawing.Point(4, 11);
+            this.bFireHire.Name = "bFireHire";
+            this.bFireHire.Size = new System.Drawing.Size(110, 36);
+            this.bFireHire.TabIndex = 3;
+            this.bFireHire.Text = "Уволить";
+            this.bFireHire.Click += new System.EventHandler(this.bFireHire_Click);
             // 
             // EmployeeDetailedView
             // 
@@ -362,6 +386,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelBottom)).EndInit();
             this.panelBottom.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.bOK)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lFired)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bFireHire)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
             this.ResumeLayout(false);
 
@@ -389,5 +415,7 @@
         private Telerik.WinControls.UI.CommandBarSeparator comBarSeparator3;
         private System.Windows.Forms.ImageList imageList;
         private Telerik.WinControls.UI.RadLabel lOnVacation;
+        private Telerik.WinControls.UI.RadLabel lFired;
+        private Telerik.WinControls.UI.RadButton bFireHire;
     }
 }

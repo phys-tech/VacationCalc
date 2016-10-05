@@ -29,6 +29,7 @@ namespace VacationCalc
             lEmployeeName.Text = employee.Name;
             comBarLabelHireDate.Text = "Принят: " + employee.HireDate.ToLongDateString();
             comBarLabelType.Text = employee.AccountType.GetRussianName();
+            UpdateContract();
             UpdateVacationInfo();
 
             List<Vacation> list = employee.GetVacationsList();
@@ -51,6 +52,15 @@ namespace VacationCalc
             comBarLabelVacationSpent.Text = "Отгуляно: " + employee.VacationDaysSpent();
             comBarLabelVacationLeft.Text = "Осталось: " + employee.VacationDaysLeft;
             lOnVacation.Visible = employee.IsOnVacation();
+        }
+
+        private void UpdateContract()
+        {
+            lFired.Visible = employee.IsFired;
+            if (employee.IsFired)
+                bFireHire.Text = "Принять";
+            else
+                bFireHire.Text = "Уволить";
         }
 
         private void MasterTemplate_UserAddingRow(object sender, Telerik.WinControls.UI.GridViewRowCancelEventArgs e)
@@ -146,6 +156,12 @@ namespace VacationCalc
                     UpdateVacationInfo();
                 }
             }
+        }
+
+        private void bFireHire_Click(object sender, EventArgs e)
+        {
+            employee.IsFired = !employee.IsFired;
+            UpdateContract();            
         }
 
     }

@@ -14,16 +14,18 @@ namespace VacationCalc.Model
         private EmploymentType accountType;
         private List<Vacation> vacationList;
         private DaysCalculator calculator;
+        private bool fired;
 
         // calculated
         public int TotalVacationDays;
         public int VacationDaysLeft;
 
-        public Employee(string _name, DateTime _hireDate, EmploymentType _type)
+        public Employee(string _name, DateTime _hireDate, EmploymentType _type, bool _fired)
         {
             name = _name;
             hireDate = _hireDate;
             accountType = _type;
+            fired = _fired;
             vacationList = new List<Vacation>();
             calculator = new DaysCalculator(this);
         }
@@ -44,6 +46,12 @@ namespace VacationCalc.Model
         {
             get { return accountType; }
             set { accountType = value; calculator.FillEmployeeData(); }
+        }
+
+        public bool IsFired 
+        {
+            get { return fired; }
+            set { fired = value; }
         }
 
         public bool AddVacation(Vacation newVacation)

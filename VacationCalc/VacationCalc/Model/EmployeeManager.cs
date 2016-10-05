@@ -33,7 +33,7 @@ namespace VacationCalc.Model
         public int AddEmployee(string _name, DateTime _hireDate, EmploymentType _accType)
         {
             int id = GetNewID();
-            Employee employee = new Employee(_name, _hireDate, _accType);
+            Employee employee = new Employee(_name, _hireDate, _accType, false);
             Employees.Add(id, employee);
             DaysCalculator calc = new DaysCalculator(employee);
             return id;
@@ -83,6 +83,7 @@ namespace VacationCalc.Model
                                     new XElement("Name", employee.Name),
                                     new XElement("HireDate", employee.HireDate),
                                     new XElement("AccountType", employee.AccountType),
+                                    new XElement("IsFired", employee.IsFired),
                                     new XElement("Vacations"));
                 var list = employee.GetVacationsList();
                 foreach (Vacation item in list)
@@ -110,8 +111,9 @@ namespace VacationCalc.Model
                 string name = element.Element("Name").Value.ToString();
                 DateTime date = DateTime.Parse(element.Element("HireDate").Value.ToString());
                 EmploymentType type = (EmploymentType) Enum.Parse(typeof(EmploymentType), element.Element("AccountType").Value.ToString());
+                bool fired = bool.Parse(element.Element("IsFired").Value);
                 int id = GetNewID();
-                Employees.Add(id, new Employee(name, date, type));
+                Employees.Add(id, new Employee(name, date, type, fired));
                 XElement vacations = element.Element("Vacations");
                 foreach (XElement vacationElem in vacations.Elements())
                 {

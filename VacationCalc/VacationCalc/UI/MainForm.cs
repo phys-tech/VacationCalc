@@ -45,7 +45,10 @@ namespace VacationCalc
                 EmploymentType type = emp.AccountType;
                 int vacation = emp.GetVacationDaysLeft();
                 object[] row = { empID, name, date, type, vacation };
-                gridViewEmployees.Rows.Add(row);
+                if (!emp.IsFired)
+                    gridViewEmployees.Rows.Add(row);
+                else
+                    gridViewFired.Rows.Add(row);
             }
             UpdateStatusStrip();
         }

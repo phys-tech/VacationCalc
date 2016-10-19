@@ -134,7 +134,7 @@ namespace VacationCalc.Model
 
         public int NumberOfEmployees()
         {
-            return Employees.Count;
+            return Employees.Count(e => !e.Value.IsFired);
         }
 
         public int NumberOfEmployeesOnVacation(out string empNames)

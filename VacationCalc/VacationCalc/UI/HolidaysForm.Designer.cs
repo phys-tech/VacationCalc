@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            Telerik.WinControls.UI.ListViewDetailColumn listViewDetailColumn5 = new Telerik.WinControls.UI.ListViewDetailColumn("Column 0", "Column 0");
-            Telerik.WinControls.UI.ListViewDetailColumn listViewDetailColumn6 = new Telerik.WinControls.UI.ListViewDetailColumn("Column 1", "Column 1");
-            Telerik.WinControls.UI.ListViewDetailColumn listViewDetailColumn7 = new Telerik.WinControls.UI.ListViewDetailColumn("Column 2", "Column 2");
-            Telerik.WinControls.UI.ListViewDetailColumn listViewDetailColumn8 = new Telerik.WinControls.UI.ListViewDetailColumn("Column 3", "Column 3");
+            Telerik.WinControls.UI.ListViewDetailColumn listViewDetailColumn1 = new Telerik.WinControls.UI.ListViewDetailColumn("Column 0", "Column 0");
+            Telerik.WinControls.UI.ListViewDetailColumn listViewDetailColumn2 = new Telerik.WinControls.UI.ListViewDetailColumn("Column 1", "Column 1");
+            Telerik.WinControls.UI.ListViewDetailColumn listViewDetailColumn3 = new Telerik.WinControls.UI.ListViewDetailColumn("Column 2", "Column 2");
+            Telerik.WinControls.UI.ListViewDetailColumn listViewDetailColumn4 = new Telerik.WinControls.UI.ListViewDetailColumn("Column 3", "Column 3");
             this.calendarHolidays = new Telerik.WinControls.UI.RadCalendar();
             this.bOK = new Telerik.WinControls.UI.RadButton();
             this.listViewSelectedDates = new Telerik.WinControls.UI.RadListView();
@@ -69,17 +69,18 @@
             // 
             // listViewSelectedDates
             // 
-            listViewDetailColumn5.HeaderText = "Column 0";
-            listViewDetailColumn6.HeaderText = "Column 1";
-            listViewDetailColumn7.HeaderText = "Column 2";
-            listViewDetailColumn8.HeaderText = "Column 3";
+            listViewDetailColumn1.HeaderText = "Column 0";
+            listViewDetailColumn2.HeaderText = "Column 1";
+            listViewDetailColumn3.HeaderText = "Column 2";
+            listViewDetailColumn4.HeaderText = "Column 3";
             this.listViewSelectedDates.Columns.AddRange(new Telerik.WinControls.UI.ListViewDetailColumn[] {
-            listViewDetailColumn5,
-            listViewDetailColumn6,
-            listViewDetailColumn7,
-            listViewDetailColumn8});
+            listViewDetailColumn1,
+            listViewDetailColumn2,
+            listViewDetailColumn3,
+            listViewDetailColumn4});
             this.listViewSelectedDates.Location = new System.Drawing.Point(320, 27);
             this.listViewSelectedDates.Name = "listViewSelectedDates";
+            this.listViewSelectedDates.SelectLastAddedItem = false;
             this.listViewSelectedDates.Size = new System.Drawing.Size(250, 250);
             this.listViewSelectedDates.TabIndex = 4;
             // 

@@ -36,6 +36,14 @@ namespace VacationCalc
             column.ValueMember = "iValue";
             column.DisplayMember = "sDisplay";
 
+            UpdateGrids();
+            UpdateStatusStrip();
+        }
+
+        private void UpdateGrids()
+        {
+            gridViewFired.Rows.Clear();
+            gridViewEmployees.Rows.Clear();
             Dictionary<int, Employee> employees = employeeManager.GetAllEmployees();
             foreach (int empID in employees.Keys)
             {
@@ -49,8 +57,7 @@ namespace VacationCalc
                     gridViewEmployees.Rows.Add(row);
                 else
                     gridViewFired.Rows.Add(row);
-            }
-            UpdateStatusStrip();
+            }        
         }
 
         private void UpdateStatusStrip()
@@ -136,6 +143,7 @@ namespace VacationCalc
             if (result == System.Windows.Forms.DialogResult.OK)
             {
                 UpdateVacationDays(id, Row);
+                UpdateGrids();
                 UpdateStatusStrip();
             }
         }

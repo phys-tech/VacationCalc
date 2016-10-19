@@ -26,12 +26,9 @@ namespace VacationCalc.UI
 
         private void UpdateDatesOnLabel()
         {
-            labelSelectedDates.Text = "";
+            listViewSelectedDates.Items.Clear();
             foreach (DateTime date in sortedDates)
-            {
-                labelSelectedDates.Text += date.ToLongDateString();
-                labelSelectedDates.Text += "\n";
-            }        
+                listViewSelectedDates.Items.Add(date.ToLongDateString());
         }
 
         private void calendarHolidays_SelectionChanged(object sender, EventArgs e)

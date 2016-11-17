@@ -44,6 +44,7 @@
             Telerik.WinControls.UI.GridViewCommandColumn gridViewCommandColumn3 = new Telerik.WinControls.UI.GridViewCommandColumn();
             Telerik.WinControls.UI.GridViewCommandColumn gridViewCommandColumn4 = new Telerik.WinControls.UI.GridViewCommandColumn();
             Telerik.WinControls.Data.SortDescriptor sortDescriptor2 = new Telerik.WinControls.Data.SortDescriptor();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.statusStrip = new Telerik.WinControls.UI.RadStatusStrip();
             this.statusNumOfEmloyees = new Telerik.WinControls.UI.RadLabelElement();
             this.statusOnVacation = new Telerik.WinControls.UI.RadLabelElement();
@@ -63,8 +64,8 @@
             this.pageFired.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewFired)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewFired.MasterTemplate)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.menuMain)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             this.SuspendLayout();
             // 
             // statusStrip
@@ -287,12 +288,6 @@
             this.menuHolidaysCalendar.Visibility = Telerik.WinControls.ElementVisibility.Visible;
             this.menuHolidaysCalendar.Click += new System.EventHandler(this.menuHolidaysCalendar_Click);
             // 
-            // MainForm
-            // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(799, 566);
-            // 
             // menuMain
             // 
             this.menuMain.Items.AddRange(new Telerik.WinControls.RadItem[] {
@@ -302,9 +297,16 @@
             this.menuMain.Size = new System.Drawing.Size(799, 20);
             this.menuMain.TabIndex = 1;
             this.menuMain.Text = "radMenu1";
+            // 
+            // MainForm
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(799, 566);
             this.Controls.Add(this.pageView);
             this.Controls.Add(this.statusStrip);
             this.Controls.Add(this.menuMain);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainForm";
             // 
             // 

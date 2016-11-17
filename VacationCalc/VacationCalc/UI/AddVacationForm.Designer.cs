@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddVacationForm));
             this.calendarDates = new Telerik.WinControls.UI.RadCalendar();
             this.lTipSelectDates = new Telerik.WinControls.UI.RadLabel();
             this.lTipDuration = new Telerik.WinControls.UI.RadLabel();
@@ -119,6 +120,7 @@
             this.Controls.Add(this.lTipDuration);
             this.Controls.Add(this.lTipSelectDates);
             this.Controls.Add(this.calendarDates);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "AddVacationForm";
             // 
             // 

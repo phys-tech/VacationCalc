@@ -32,6 +32,7 @@
             Telerik.WinControls.UI.ListViewDetailColumn listViewDetailColumn2 = new Telerik.WinControls.UI.ListViewDetailColumn("Column 1", "Column 1");
             Telerik.WinControls.UI.ListViewDetailColumn listViewDetailColumn3 = new Telerik.WinControls.UI.ListViewDetailColumn("Column 2", "Column 2");
             Telerik.WinControls.UI.ListViewDetailColumn listViewDetailColumn4 = new Telerik.WinControls.UI.ListViewDetailColumn("Column 3", "Column 3");
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HolidaysForm));
             this.calendarHolidays = new Telerik.WinControls.UI.RadCalendar();
             this.bOK = new Telerik.WinControls.UI.RadButton();
             this.listViewSelectedDates = new Telerik.WinControls.UI.RadListView();
@@ -92,6 +93,7 @@
             this.Controls.Add(this.listViewSelectedDates);
             this.Controls.Add(this.bOK);
             this.Controls.Add(this.calendarHolidays);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "HolidaysForm";

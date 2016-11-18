@@ -52,7 +52,8 @@ namespace VacationCalc
                 DateTime date = emp.HireDate;
                 EmploymentType type = emp.AccountType;
                 int vacation = emp.GetVacationDaysLeft();
-                object[] row = { empID, name, date, type, vacation };
+                DateTime birth = emp.BirthDate;
+                object[] row = { empID, name, date, type, vacation, birth };
                 if (!emp.IsFired)
                     gridViewEmployees.Rows.Add(row);
                 else
@@ -81,7 +82,8 @@ namespace VacationCalc
                 string name = e.Rows[0].Cells["colName"].Value.ToString();
                 DateTime date = (DateTime)e.Rows[0].Cells["colHireDate"].Value;
                 EmploymentType type = (EmploymentType)Enum.Parse(typeof(EmploymentType), e.Rows[0].Cells["colAccType"].Value.ToString());
-                int id = employeeManager.AddEmployee(name, date, type);
+                DateTime birthday = (DateTime)e.Rows[0].Cells["colBirthDate"].Value;
+                int id = employeeManager.AddEmployee(name, date, type, birthday);
                 e.Rows[0].Cells["colID"].Value = id;
                 UpdateVacationDays(id, e.Rows[0]);
                 UpdateStatusStrip();
@@ -105,7 +107,7 @@ namespace VacationCalc
             // ID equals null only if we are adding new data, so no need for firing an event
             if (e.Row.Cells["colID"].Value == null)
                 return;
-            // if columns is read-only it means we had changed it programatically, no need for firing an event
+            // if column is read-only it means we had changed it programatically, no need for firing an event
             if (e.Column.ReadOnly)
                 return;
             
@@ -113,9 +115,11 @@ namespace VacationCalc
             if (e.Column.Name == "colName")
                 employeeManager.ChangeName(id, e.Value.ToString());
             else if (e.Column.Name == "colHireDate")
-                employeeManager.ChangeDate(id, (DateTime) e.Value);
+                employeeManager.ChangeHireDate(id, (DateTime)e.Value);
             else if (e.Column.Name == "colAccType")
-                employeeManager.ChangeType(id, (EmploymentType) Enum.Parse(typeof(EmploymentType), e.Value.ToString()));
+                employeeManager.ChangeType(id, (EmploymentType)Enum.Parse(typeof(EmploymentType), e.Value.ToString()));
+            else if (e.Column.Name == "colBirthDate")
+                employeeManager.ChangeBirthday(id, (DateTime)e.Value);
 
             UpdateVacationDays(id, e.Row);
         }

@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn3 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewDateTimeColumn gridViewDateTimeColumn3 = new Telerik.WinControls.UI.GridViewDateTimeColumn();
-            Telerik.WinControls.UI.GridViewDateTimeColumn gridViewDateTimeColumn4 = new Telerik.WinControls.UI.GridViewDateTimeColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn4 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn1 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewDateTimeColumn gridViewDateTimeColumn1 = new Telerik.WinControls.UI.GridViewDateTimeColumn();
+            Telerik.WinControls.UI.GridViewDateTimeColumn gridViewDateTimeColumn2 = new Telerik.WinControls.UI.GridViewDateTimeColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn2 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EmployeeDetailedView));
             this.gridViewVacations = new Telerik.WinControls.UI.RadGridView();
             this.panelTop = new Telerik.WinControls.UI.RadPanel();
@@ -52,12 +52,12 @@
             this.comBarLabelVacationSpent = new Telerik.WinControls.UI.CommandBarLabel();
             this.comBarSeparator3 = new Telerik.WinControls.UI.CommandBarSeparator();
             this.comBarLabelVacationLeft = new Telerik.WinControls.UI.CommandBarLabel();
+            this.comBarSeparator4 = new Telerik.WinControls.UI.CommandBarSeparator();
+            this.comBarLabelBirthday = new Telerik.WinControls.UI.CommandBarLabel();
             this.lEmployeeName = new Telerik.WinControls.UI.RadLabel();
             this.panelBottom = new Telerik.WinControls.UI.RadPanel();
             this.bFireHire = new Telerik.WinControls.UI.RadButton();
             this.bOK = new Telerik.WinControls.UI.RadButton();
-            this.comBarSeparator4 = new Telerik.WinControls.UI.CommandBarSeparator();
-            this.comBarLabelBirthday = new Telerik.WinControls.UI.CommandBarLabel();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewVacations)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewVacations.MasterTemplate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelTop)).BeginInit();
@@ -88,36 +88,36 @@
             this.gridViewVacations.MasterTemplate.AddNewRowPosition = Telerik.WinControls.UI.SystemRowPosition.Bottom;
             this.gridViewVacations.MasterTemplate.AllowDragToGroup = false;
             this.gridViewVacations.MasterTemplate.AutoSizeColumnsMode = Telerik.WinControls.UI.GridViewAutoSizeColumnsMode.Fill;
-            gridViewTextBoxColumn3.AllowResize = false;
-            gridViewTextBoxColumn3.EnableExpressionEditor = false;
-            gridViewTextBoxColumn3.HeaderText = "Номер";
-            gridViewTextBoxColumn3.IsPinned = true;
-            gridViewTextBoxColumn3.Name = "colNumber";
-            gridViewTextBoxColumn3.PinPosition = Telerik.WinControls.UI.PinnedColumnPosition.Left;
-            gridViewTextBoxColumn3.ReadOnly = true;
-            gridViewTextBoxColumn3.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            gridViewTextBoxColumn3.Width = 92;
-            gridViewDateTimeColumn3.EnableExpressionEditor = false;
-            gridViewDateTimeColumn3.Format = System.Windows.Forms.DateTimePickerFormat.Long;
-            gridViewDateTimeColumn3.FormatString = "{0:D}";
-            gridViewDateTimeColumn3.HeaderText = "Начало отпуска";
-            gridViewDateTimeColumn3.Name = "colStartDate";
-            gridViewDateTimeColumn3.Width = 140;
-            gridViewDateTimeColumn4.EnableExpressionEditor = false;
-            gridViewDateTimeColumn4.Format = System.Windows.Forms.DateTimePickerFormat.Long;
-            gridViewDateTimeColumn4.FormatString = "{0:D}";
-            gridViewDateTimeColumn4.HeaderText = "Конец отпуска";
-            gridViewDateTimeColumn4.Name = "colEndDate";
-            gridViewDateTimeColumn4.Width = 149;
-            gridViewTextBoxColumn4.EnableExpressionEditor = false;
-            gridViewTextBoxColumn4.HeaderText = "Продолжительность";
-            gridViewTextBoxColumn4.Name = "colDuration";
-            gridViewTextBoxColumn4.Width = 178;
+            gridViewTextBoxColumn1.AllowResize = false;
+            gridViewTextBoxColumn1.EnableExpressionEditor = false;
+            gridViewTextBoxColumn1.HeaderText = "Номер";
+            gridViewTextBoxColumn1.IsPinned = true;
+            gridViewTextBoxColumn1.Name = "colNumber";
+            gridViewTextBoxColumn1.PinPosition = Telerik.WinControls.UI.PinnedColumnPosition.Left;
+            gridViewTextBoxColumn1.ReadOnly = true;
+            gridViewTextBoxColumn1.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            gridViewTextBoxColumn1.Width = 92;
+            gridViewDateTimeColumn1.EnableExpressionEditor = false;
+            gridViewDateTimeColumn1.Format = System.Windows.Forms.DateTimePickerFormat.Long;
+            gridViewDateTimeColumn1.FormatString = "{0:D}";
+            gridViewDateTimeColumn1.HeaderText = "Начало отпуска";
+            gridViewDateTimeColumn1.Name = "colStartDate";
+            gridViewDateTimeColumn1.Width = 140;
+            gridViewDateTimeColumn2.EnableExpressionEditor = false;
+            gridViewDateTimeColumn2.Format = System.Windows.Forms.DateTimePickerFormat.Long;
+            gridViewDateTimeColumn2.FormatString = "{0:D}";
+            gridViewDateTimeColumn2.HeaderText = "Конец отпуска";
+            gridViewDateTimeColumn2.Name = "colEndDate";
+            gridViewDateTimeColumn2.Width = 149;
+            gridViewTextBoxColumn2.EnableExpressionEditor = false;
+            gridViewTextBoxColumn2.HeaderText = "Продолжительность";
+            gridViewTextBoxColumn2.Name = "colDuration";
+            gridViewTextBoxColumn2.Width = 178;
             this.gridViewVacations.MasterTemplate.Columns.AddRange(new Telerik.WinControls.UI.GridViewDataColumn[] {
-            gridViewTextBoxColumn3,
-            gridViewDateTimeColumn3,
-            gridViewDateTimeColumn4,
-            gridViewTextBoxColumn4});
+            gridViewTextBoxColumn1,
+            gridViewDateTimeColumn1,
+            gridViewDateTimeColumn2,
+            gridViewTextBoxColumn2});
             this.gridViewVacations.Name = "gridViewVacations";
             this.gridViewVacations.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.gridViewVacations.Size = new System.Drawing.Size(577, 273);
@@ -332,6 +332,24 @@
             this.comBarLabelVacationLeft.Visibility = Telerik.WinControls.ElementVisibility.Visible;
             this.comBarLabelVacationLeft.VisibleInOverflowMenu = false;
             // 
+            // comBarSeparator4
+            // 
+            this.comBarSeparator4.AccessibleDescription = "comBarSeparator4";
+            this.comBarSeparator4.AccessibleName = "comBarSeparator4";
+            this.comBarSeparator4.DisplayName = "commandBarSeparator1";
+            this.comBarSeparator4.Name = "comBarSeparator4";
+            this.comBarSeparator4.Visibility = Telerik.WinControls.ElementVisibility.Visible;
+            this.comBarSeparator4.VisibleInOverflowMenu = false;
+            // 
+            // comBarLabelBirthday
+            // 
+            this.comBarLabelBirthday.AccessibleDescription = "comBarLabelBirthday";
+            this.comBarLabelBirthday.AccessibleName = "comBarLabelBirthday";
+            this.comBarLabelBirthday.DisplayName = "commandBarLabel1";
+            this.comBarLabelBirthday.Name = "comBarLabelBirthday";
+            this.comBarLabelBirthday.Text = "День рождения:";
+            this.comBarLabelBirthday.Visibility = Telerik.WinControls.ElementVisibility.Visible;
+            // 
             // lEmployeeName
             // 
             this.lEmployeeName.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -361,10 +379,14 @@
             this.bFireHire.TabIndex = 3;
             this.bFireHire.Text = "Уволить";
             this.bFireHire.Click += new System.EventHandler(this.bFireHire_Click);
+            ((Telerik.WinControls.Primitives.FillPrimitive)(this.bFireHire.GetChildAt(0).GetChildAt(0))).BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(220)))), ((int)(((byte)(230)))));
+            ((Telerik.WinControls.Primitives.FillPrimitive)(this.bFireHire.GetChildAt(0).GetChildAt(0))).BackColor3 = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(200)))), ((int)(((byte)(220)))));
+            ((Telerik.WinControls.Primitives.FillPrimitive)(this.bFireHire.GetChildAt(0).GetChildAt(0))).BackColor4 = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(189)))), ((int)(((byte)(230)))));
+            ((Telerik.WinControls.Primitives.FillPrimitive)(this.bFireHire.GetChildAt(0).GetChildAt(0))).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(220)))), ((int)(((byte)(233)))));
             // 
             // bOK
             // 
-            this.bOK.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.bOK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.bOK.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.bOK.Location = new System.Drawing.Point(455, 10);
             this.bOK.Name = "bOK";
@@ -372,25 +394,6 @@
             this.bOK.TabIndex = 2;
             this.bOK.Text = "ОК";
             this.bOK.Click += new System.EventHandler(this.bOK_Click);
-            // 
-            // comBarSeparator4
-            // 
-            this.comBarSeparator4.AccessibleDescription = "comBarSeparator4";
-            this.comBarSeparator4.AccessibleName = "comBarSeparator4";
-            this.comBarSeparator4.DisplayName = "commandBarSeparator1";
-            this.comBarSeparator4.Name = "comBarSeparator4";
-            this.comBarSeparator4.Text = "";
-            this.comBarSeparator4.Visibility = Telerik.WinControls.ElementVisibility.Visible;
-            this.comBarSeparator4.VisibleInOverflowMenu = false;
-            // 
-            // comBarLabelBirthday
-            // 
-            this.comBarLabelBirthday.AccessibleDescription = "comBarLabelBirthday";
-            this.comBarLabelBirthday.AccessibleName = "comBarLabelBirthday";
-            this.comBarLabelBirthday.DisplayName = "commandBarLabel1";
-            this.comBarLabelBirthday.Name = "comBarLabelBirthday";
-            this.comBarLabelBirthday.Text = "День рождения:";
-            this.comBarLabelBirthday.Visibility = Telerik.WinControls.ElementVisibility.Visible;
             // 
             // EmployeeDetailedView
             // 

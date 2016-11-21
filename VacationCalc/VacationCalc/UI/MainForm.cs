@@ -17,6 +17,7 @@ namespace VacationCalc
     public partial class MainForm : Telerik.WinControls.UI.RadForm
     {
         private EmployeeManager employeeManager;
+        private bool saveOnExit;
         
 
         public MainForm()
@@ -28,7 +29,7 @@ namespace VacationCalc
         private void MainForm_Load(object sender, EventArgs e)
         {
             RadGridLocalizationProvider.CurrentProvider = new RussianGridViewLocalization();
-            employeeManager.LoadDataFromXml();
+            saveOnExit = employeeManager.LoadDataFromXml();
             GridViewComboBoxColumn column = gridViewEmployees.Columns["colAccType"] as GridViewComboBoxColumn;
 
             EmploymentTypeList temp = new EmploymentTypeList();
@@ -38,6 +39,8 @@ namespace VacationCalc
 
             UpdateGrids();
             UpdateStatusStrip();
+            if (!saveOnExit)
+                MessageBox.Show("Произошла ошибка при загрузке данных. Данные не будут сохранены при окончании работы, обратитесь в техподдержку.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         private void UpdateGrids()
@@ -154,7 +157,8 @@ namespace VacationCalc
 
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
         {
-            employeeManager.SaveDataToXML();
+            if (saveOnExit)
+                employeeManager.SaveDataToXML();
         }
 
         private void menuHolidaysCalendar_Click(object sender, EventArgs e)

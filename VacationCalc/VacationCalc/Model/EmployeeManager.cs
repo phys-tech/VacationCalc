@@ -109,37 +109,45 @@ namespace VacationCalc.Model
             doc.Save(XmlFilename);
         }
 
-        public void LoadDataFromXml()
+        public bool LoadDataFromXml()
         {
             XDocument doc = XDocument.Load(XmlFilename);
-            foreach (XElement element in doc.Root.Elements())
+            try
             {
-                string name = element.Element("Name").Value.ToString();
-                DateTime date = DateTime.Parse(element.Element("HireDate").Value.ToString());
-                EmploymentType type = (EmploymentType) Enum.Parse(typeof(EmploymentType), element.Element("AccountType").Value.ToString());
-                bool fired = bool.Parse(element.Element("IsFired").Value);
-
-                var tempDate = element.Elements("BirthDate").DefaultIfEmpty(new XElement("Default", new DateTime(2000, 1, 1)));
-                DateTime birth = DateTime.Parse(tempDate.First().Value.ToString());
-
-                int id = GetNewID();
-                Employees.Add(id, new Employee(name, date, type, fired, birth));
-                XElement vacations = element.Element("Vacations");
-                foreach (XElement vacationElem in vacations.Elements())
+                foreach (XElement element in doc.Root.Elements())
                 {
-                    if (vacationElem.HasAttributes)
+                    string name = element.Element("Name").Value.ToString();
+                    DateTime date = DateTime.Parse(element.Element("HireDate").Value.ToString());
+                    EmploymentType type = (EmploymentType)Enum.Parse(typeof(EmploymentType), element.Element("AccountType").Value.ToString());
+                    bool fired = bool.Parse(element.Element("IsFired").Value);
+
+                    var tempDate = element.Elements("BirthDate").DefaultIfEmpty(new XElement("Default", new DateTime(2000, 1, 1)));
+                    DateTime birth = DateTime.Parse(tempDate.First().Value.ToString());
+
+                    int id = GetNewID();
+                    Employees.Add(id, new Employee(name, date, type, fired, birth));
+                    XElement vacations = element.Element("Vacations");
+                    foreach (XElement vacationElem in vacations.Elements())
                     {
-                        int duration = int.Parse(vacationElem.Attribute("Duration").Value.ToString());
-                        AddVacation(id, new Vacation(duration));
-                    }
-                    else
-                    {
-                        DateTime start = DateTime.Parse(vacationElem.Element("StartDate").Value.ToString());
-                        DateTime end = DateTime.Parse(vacationElem.Element("EndDate").Value.ToString());
-                        AddVacation(id, new Vacation(start, end));
+                        if (vacationElem.HasAttributes)
+                        {
+                            int duration = int.Parse(vacationElem.Attribute("Duration").Value.ToString());
+                            AddVacation(id, new Vacation(duration));
+                        }
+                        else
+                        {
+                            DateTime start = DateTime.Parse(vacationElem.Element("StartDate").Value.ToString());
+                            DateTime end = DateTime.Parse(vacationElem.Element("EndDate").Value.ToString());
+                            AddVacation(id, new Vacation(start, end));
+                        }
                     }
                 }
             }
+            catch (Exception exc)
+            {             
+                return false;                
+            }
+            return true;
         }
 
         public int NumberOfEmployees()

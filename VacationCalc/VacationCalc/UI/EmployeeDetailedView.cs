@@ -30,6 +30,7 @@ namespace VacationCalc
             comBarLabelHireDate.Text = "Принят: " + employee.HireDate.ToLongDateString();
             comBarLabelType.Text = employee.AccountType.GetRussianName();
             comBarLabelBirthday.Text = "День рождения: " + employee.BirthDate.ToShortDateString();
+            comBarLabelMobile.Text = "Мобильный: " + employee.MobilePhone;
             UpdateContract();
             UpdateVacationInfo();
 

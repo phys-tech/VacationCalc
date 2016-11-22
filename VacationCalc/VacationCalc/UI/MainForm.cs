@@ -39,6 +39,7 @@ namespace VacationCalc
 
             UpdateGrids();
             UpdateStatusStrip();
+            //SetDateTimePicker();
             if (!saveOnExit)
                 MessageBox.Show("Произошла ошибка при загрузке данных. Данные не будут сохранены при окончании работы, обратитесь в техподдержку.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
@@ -56,7 +57,8 @@ namespace VacationCalc
                 EmploymentType type = emp.AccountType;
                 int vacation = emp.GetVacationDaysLeft();
                 DateTime birth = emp.BirthDate;
-                object[] row = { empID, name, date, type, vacation, birth };
+                string mobile = emp.MobilePhone;
+                object[] row = { empID, name, date, type, vacation, birth, mobile };
                 if (!emp.IsFired)
                     gridViewEmployees.Rows.Add(row);
                 else
@@ -86,7 +88,8 @@ namespace VacationCalc
                 DateTime date = (DateTime)e.Rows[0].Cells["colHireDate"].Value;
                 EmploymentType type = (EmploymentType)Enum.Parse(typeof(EmploymentType), e.Rows[0].Cells["colAccType"].Value.ToString());
                 DateTime birthday = (DateTime)e.Rows[0].Cells["colBirthDate"].Value;
-                int id = employeeManager.AddEmployee(name, date, type, birthday);
+                string mobile = e.Rows[0].Cells["colMobile"].Value.ToString();
+                int id = employeeManager.AddEmployee(name, date, type, birthday, mobile);
                 e.Rows[0].Cells["colID"].Value = id;
                 UpdateVacationDays(id, e.Rows[0]);
                 UpdateStatusStrip();
@@ -123,6 +126,8 @@ namespace VacationCalc
                 employeeManager.ChangeType(id, (EmploymentType)Enum.Parse(typeof(EmploymentType), e.Value.ToString()));
             else if (e.Column.Name == "colBirthDate")
                 employeeManager.ChangeBirthday(id, (DateTime)e.Value);
+            else if (e.Column.Name == "colMobile")
+                employeeManager.ChangeMobilePhone(id, e.Value.ToString());
 
             UpdateVacationDays(id, e.Row);
         }
@@ -166,6 +171,26 @@ namespace VacationCalc
             HolidaysForm holidays = new HolidaysForm();
             holidays.Show();
         }
+        /*
+        private void SetDateTimePicker()
+        {
+            var column = gridViewEmployees.Columns["colBirthDate"];
+            var editor = column.GetDefaultEditor();
+            var stuff = ((RadDateTimeEditor)editor);
+            var elem = stuff.EditorElement;
+            var cal = (RadDateTimePickerElement)elem;
+            //cal.BorderThickness.All = 4;
+            cal.ShowCurrentTime = false;
+
+            
+            editor.Validate();
+            editor.Initialize(gridViewEmployees, editor);
+
+            //editor.Validate();
+            //MessageBox.Show(editor.ToString());
+            
+
+        }*/
 
     }
 }

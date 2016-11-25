@@ -171,6 +171,34 @@ namespace VacationCalc
             HolidaysForm holidays = new HolidaysForm();
             holidays.Show();
         }
+
+        private void menuPrintMobiles_Click(object sender, EventArgs e)
+        {
+            printDocumentRad = new RadPrintDocument();
+            printDocumentRad.DefaultPageSettings.Landscape = false;
+            printDocumentRad.AssociatedObject = this.gridViewEmployees;
+            printDocumentRad.MiddleHeader = "Список телефонов сотрудников офиса Фастдев, Екатеринбург";
+            printDocumentRad.HeaderFont = new System.Drawing.Font(FontFamily.GenericSerif, 15.0F);
+            printDocumentRad.LeftFooter = "Число сотрудников: " + employeeManager.NumberOfEmployees();
+
+            gridViewEmployees.Columns["colHireDate"].IsVisible = false;
+            gridViewEmployees.Columns["colAccType"].IsVisible = false;
+            gridViewEmployees.Columns["colVacationLeft"].IsVisible = false;
+            gridViewEmployees.Columns["colView"].IsVisible = false;
+            gridViewEmployees.Columns["colAddVacation"].IsVisible = false;
+
+
+            //printDocumentRad.Print();
+            RadPrintPreviewDialog dialog = new RadPrintPreviewDialog();
+            dialog.Document = printDocumentRad;
+            dialog.ShowDialog();
+            gridViewEmployees.Columns["colHireDate"].IsVisible = true;
+            gridViewEmployees.Columns["colAccType"].IsVisible = true;
+            gridViewEmployees.Columns["colVacationLeft"].IsVisible = true;
+            gridViewEmployees.Columns["colView"].IsVisible = true;
+            gridViewEmployees.Columns["colAddVacation"].IsVisible = true;
+                
+        }
         /*
         private void SetDateTimePicker()
         {

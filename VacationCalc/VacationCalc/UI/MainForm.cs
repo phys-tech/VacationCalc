@@ -181,23 +181,21 @@ namespace VacationCalc
             printDocumentRad.HeaderFont = new System.Drawing.Font(FontFamily.GenericSerif, 15.0F);
             printDocumentRad.LeftFooter = "Число сотрудников: " + employeeManager.NumberOfEmployees();
 
-            gridViewEmployees.Columns["colHireDate"].IsVisible = false;
-            gridViewEmployees.Columns["colAccType"].IsVisible = false;
-            gridViewEmployees.Columns["colVacationLeft"].IsVisible = false;
-            gridViewEmployees.Columns["colView"].IsVisible = false;
-            gridViewEmployees.Columns["colAddVacation"].IsVisible = false;
-
-
-            //printDocumentRad.Print();
+            ShowColumns(false);
             RadPrintPreviewDialog dialog = new RadPrintPreviewDialog();
             dialog.Document = printDocumentRad;
             dialog.ShowDialog();
-            gridViewEmployees.Columns["colHireDate"].IsVisible = true;
-            gridViewEmployees.Columns["colAccType"].IsVisible = true;
-            gridViewEmployees.Columns["colVacationLeft"].IsVisible = true;
-            gridViewEmployees.Columns["colView"].IsVisible = true;
-            gridViewEmployees.Columns["colAddVacation"].IsVisible = true;
-                
+            ShowColumns(true);
+            gridViewEmployees.BestFitColumns(BestFitColumnMode.DisplayedCells);
+        }
+
+        private void ShowColumns(bool visibility)
+        {
+            gridViewEmployees.Columns["colHireDate"].IsVisible = visibility;
+            gridViewEmployees.Columns["colAccType"].IsVisible = visibility;
+            gridViewEmployees.Columns["colVacationLeft"].IsVisible = visibility;
+            gridViewEmployees.Columns["colView"].IsVisible = visibility;
+            gridViewEmployees.Columns["colAddVacation"].IsVisible = visibility;
         }
         /*
         private void SetDateTimePicker()

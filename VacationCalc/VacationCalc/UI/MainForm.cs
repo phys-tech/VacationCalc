@@ -181,22 +181,44 @@ namespace VacationCalc
             printDocumentRad.HeaderFont = new System.Drawing.Font(FontFamily.GenericSerif, 15.0F);
             printDocumentRad.LeftFooter = "Число сотрудников: " + employeeManager.NumberOfEmployees();
 
-            ShowColumns(false);
+            ShowColumns(false, true);
             RadPrintPreviewDialog dialog = new RadPrintPreviewDialog();
             dialog.Document = printDocumentRad;
             dialog.ShowDialog();
-            ShowColumns(true);
+            ShowColumns(true, true);
             gridViewEmployees.BestFitColumns(BestFitColumnMode.DisplayedCells);
         }
 
-        private void ShowColumns(bool visibility)
+        private void menuPrintBirthdates_Click(object sender, EventArgs e)
+        {
+            printDocumentRad = new RadPrintDocument();
+            printDocumentRad.DefaultPageSettings.Landscape = false;
+            printDocumentRad.AssociatedObject = this.gridViewEmployees;
+            printDocumentRad.MiddleHeader = "Список дней рожденья сотрудников офиса Фастдев, Екатеринбург";
+            printDocumentRad.HeaderFont = new System.Drawing.Font(FontFamily.GenericSerif, 15.0F);
+            printDocumentRad.LeftFooter = "Число сотрудников: " + employeeManager.NumberOfEmployees();
+
+            ShowColumns(false, false);
+            RadPrintPreviewDialog dialog = new RadPrintPreviewDialog();
+            dialog.Document = printDocumentRad;
+            dialog.ShowDialog();
+            ShowColumns(true, false);
+            gridViewEmployees.BestFitColumns(BestFitColumnMode.DisplayedCells);
+        }
+
+        private void ShowColumns(bool visibility, bool mobile)
         {
             gridViewEmployees.Columns["colHireDate"].IsVisible = visibility;
             gridViewEmployees.Columns["colAccType"].IsVisible = visibility;
             gridViewEmployees.Columns["colVacationLeft"].IsVisible = visibility;
             gridViewEmployees.Columns["colView"].IsVisible = visibility;
             gridViewEmployees.Columns["colAddVacation"].IsVisible = visibility;
+
+            gridViewEmployees.Columns["colMobile"].IsVisible = visibility || mobile;
+            gridViewEmployees.Columns["colBirthDate"].IsVisible = visibility || !mobile;
         }
+
+
         /*
         private void SetDateTimePicker()
         {

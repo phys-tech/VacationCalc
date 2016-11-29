@@ -28,27 +28,27 @@
         /// </summary>
         private void InitializeComponent()
         {
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn7 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn8 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewDateTimeColumn gridViewDateTimeColumn4 = new Telerik.WinControls.UI.GridViewDateTimeColumn();
-            Telerik.WinControls.UI.GridViewComboBoxColumn gridViewComboBoxColumn3 = new Telerik.WinControls.UI.GridViewComboBoxColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn9 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewDateTimeColumn gridViewDateTimeColumn5 = new Telerik.WinControls.UI.GridViewDateTimeColumn();
-            Telerik.WinControls.UI.ConditionalFormattingObject conditionalFormattingObject3 = new Telerik.WinControls.UI.ConditionalFormattingObject();
-            Telerik.WinControls.UI.GridViewMaskBoxColumn gridViewMaskBoxColumn2 = new Telerik.WinControls.UI.GridViewMaskBoxColumn();
-            Telerik.WinControls.UI.ConditionalFormattingObject conditionalFormattingObject4 = new Telerik.WinControls.UI.ConditionalFormattingObject();
-            Telerik.WinControls.UI.GridViewCommandColumn gridViewCommandColumn5 = new Telerik.WinControls.UI.GridViewCommandColumn();
-            Telerik.WinControls.UI.GridViewCommandColumn gridViewCommandColumn6 = new Telerik.WinControls.UI.GridViewCommandColumn();
-            Telerik.WinControls.Data.SortDescriptor sortDescriptor3 = new Telerik.WinControls.Data.SortDescriptor();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn10 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn11 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewDateTimeColumn gridViewDateTimeColumn6 = new Telerik.WinControls.UI.GridViewDateTimeColumn();
-            Telerik.WinControls.UI.GridViewComboBoxColumn gridViewComboBoxColumn4 = new Telerik.WinControls.UI.GridViewComboBoxColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn12 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewCommandColumn gridViewCommandColumn7 = new Telerik.WinControls.UI.GridViewCommandColumn();
-            Telerik.WinControls.UI.GridViewCommandColumn gridViewCommandColumn8 = new Telerik.WinControls.UI.GridViewCommandColumn();
-            Telerik.WinControls.Data.SortDescriptor sortDescriptor4 = new Telerik.WinControls.Data.SortDescriptor();
-            Telerik.WinControls.UI.RadPrintWatermark radPrintWatermark2 = new Telerik.WinControls.UI.RadPrintWatermark();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn1 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn2 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewDateTimeColumn gridViewDateTimeColumn1 = new Telerik.WinControls.UI.GridViewDateTimeColumn();
+            Telerik.WinControls.UI.GridViewComboBoxColumn gridViewComboBoxColumn1 = new Telerik.WinControls.UI.GridViewComboBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn3 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewDateTimeColumn gridViewDateTimeColumn2 = new Telerik.WinControls.UI.GridViewDateTimeColumn();
+            Telerik.WinControls.UI.ConditionalFormattingObject conditionalFormattingObject1 = new Telerik.WinControls.UI.ConditionalFormattingObject();
+            Telerik.WinControls.UI.GridViewMaskBoxColumn gridViewMaskBoxColumn1 = new Telerik.WinControls.UI.GridViewMaskBoxColumn();
+            Telerik.WinControls.UI.ConditionalFormattingObject conditionalFormattingObject2 = new Telerik.WinControls.UI.ConditionalFormattingObject();
+            Telerik.WinControls.UI.GridViewCommandColumn gridViewCommandColumn1 = new Telerik.WinControls.UI.GridViewCommandColumn();
+            Telerik.WinControls.UI.GridViewCommandColumn gridViewCommandColumn2 = new Telerik.WinControls.UI.GridViewCommandColumn();
+            Telerik.WinControls.Data.SortDescriptor sortDescriptor1 = new Telerik.WinControls.Data.SortDescriptor();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn4 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn5 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewDateTimeColumn gridViewDateTimeColumn3 = new Telerik.WinControls.UI.GridViewDateTimeColumn();
+            Telerik.WinControls.UI.GridViewComboBoxColumn gridViewComboBoxColumn2 = new Telerik.WinControls.UI.GridViewComboBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn6 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewCommandColumn gridViewCommandColumn3 = new Telerik.WinControls.UI.GridViewCommandColumn();
+            Telerik.WinControls.UI.GridViewCommandColumn gridViewCommandColumn4 = new Telerik.WinControls.UI.GridViewCommandColumn();
+            Telerik.WinControls.Data.SortDescriptor sortDescriptor2 = new Telerik.WinControls.Data.SortDescriptor();
+            Telerik.WinControls.UI.RadPrintWatermark radPrintWatermark1 = new Telerik.WinControls.UI.RadPrintWatermark();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.statusStrip = new Telerik.WinControls.UI.RadStatusStrip();
             this.statusNumOfEmloyees = new Telerik.WinControls.UI.RadLabelElement();
@@ -61,10 +61,10 @@
             this.menuHolidaysCalendar = new Telerik.WinControls.UI.RadMenuItem();
             this.menuMain = new Telerik.WinControls.UI.RadMenu();
             this.menuItemMain = new Telerik.WinControls.UI.RadMenuItem();
-            this.menuPrintMobiles = new Telerik.WinControls.UI.RadMenuItem();
-            this.printDocumentRad = new Telerik.WinControls.UI.RadPrintDocument();
             this.menuSeparator1 = new Telerik.WinControls.UI.RadMenuSeparatorItem();
+            this.menuPrintMobiles = new Telerik.WinControls.UI.RadMenuItem();
             this.menuPrintBirthdates = new Telerik.WinControls.UI.RadMenuItem();
+            this.printDocumentRad = new Telerik.WinControls.UI.RadPrintDocument();
             ((System.ComponentModel.ISupportInitialize)(this.statusStrip)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pageView)).BeginInit();
             this.pageView.SuspendLayout();
@@ -155,89 +155,101 @@
             this.gridViewEmployees.MasterTemplate.AddNewRowPosition = Telerik.WinControls.UI.SystemRowPosition.Bottom;
             this.gridViewEmployees.MasterTemplate.AutoGenerateColumns = false;
             this.gridViewEmployees.MasterTemplate.AutoSizeColumnsMode = Telerik.WinControls.UI.GridViewAutoSizeColumnsMode.Fill;
-            gridViewTextBoxColumn7.EnableExpressionEditor = false;
-            gridViewTextBoxColumn7.HeaderText = "ID";
-            gridViewTextBoxColumn7.IsVisible = false;
-            gridViewTextBoxColumn7.Name = "colID";
-            gridViewTextBoxColumn7.ReadOnly = true;
-            gridViewTextBoxColumn8.EnableExpressionEditor = false;
-            gridViewTextBoxColumn8.HeaderText = "ФИО";
-            gridViewTextBoxColumn8.Name = "colName";
-            gridViewTextBoxColumn8.SortOrder = Telerik.WinControls.UI.RadSortOrder.Ascending;
-            gridViewTextBoxColumn8.Width = 184;
-            gridViewDateTimeColumn4.EnableExpressionEditor = false;
-            gridViewDateTimeColumn4.FilteringMode = Telerik.WinControls.UI.GridViewTimeFilteringMode.Date;
-            gridViewDateTimeColumn4.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            gridViewDateTimeColumn4.FormatString = "{0:D}";
-            gridViewDateTimeColumn4.HeaderText = "Дата приема";
-            gridViewDateTimeColumn4.Name = "colHireDate";
-            gridViewDateTimeColumn4.Width = 87;
-            gridViewComboBoxColumn3.EnableExpressionEditor = false;
-            gridViewComboBoxColumn3.HeaderText = "Тип занятости";
-            gridViewComboBoxColumn3.Name = "colAccType";
-            gridViewComboBoxColumn3.Width = 104;
-            gridViewTextBoxColumn9.EnableExpressionEditor = false;
-            gridViewTextBoxColumn9.HeaderText = "Кол-во оставшихся дней отпуска";
-            gridViewTextBoxColumn9.Name = "colVacationLeft";
-            gridViewTextBoxColumn9.ReadOnly = true;
-            gridViewTextBoxColumn9.Width = 196;
-            conditionalFormattingObject3.CellBackColor = System.Drawing.Color.Empty;
-            conditionalFormattingObject3.CellForeColor = System.Drawing.Color.Red;
-            conditionalFormattingObject3.ConditionType = Telerik.WinControls.UI.ConditionTypes.GreaterOrEqual;
-            conditionalFormattingObject3.Name = "BirthdayNotSet";
-            conditionalFormattingObject3.RowBackColor = System.Drawing.Color.Empty;
-            conditionalFormattingObject3.RowForeColor = System.Drawing.Color.Empty;
-            conditionalFormattingObject3.TValue1 = "1.01.2000";
-            gridViewDateTimeColumn5.ConditionalFormattingObjectList.Add(conditionalFormattingObject3);
-            gridViewDateTimeColumn5.EnableExpressionEditor = false;
-            gridViewDateTimeColumn5.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            gridViewDateTimeColumn5.FormatString = "{0:dd.MM.yyyy}";
-            gridViewDateTimeColumn5.HeaderText = "День рождения";
-            gridViewDateTimeColumn5.Name = "colBirthDate";
-            gridViewDateTimeColumn5.Width = 99;
-            conditionalFormattingObject4.CellBackColor = System.Drawing.Color.Empty;
-            conditionalFormattingObject4.CellForeColor = System.Drawing.Color.Red;
-            conditionalFormattingObject4.Name = "MobileNotSet";
-            conditionalFormattingObject4.RowBackColor = System.Drawing.Color.Empty;
-            conditionalFormattingObject4.RowForeColor = System.Drawing.Color.Empty;
-            conditionalFormattingObject4.TValue1 = "0000";
-            gridViewMaskBoxColumn2.ConditionalFormattingObjectList.Add(conditionalFormattingObject4);
-            gridViewMaskBoxColumn2.EnableExpressionEditor = false;
-            gridViewMaskBoxColumn2.FieldName = "Мобильный";
-            gridViewMaskBoxColumn2.HeaderText = "Мобильный";
-            gridViewMaskBoxColumn2.MaskType = Telerik.WinControls.UI.MaskType.Numeric;
-            gridViewMaskBoxColumn2.Name = "colMobile";
-            gridViewMaskBoxColumn2.Width = 93;
-            gridViewCommandColumn5.DefaultText = "Добавить...";
-            gridViewCommandColumn5.EnableExpressionEditor = false;
-            gridViewCommandColumn5.HeaderText = "Отпуск";
-            gridViewCommandColumn5.Name = "colAddVacation";
-            gridViewCommandColumn5.UseDefaultText = true;
-            gridViewCommandColumn5.Width = 63;
-            gridViewCommandColumn6.DefaultText = "Просмотр";
-            gridViewCommandColumn6.EnableExpressionEditor = false;
-            gridViewCommandColumn6.HeaderText = "Инфо";
-            gridViewCommandColumn6.Name = "colView";
-            gridViewCommandColumn6.UseDefaultText = true;
-            gridViewCommandColumn6.Width = 90;
+            gridViewTextBoxColumn1.EnableExpressionEditor = false;
+            gridViewTextBoxColumn1.HeaderText = "ID";
+            gridViewTextBoxColumn1.IsVisible = false;
+            gridViewTextBoxColumn1.Name = "colID";
+            gridViewTextBoxColumn1.ReadOnly = true;
+            gridViewTextBoxColumn2.EnableExpressionEditor = false;
+            gridViewTextBoxColumn2.HeaderText = "ФИО";
+            gridViewTextBoxColumn2.MinWidth = 200;
+            gridViewTextBoxColumn2.Name = "colName";
+            gridViewTextBoxColumn2.SortOrder = Telerik.WinControls.UI.RadSortOrder.Ascending;
+            gridViewTextBoxColumn2.Width = 211;
+            gridViewDateTimeColumn1.EnableExpressionEditor = false;
+            gridViewDateTimeColumn1.FilteringMode = Telerik.WinControls.UI.GridViewTimeFilteringMode.Date;
+            gridViewDateTimeColumn1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            gridViewDateTimeColumn1.FormatString = "{0:D}";
+            gridViewDateTimeColumn1.HeaderText = "Дата приема";
+            gridViewDateTimeColumn1.MinWidth = 105;
+            gridViewDateTimeColumn1.Name = "colHireDate";
+            gridViewDateTimeColumn1.Width = 111;
+            gridViewComboBoxColumn1.EnableExpressionEditor = false;
+            gridViewComboBoxColumn1.HeaderText = "Тип занятости";
+            gridViewComboBoxColumn1.MinWidth = 80;
+            gridViewComboBoxColumn1.Name = "colAccType";
+            gridViewComboBoxColumn1.Width = 84;
+            gridViewTextBoxColumn3.EnableExpressionEditor = false;
+            gridViewTextBoxColumn3.HeaderText = "Кол-во оставшихся дней отпуска";
+            gridViewTextBoxColumn3.MaxWidth = 200;
+            gridViewTextBoxColumn3.MinWidth = 180;
+            gridViewTextBoxColumn3.Name = "colVacationLeft";
+            gridViewTextBoxColumn3.ReadOnly = true;
+            gridViewTextBoxColumn3.Width = 190;
+            conditionalFormattingObject1.CellBackColor = System.Drawing.Color.Empty;
+            conditionalFormattingObject1.CellForeColor = System.Drawing.Color.Red;
+            conditionalFormattingObject1.ConditionType = Telerik.WinControls.UI.ConditionTypes.GreaterOrEqual;
+            conditionalFormattingObject1.Name = "BirthdayNotSet";
+            conditionalFormattingObject1.RowBackColor = System.Drawing.Color.Empty;
+            conditionalFormattingObject1.RowForeColor = System.Drawing.Color.Empty;
+            conditionalFormattingObject1.TValue1 = "1.01.2000";
+            gridViewDateTimeColumn2.ConditionalFormattingObjectList.Add(conditionalFormattingObject1);
+            gridViewDateTimeColumn2.EnableExpressionEditor = false;
+            gridViewDateTimeColumn2.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            gridViewDateTimeColumn2.FormatString = "{0:dd.MM.yyyy}";
+            gridViewDateTimeColumn2.HeaderText = "День рождения";
+            gridViewDateTimeColumn2.MaxWidth = 130;
+            gridViewDateTimeColumn2.MinWidth = 90;
+            gridViewDateTimeColumn2.Name = "colBirthDate";
+            gridViewDateTimeColumn2.Width = 95;
+            conditionalFormattingObject2.CellBackColor = System.Drawing.Color.Empty;
+            conditionalFormattingObject2.CellForeColor = System.Drawing.Color.Red;
+            conditionalFormattingObject2.Name = "MobileNotSet";
+            conditionalFormattingObject2.RowBackColor = System.Drawing.Color.Empty;
+            conditionalFormattingObject2.RowForeColor = System.Drawing.Color.Empty;
+            conditionalFormattingObject2.TValue1 = "0000";
+            gridViewMaskBoxColumn1.ConditionalFormattingObjectList.Add(conditionalFormattingObject2);
+            gridViewMaskBoxColumn1.EnableExpressionEditor = false;
+            gridViewMaskBoxColumn1.FieldName = "Мобильный";
+            gridViewMaskBoxColumn1.HeaderText = "Мобильный";
+            gridViewMaskBoxColumn1.MaskType = Telerik.WinControls.UI.MaskType.Numeric;
+            gridViewMaskBoxColumn1.MaxWidth = 130;
+            gridViewMaskBoxColumn1.MinWidth = 75;
+            gridViewMaskBoxColumn1.Name = "colMobile";
+            gridViewMaskBoxColumn1.Width = 79;
+            gridViewCommandColumn1.DefaultText = "Добавить...";
+            gridViewCommandColumn1.EnableExpressionEditor = false;
+            gridViewCommandColumn1.HeaderText = "Отпуск";
+            gridViewCommandColumn1.MinWidth = 70;
+            gridViewCommandColumn1.Name = "colAddVacation";
+            gridViewCommandColumn1.UseDefaultText = true;
+            gridViewCommandColumn1.Width = 74;
+            gridViewCommandColumn2.DefaultText = "Просмотр";
+            gridViewCommandColumn2.EnableExpressionEditor = false;
+            gridViewCommandColumn2.HeaderText = "Инфо";
+            gridViewCommandColumn2.MinWidth = 70;
+            gridViewCommandColumn2.Name = "colView";
+            gridViewCommandColumn2.UseDefaultText = true;
+            gridViewCommandColumn2.Width = 72;
             this.gridViewEmployees.MasterTemplate.Columns.AddRange(new Telerik.WinControls.UI.GridViewDataColumn[] {
-            gridViewTextBoxColumn7,
-            gridViewTextBoxColumn8,
-            gridViewDateTimeColumn4,
-            gridViewComboBoxColumn3,
-            gridViewTextBoxColumn9,
-            gridViewDateTimeColumn5,
-            gridViewMaskBoxColumn2,
-            gridViewCommandColumn5,
-            gridViewCommandColumn6});
-            sortDescriptor3.PropertyName = "colName";
+            gridViewTextBoxColumn1,
+            gridViewTextBoxColumn2,
+            gridViewDateTimeColumn1,
+            gridViewComboBoxColumn1,
+            gridViewTextBoxColumn3,
+            gridViewDateTimeColumn2,
+            gridViewMaskBoxColumn1,
+            gridViewCommandColumn1,
+            gridViewCommandColumn2});
+            sortDescriptor1.PropertyName = "colName";
             this.gridViewEmployees.MasterTemplate.SortDescriptors.AddRange(new Telerik.WinControls.Data.SortDescriptor[] {
-            sortDescriptor3});
+            sortDescriptor1});
             this.gridViewEmployees.Name = "gridViewEmployees";
             this.gridViewEmployees.NewRowEnterKeyMode = Telerik.WinControls.UI.RadGridViewNewRowEnterKeyMode.EnterMovesToNextCell;
             this.gridViewEmployees.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.gridViewEmployees.Size = new System.Drawing.Size(930, 474);
             this.gridViewEmployees.TabIndex = 1;
+            this.gridViewEmployees.UseScrollbarsInHierarchy = true;
             this.gridViewEmployees.UserAddingRow += new Telerik.WinControls.UI.GridViewRowCancelEventHandler(this.gridViewEmployees_UserAddingRow);
             this.gridViewEmployees.UserDeletingRow += new Telerik.WinControls.UI.GridViewRowCancelEventHandler(this.gridViewEmployees_UserDeletingRow);
             this.gridViewEmployees.CellValueChanged += new Telerik.WinControls.UI.GridViewCellEventHandler(this.gridViewEmployees_CellValueChanged);
@@ -267,54 +279,54 @@
             this.gridViewFired.MasterTemplate.AddNewRowPosition = Telerik.WinControls.UI.SystemRowPosition.Bottom;
             this.gridViewFired.MasterTemplate.AutoGenerateColumns = false;
             this.gridViewFired.MasterTemplate.AutoSizeColumnsMode = Telerik.WinControls.UI.GridViewAutoSizeColumnsMode.Fill;
-            gridViewTextBoxColumn10.EnableExpressionEditor = false;
-            gridViewTextBoxColumn10.HeaderText = "ID";
-            gridViewTextBoxColumn10.IsVisible = false;
-            gridViewTextBoxColumn10.Name = "colID";
-            gridViewTextBoxColumn10.ReadOnly = true;
-            gridViewTextBoxColumn11.EnableExpressionEditor = false;
-            gridViewTextBoxColumn11.HeaderText = "ФИО";
-            gridViewTextBoxColumn11.Name = "colName";
-            gridViewTextBoxColumn11.Width = 268;
-            gridViewDateTimeColumn6.EnableExpressionEditor = false;
-            gridViewDateTimeColumn6.FilteringMode = Telerik.WinControls.UI.GridViewTimeFilteringMode.Date;
-            gridViewDateTimeColumn6.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            gridViewDateTimeColumn6.FormatString = "{0:D}";
-            gridViewDateTimeColumn6.HeaderText = "Дата приема";
-            gridViewDateTimeColumn6.Name = "colHireDate";
-            gridViewDateTimeColumn6.Width = 146;
-            gridViewComboBoxColumn4.EnableExpressionEditor = false;
-            gridViewComboBoxColumn4.HeaderText = "Тип занятости";
-            gridViewComboBoxColumn4.Name = "colAccType";
-            gridViewComboBoxColumn4.Width = 115;
-            gridViewTextBoxColumn12.EnableExpressionEditor = false;
-            gridViewTextBoxColumn12.HeaderText = "Кол-во оставшихся дней отпуска";
-            gridViewTextBoxColumn12.Name = "colVacationLeft";
-            gridViewTextBoxColumn12.ReadOnly = true;
-            gridViewTextBoxColumn12.Width = 227;
-            gridViewCommandColumn7.DefaultText = "Добавить...";
-            gridViewCommandColumn7.EnableExpressionEditor = false;
-            gridViewCommandColumn7.HeaderText = "Отпуск";
-            gridViewCommandColumn7.Name = "colAddVacation";
-            gridViewCommandColumn7.UseDefaultText = true;
-            gridViewCommandColumn7.Width = 87;
-            gridViewCommandColumn8.DefaultText = "Просмотр";
-            gridViewCommandColumn8.EnableExpressionEditor = false;
-            gridViewCommandColumn8.HeaderText = "Инфо";
-            gridViewCommandColumn8.Name = "colView";
-            gridViewCommandColumn8.UseDefaultText = true;
-            gridViewCommandColumn8.Width = 71;
+            gridViewTextBoxColumn4.EnableExpressionEditor = false;
+            gridViewTextBoxColumn4.HeaderText = "ID";
+            gridViewTextBoxColumn4.IsVisible = false;
+            gridViewTextBoxColumn4.Name = "colID";
+            gridViewTextBoxColumn4.ReadOnly = true;
+            gridViewTextBoxColumn5.EnableExpressionEditor = false;
+            gridViewTextBoxColumn5.HeaderText = "ФИО";
+            gridViewTextBoxColumn5.Name = "colName";
+            gridViewTextBoxColumn5.Width = 268;
+            gridViewDateTimeColumn3.EnableExpressionEditor = false;
+            gridViewDateTimeColumn3.FilteringMode = Telerik.WinControls.UI.GridViewTimeFilteringMode.Date;
+            gridViewDateTimeColumn3.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            gridViewDateTimeColumn3.FormatString = "{0:D}";
+            gridViewDateTimeColumn3.HeaderText = "Дата приема";
+            gridViewDateTimeColumn3.Name = "colHireDate";
+            gridViewDateTimeColumn3.Width = 146;
+            gridViewComboBoxColumn2.EnableExpressionEditor = false;
+            gridViewComboBoxColumn2.HeaderText = "Тип занятости";
+            gridViewComboBoxColumn2.Name = "colAccType";
+            gridViewComboBoxColumn2.Width = 115;
+            gridViewTextBoxColumn6.EnableExpressionEditor = false;
+            gridViewTextBoxColumn6.HeaderText = "Кол-во оставшихся дней отпуска";
+            gridViewTextBoxColumn6.Name = "colVacationLeft";
+            gridViewTextBoxColumn6.ReadOnly = true;
+            gridViewTextBoxColumn6.Width = 227;
+            gridViewCommandColumn3.DefaultText = "Добавить...";
+            gridViewCommandColumn3.EnableExpressionEditor = false;
+            gridViewCommandColumn3.HeaderText = "Отпуск";
+            gridViewCommandColumn3.Name = "colAddVacation";
+            gridViewCommandColumn3.UseDefaultText = true;
+            gridViewCommandColumn3.Width = 87;
+            gridViewCommandColumn4.DefaultText = "Просмотр";
+            gridViewCommandColumn4.EnableExpressionEditor = false;
+            gridViewCommandColumn4.HeaderText = "Инфо";
+            gridViewCommandColumn4.Name = "colView";
+            gridViewCommandColumn4.UseDefaultText = true;
+            gridViewCommandColumn4.Width = 71;
             this.gridViewFired.MasterTemplate.Columns.AddRange(new Telerik.WinControls.UI.GridViewDataColumn[] {
-            gridViewTextBoxColumn10,
-            gridViewTextBoxColumn11,
-            gridViewDateTimeColumn6,
-            gridViewComboBoxColumn4,
-            gridViewTextBoxColumn12,
-            gridViewCommandColumn7,
-            gridViewCommandColumn8});
-            sortDescriptor4.PropertyName = "colButton";
+            gridViewTextBoxColumn4,
+            gridViewTextBoxColumn5,
+            gridViewDateTimeColumn3,
+            gridViewComboBoxColumn2,
+            gridViewTextBoxColumn6,
+            gridViewCommandColumn3,
+            gridViewCommandColumn4});
+            sortDescriptor2.PropertyName = "colButton";
             this.gridViewFired.MasterTemplate.SortDescriptors.AddRange(new Telerik.WinControls.Data.SortDescriptor[] {
-            sortDescriptor4});
+            sortDescriptor2});
             this.gridViewFired.Name = "gridViewFired";
             this.gridViewFired.NewRowEnterKeyMode = Telerik.WinControls.UI.RadGridViewNewRowEnterKeyMode.EnterMovesToNextCell;
             this.gridViewFired.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -354,6 +366,14 @@
             this.menuItemMain.Text = "Меню";
             this.menuItemMain.Visibility = Telerik.WinControls.ElementVisibility.Visible;
             // 
+            // menuSeparator1
+            // 
+            this.menuSeparator1.AccessibleDescription = "menuSeparator1";
+            this.menuSeparator1.AccessibleName = "menuSeparator1";
+            this.menuSeparator1.Name = "menuSeparator1";
+            this.menuSeparator1.Text = "menuSeparator1";
+            this.menuSeparator1.Visibility = Telerik.WinControls.ElementVisibility.Visible;
+            // 
             // menuPrintMobiles
             // 
             this.menuPrintMobiles.AccessibleDescription = "Печать телефонов";
@@ -362,6 +382,15 @@
             this.menuPrintMobiles.Text = "Печать телефонов";
             this.menuPrintMobiles.Visibility = Telerik.WinControls.ElementVisibility.Visible;
             this.menuPrintMobiles.Click += new System.EventHandler(this.menuPrintMobiles_Click);
+            // 
+            // menuPrintBirthdates
+            // 
+            this.menuPrintBirthdates.AccessibleDescription = "menuPrintBirthdates";
+            this.menuPrintBirthdates.AccessibleName = "menuPrintBirthdates";
+            this.menuPrintBirthdates.Name = "menuPrintBirthdates";
+            this.menuPrintBirthdates.Text = "Печать ДР";
+            this.menuPrintBirthdates.Visibility = Telerik.WinControls.ElementVisibility.Visible;
+            this.menuPrintBirthdates.Click += new System.EventHandler(this.menuPrintBirthdates_Click);
             // 
             // printDocumentRad
             // 
@@ -374,24 +403,7 @@
             this.printDocumentRad.MiddleHeader = "Mid2";
             this.printDocumentRad.RightFooter = "Rightr1";
             this.printDocumentRad.RightHeader = "Right2";
-            this.printDocumentRad.Watermark = radPrintWatermark2;
-            // 
-            // menuSeparator1
-            // 
-            this.menuSeparator1.AccessibleDescription = "menuSeparator1";
-            this.menuSeparator1.AccessibleName = "menuSeparator1";
-            this.menuSeparator1.Name = "menuSeparator1";
-            this.menuSeparator1.Text = "menuSeparator1";
-            this.menuSeparator1.Visibility = Telerik.WinControls.ElementVisibility.Visible;
-            // 
-            // menuPrintBirthdates
-            // 
-            this.menuPrintBirthdates.AccessibleDescription = "menuPrintBirthdates";
-            this.menuPrintBirthdates.AccessibleName = "menuPrintBirthdates";
-            this.menuPrintBirthdates.Name = "menuPrintBirthdates";
-            this.menuPrintBirthdates.Text = "Печать ДР";
-            this.menuPrintBirthdates.Visibility = Telerik.WinControls.ElementVisibility.Visible;
-            this.menuPrintBirthdates.Click += new System.EventHandler(this.menuPrintBirthdates_Click);
+            this.printDocumentRad.Watermark = radPrintWatermark1;
             // 
             // MainForm
             // 

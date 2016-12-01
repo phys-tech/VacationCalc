@@ -130,7 +130,7 @@ namespace VacationCalc.Model
                     var tempDate = element.Elements("BirthDate").DefaultIfEmpty(new XElement("Def", new DateTime(2000, 1, 1)));
                     DateTime birth = DateTime.Parse(tempDate.First().Value.ToString());
 
-                    var tempMobile = element.Elements("MobilePhone").DefaultIfEmpty(new XElement("Def", "0000"));
+                    var tempMobile = element.Elements("MobilePhone").DefaultIfEmpty(new XElement("Def", "(000)000-00-00"));
                     string mobile = tempMobile.First().Value.ToString();
 
                     int id = GetNewID();

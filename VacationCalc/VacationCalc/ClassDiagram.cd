@@ -1,0 +1,142 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="VacationCalc.Model.DaysCalculator">
+    <Position X="10.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAQABAQAAAEAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\DaysCalculator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VacationCalc.Model.Employee">
+    <Position X="7" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gEhAAIAAAACAAAIABAAIJAQAASA0AGBAAEgAAAAAAAA=</HashCode>
+      <FileName>Model\Employee.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VacationCalc.Model.EmployeeManager">
+    <Position X="5.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAEAAAAoAgAAEAAEQCEAACAAGAAAAAAAAAkAABAA=</HashCode>
+      <FileName>Model\EmployeeManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VacationCalc.Model.BaseAttribute" Collapsed="true">
+    <Position X="1.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\EmploymentType.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VacationCalc.Model.EnumAttributesBaseLogic">
+    <Position X="0.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAE=</HashCode>
+      <FileName>Model\EmploymentType.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VacationCalc.Model.VacationDaysPerYear">
+    <Position X="0.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\EmploymentType.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VacationCalc.Model.RussianName">
+    <Position X="2.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\EmploymentType.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VacationCalc.Model.EnumExtensionMethods">
+    <Position X="2.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\EmploymentType.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VacationCalc.Model.TypeDataSource">
+    <Position X="2.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQEAAAAAAAAAAAAAAAQAAEAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Model\EmploymentType.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VacationCalc.Model.EmploymentTypeList">
+    <Position X="4" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAIA=</HashCode>
+      <FileName>Model\EmploymentType.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VacationCalc.Model.Vacation">
+    <Position X="8.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAgAAAIAAAACAAAAACAAAAAgAAAAAAAAAAACAEAAAAA=</HashCode>
+      <FileName>Model\Vacation.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VacationCalc.Program" Collapsed="true">
+    <Position X="8.5" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Program.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VacationCalc.AddVacationForm" Collapsed="true">
+    <Position X="3.25" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgIgAAACAABBAAAACIAAICAAAAAAAIBCJAAAAAAAA=</HashCode>
+      <FileName>UI\AddVacationForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VacationCalc.EmployeeDetailedView" Collapsed="true">
+    <Position X="2" Y="8.75" Width="1.25" />
+    <TypeIdentifier>
+      <HashCode>ACABIgCBJSBAIAABoBGIACECBAAAQhAABCJAKAACAQg=</HashCode>
+      <FileName>UI\EmployeeDetailedView.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VacationCalc.MainForm" Collapsed="true">
+    <Position X="0.75" Y="8.75" Width="1.25" />
+    <TypeIdentifier>
+      <HashCode>0BAAkgAAACIFgAAAIACAEAAGBAAIAgMAIAAAhUEIBAE=</HashCode>
+      <FileName>UI\MainForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VacationCalc.Properties.Resources" Collapsed="true">
+    <Position X="11.5" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAABEAAAAQAAAAAAAAAAAAAAAIA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VacationCalc.Properties.Settings" Collapsed="true">
+    <Position X="10" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAIAAAAAABAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VacationCalc.UI.HolidaysForm" Collapsed="true">
+    <Position X="4.75" Y="8.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAIgAAAGgIAAQQAACAAAACACAAAAAAABAAAAAAAAA=</HashCode>
+      <FileName>UI\HolidaysForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VacationCalc.UI.RussianGridViewLocalization" Collapsed="true">
+    <Position X="6.5" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>UI\Localization.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Enum Name="VacationCalc.Model.EmploymentType">
+    <Position X="0.5" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAABAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\EmploymentType.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

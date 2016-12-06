@@ -65,7 +65,7 @@ namespace VacationCalc
                 bFireHire.Text = "Уволить";
         }
 
-        private void MasterTemplate_UserAddingRow(object sender, Telerik.WinControls.UI.GridViewRowCancelEventArgs e)
+        private void gridViewVacations_UserAddingRow(object sender, Telerik.WinControls.UI.GridViewRowCancelEventArgs e)
         {
             if (e.Rows[0].Cells["colEndDate"].Value != null && e.Rows[0].Cells["colStartDate"].Value != null)
             {

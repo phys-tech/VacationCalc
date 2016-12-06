@@ -128,7 +128,7 @@
             this.gridViewVacations.Text = "radGridView1";
             this.gridViewVacations.CellEditorInitialized += new Telerik.WinControls.UI.GridViewCellEventHandler(this.gridViewVacations_CellEditorInitialized);
             this.gridViewVacations.CellValidating += new Telerik.WinControls.UI.CellValidatingEventHandler(this.gridViewVacations_CellValidating);
-            this.gridViewVacations.UserAddingRow += new Telerik.WinControls.UI.GridViewRowCancelEventHandler(this.MasterTemplate_UserAddingRow);
+            this.gridViewVacations.UserAddingRow += new Telerik.WinControls.UI.GridViewRowCancelEventHandler(this.gridViewVacations_UserAddingRow);
             this.gridViewVacations.UserDeletingRow += new Telerik.WinControls.UI.GridViewRowCancelEventHandler(this.gridViewVacations_UserDeletingRow);
             this.gridViewVacations.CellValueChanged += new Telerik.WinControls.UI.GridViewCellEventHandler(this.gridViewVacations_CellValueChanged);
             // 

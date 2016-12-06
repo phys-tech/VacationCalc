@@ -35,7 +35,6 @@ namespace VacationCalc.Model
             int id = GetNewID();
             Employee employee = new Employee(_name, _hireDate, _accType, false, _birthday, _mobile);
             Employees.Add(id, employee);
-            DaysCalculator calc = new DaysCalculator(employee);
             return id;
         }
 

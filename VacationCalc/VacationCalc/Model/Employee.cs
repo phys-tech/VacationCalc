@@ -181,11 +181,6 @@ namespace VacationCalc.Model
             return days;
         }
 
-        public int GetVacationDaysLeft()
-        {
-            return VacationDaysLeft;
-        }
-
         public bool IsOnVacation()
         { 
             DateTime today = DateTime.Today;

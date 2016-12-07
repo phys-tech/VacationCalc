@@ -40,7 +40,7 @@ namespace VacationCalc
             {
                 object[] row;
                 if (vacation.IsDateDefined)
-                    row = new object[4] { number, vacation.StartDate, vacation.EndDate, employee.VacationDuration(vacation.StartDate, vacation.EndDate) };
+                    row = new object[4] { number, vacation.StartDate, vacation.EndDate, vacation.Duration.Days };
                 else
                     row = new object[4] { number, null, null, vacation.Duration.Days };
                 gridViewVacations.Rows.Add(row);
@@ -112,7 +112,7 @@ namespace VacationCalc
             {
                 DateTime start = (DateTime)e.Row.Cells["colStartDate"].Value;
                 DateTime end = (DateTime)e.Row.Cells["colEndDate"].Value;
-                e.Row.Cells["colDuration"].Value = employee.VacationDuration(start, end);
+                e.Row.Cells["colDuration"].Value = employee.GetVacationsList().Find(u => u.StartDate == start && u.EndDate == end).Duration.Days;
             }
         }
 

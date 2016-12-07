@@ -44,6 +44,7 @@ namespace VacationCalc.Model
                 duration = copy.duration;
                 IsDateDefined = copy.IsDateDefined;
             }
+            RecalcDuration();
         }
 
         public DateTime StartDate
@@ -86,7 +87,6 @@ namespace VacationCalc.Model
         protected override void RecalcDuration()
         {
             System.Console.WriteLine("Derived VacationIP: RecalcDuration() call");
-            //base.RecalcDuration();
             int days = 0;
             for (DateTime current = startDate; current <= endDate; current = current.AddDays(1.0))
                 if (current.DayOfWeek != DayOfWeek.Saturday && current.DayOfWeek != DayOfWeek.Sunday)
@@ -108,9 +108,6 @@ namespace VacationCalc.Model
 
         protected override void RecalcDuration()
         {
-            //base.RecalcDuration();
-            //int days = 0;
-            //days += new Vacation(start, end).Duration.Days;
             System.Console.WriteLine("Derived VacationOOO: RecalcDuration() call");
             duration = endDate - startDate;
             duration = duration.Add(new TimeSpan(1, 0, 0, 0));

@@ -66,19 +66,25 @@ namespace VacationCalc.Model
         {
             get { return mobilePhone; }
             set { mobilePhone = value; }
-        }        
+        }
+
+        public Vacation CreateProperVacation(Vacation vacationBase)
+        {
+            Vacation derived;
+            if (accountType == EmploymentType.IP)
+                derived = new VacationIp(vacationBase);
+            else
+                derived = new VacationOoo(vacationBase);
+            return derived;
+        }
 
         public bool AddVacation(Vacation newVacation)
         {
             if (newVacation.IsDateDefined)
                 if (IsVacationInterfering(newVacation))
                     return false;
-            Vacation derived;
-            if (accountType == EmploymentType.IP)
-                derived = new VacationIp(newVacation.StartDate, newVacation.EndDate);
-            else
-                derived = new VacationOoo(newVacation.StartDate, newVacation.EndDate);
 
+            Vacation derived = CreateProperVacation(newVacation);
             vacationList.Add(derived);
             calculator.FillEmployeeData();
             return true;
@@ -156,19 +162,6 @@ namespace VacationCalc.Model
         public List<Vacation> GetVacationsList()
         {
             return vacationList;
-        }
-
-        public int VacationDuration(DateTime start, DateTime end)
-        {
-            int days = 0;
-            if (accountType == EmploymentType.OOO)
-                days += new Vacation(start, end).Duration.Days;
-
-            else if (accountType == EmploymentType.IP)
-                for (DateTime current = start; current <= end; current = current.AddDays(1.0))
-                    if (current.DayOfWeek != DayOfWeek.Saturday && current.DayOfWeek != DayOfWeek.Sunday)
-                        days++;
-            return days;
         }
 
         public bool IsOnVacation()

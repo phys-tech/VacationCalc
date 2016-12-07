@@ -50,9 +50,9 @@ namespace VacationCalc
 
         private void UpdateVacationInfo()
         {
-            comBarLabelTotalVacation.Text = "Дней отпуска всего: " + employee.TotalVacationDays.ToString();
-            comBarLabelVacationSpent.Text = "Отгуляно: " + employee.VacationDaysSpent();
-            comBarLabelVacationLeft.Text = "Осталось: " + employee.VacationDaysLeft;
+            comBarLabelTotalVacation.Text = "Дней отпуска всего: " + employee.calculator.TotalVacationDays.ToString();
+            comBarLabelVacationSpent.Text = "Отгуляно: " + employee.calculator.VacationDaysSpent;
+            comBarLabelVacationLeft.Text = "Осталось: " + employee.calculator.VacationDaysLeft;
             lOnVacation.Visible = employee.IsOnVacation();
         }
 

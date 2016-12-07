@@ -55,7 +55,7 @@ namespace VacationCalc
                 string name = emp.Name;
                 DateTime date = emp.HireDate;
                 EmploymentType type = emp.AccountType;
-                int vacation = emp.VacationDaysLeft;
+                int vacation = emp.calculator.VacationDaysLeft;
                 DateTime birth = emp.BirthDate;
                 string mobile = emp.MobilePhone;
                 object[] row = { empID, name, date, type, vacation, birth, mobile };
@@ -76,7 +76,7 @@ namespace VacationCalc
 
         private void UpdateVacationDays(int employeeID, GridViewRowInfo row)
         {
-            int vacationLeft = employeeManager.GetEmployee(employeeID).VacationDaysLeft;
+            int vacationLeft = employeeManager.GetEmployee(employeeID).calculator.VacationDaysLeft;
             row.Cells["colVacationLeft"].Value = vacationLeft;
         }
 

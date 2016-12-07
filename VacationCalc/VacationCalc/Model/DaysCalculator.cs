@@ -9,6 +9,9 @@ namespace VacationCalc.Model
     public class DaysCalculator
     {
         private Employee CurrentEmployee;
+        public int TotalVacationDays;
+        public int VacationDaysSpent;
+        public int VacationDaysLeft;
 
         public DaysCalculator(Employee _employee)
         {
@@ -16,7 +19,7 @@ namespace VacationCalc.Model
             FillEmployeeData();
         }
     
-        public int TotalDaysOfWork()
+        private int TotalDaysOfWork()
         {
             var days = (DateTime.Today - CurrentEmployee.HireDate).TotalDays;
             var floored = Math.Floor(days);
@@ -24,7 +27,7 @@ namespace VacationCalc.Model
             return result;        
         }
 
-        public int TotalVacationEarned()
+        private int TotalVacationEarned()
         {
             int workingDays = TotalDaysOfWork();
             int vacationPerYear = CurrentEmployee.AccountType.GetVacationDaysPerYear();
@@ -32,11 +35,19 @@ namespace VacationCalc.Model
             return (int) vacation;
         }
 
+        private int CountVacationDaysSpent()
+        {
+            int days = 0;
+            foreach (Vacation item in CurrentEmployee.GetVacationsList())
+                days += item.Duration.Days;
+            return days;
+        }
+
         public void FillEmployeeData()
         {
-            CurrentEmployee.TotalVacationDays = TotalVacationEarned();
-            int spent = CurrentEmployee.VacationDaysSpent();
-            CurrentEmployee.VacationDaysLeft = CurrentEmployee.TotalVacationDays - spent;
+            TotalVacationDays = TotalVacationEarned();
+            VacationDaysSpent = CountVacationDaysSpent();
+            VacationDaysLeft = TotalVacationDays - VacationDaysSpent;
         }
     
     }

@@ -30,10 +30,10 @@ namespace VacationCalc.Model
                     return id;        
         }
 
-        public int AddEmployee(string _name, DateTime _hireDate, EmploymentType _accType, DateTime _birthday, string _mobile)
+        public int AddEmployee(string _name, DateTime _hireDate, EmploymentType _accType, bool _fired, DateTime _birthday, string _mobile)
         {
             int id = GetNewID();
-            Employee employee = new Employee(_name, _hireDate, _accType, false, _birthday, _mobile);
+            Employee employee = new Employee(_name, _hireDate, _accType, _fired, _birthday, _mobile);
             Employees.Add(id, employee);
             return id;
         }
@@ -132,8 +132,7 @@ namespace VacationCalc.Model
                     var tempMobile = element.Elements("MobilePhone").DefaultIfEmpty(new XElement("Def", "(000)000-00-00"));
                     string mobile = tempMobile.First().Value.ToString();
 
-                    int id = GetNewID();
-                    Employees.Add(id, new Employee(name, date, type, fired, birth, mobile));
+                    int id = AddEmployee(name, date, type, fired, birth, mobile);
                     XElement vacations = element.Element("Vacations");
                     foreach (XElement vacationElem in vacations.Elements())
                     {

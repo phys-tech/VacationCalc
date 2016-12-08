@@ -17,12 +17,14 @@ namespace VacationCalc
     public partial class MainForm : Telerik.WinControls.UI.RadForm
     {
         private EmployeeManager employeeManager;
+        private HolidayManager holidayManager;
         private bool saveOnExit;
         
 
         public MainForm()
         {
             InitializeComponent();
+            holidayManager = new HolidayManager();
             employeeManager = new EmployeeManager();
         }
 
@@ -168,7 +170,7 @@ namespace VacationCalc
 
         private void menuHolidaysCalendar_Click(object sender, EventArgs e)
         {
-            HolidaysForm holidays = new HolidaysForm();
+            HolidaysForm holidays = new HolidaysForm(holidayManager);
             holidays.Show();
         }
 

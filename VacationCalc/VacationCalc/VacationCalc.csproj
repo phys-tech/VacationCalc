@@ -81,6 +81,7 @@
     <Compile Include="Model\Employee.cs" />
     <Compile Include="Model\EmployeeManager.cs" />
     <Compile Include="Model\EmploymentType.cs" />
+    <Compile Include="Model\HolidayManager.cs" />
     <Compile Include="Model\Vacation.cs" />
     <Compile Include="UI\AddVacationForm.cs">
       <SubType>Form</SubType>

@@ -112,7 +112,7 @@ namespace VacationCalc
             {
                 DateTime start = (DateTime)e.Row.Cells["colStartDate"].Value;
                 DateTime end = (DateTime)e.Row.Cells["colEndDate"].Value;
-                e.Row.Cells["colDuration"].Value = employee.GetVacationsList().Find(u => u.StartDate == start && u.EndDate == end).Duration.Days;
+                e.Row.Cells["colDuration"].Value = employee.CreateProperVacation(new Vacation(start, end)).Duration.Days;
             }
         }
 

@@ -11,6 +11,7 @@ namespace VacationCalc.Model
         protected DateTime startDate;
         protected DateTime endDate;
         protected TimeSpan duration;
+        protected HolidayManager holidayManager;
         public bool IsDateDefined;
 
         protected Vacation()
@@ -29,6 +30,15 @@ namespace VacationCalc.Model
             IsDateDefined = true;
         }
 
+        public Vacation(DateTime _startDate, DateTime _endDate, HolidayManager _holidays)
+        {
+            startDate = (_startDate < _endDate) ? (_startDate) : (_endDate);
+            endDate = (_startDate < _endDate) ? (_endDate) : (_startDate);
+            RecalcDuration();
+            IsDateDefined = true;
+            holidayManager = _holidays;
+        }
+
         public Vacation(int DurationInDays)
         {
             duration = new TimeSpan(DurationInDays, 0, 0, 0);
@@ -42,6 +52,7 @@ namespace VacationCalc.Model
                 startDate = copy.startDate;
                 endDate = copy.endDate;
                 duration = copy.duration;
+                holidayManager = copy.holidayManager;
                 IsDateDefined = copy.IsDateDefined;
             }
             RecalcDuration();
@@ -66,7 +77,7 @@ namespace VacationCalc.Model
 
         protected virtual void RecalcDuration()
         {
-            System.Console.WriteLine("Base Vacation: RecalcDuration() call");
+            //System.Console.WriteLine("Base Vacation: RecalcDuration() call");
             duration = endDate - startDate;
             duration = duration.Add(new TimeSpan(1, 0, 0, 0));
         }
@@ -86,12 +97,16 @@ namespace VacationCalc.Model
 
         protected override void RecalcDuration()
         {
-            System.Console.WriteLine("Derived VacationIP: RecalcDuration() call");
+            //System.Console.WriteLine("Derived VacationIP: RecalcDuration() call");
             int days = 0;
             for (DateTime current = startDate; current <= endDate; current = current.AddDays(1.0))
-                if (current.DayOfWeek != DayOfWeek.Saturday && current.DayOfWeek != DayOfWeek.Sunday)
+            {
+                if (current.DayOfWeek != DayOfWeek.Saturday && current.DayOfWeek != DayOfWeek.Sunday &&
+                        !holidayManager.Holidays.Contains(current.Date))
                     days++;
+            }
             duration = new TimeSpan(days, 0, 0, 0);
+            
         }
     }
 
@@ -108,7 +123,7 @@ namespace VacationCalc.Model
 
         protected override void RecalcDuration()
         {
-            System.Console.WriteLine("Derived VacationOOO: RecalcDuration() call");
+            //System.Console.WriteLine("Derived VacationOOO: RecalcDuration() call");
             duration = endDate - startDate;
             duration = duration.Add(new TimeSpan(1, 0, 0, 0));
         }

@@ -25,7 +25,7 @@ namespace VacationCalc
         {
             InitializeComponent();
             holidayManager = new HolidayManager();
-            employeeManager = new EmployeeManager();
+            employeeManager = new EmployeeManager(holidayManager);
         }
 
         private void MainForm_Load(object sender, EventArgs e)

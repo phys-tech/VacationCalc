@@ -30,7 +30,7 @@ namespace VacationCalc
             {
                 DateTime start = (dates[0] < dates[1]) ? (dates[0]) : (dates[1]);
                 DateTime end = (dates[0] < dates[1]) ? (dates[1]) : (dates[0]);
-                int duration = employee.CreateProperVacation(new Vacation(start, end)).Duration.Days;
+                int duration = employee.CreateProperVacation(new Vacation(start, end, employee.holidayManager)).Duration.Days;
                 tbDuration.Text = duration.ToString();
             }
             else if (dates.Count > 2)
@@ -53,7 +53,7 @@ namespace VacationCalc
 
             Vacation vacation;
             if (calendarDates.SelectedDates.Count == 2)
-                vacation = new Vacation(calendarDates.SelectedDates[0], calendarDates.SelectedDates[1]);
+                vacation = new Vacation(calendarDates.SelectedDates[0], calendarDates.SelectedDates[1], employee.holidayManager);
             else
                 vacation = new Vacation(int.Parse(tbDuration.Text));
 

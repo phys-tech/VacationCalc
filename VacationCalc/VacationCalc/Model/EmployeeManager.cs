@@ -16,10 +16,17 @@ namespace VacationCalc.Model
     {
         private EmployeeDict Employees;
         private const string XmlFilename = "EmployeesVacations.xml";
+        private HolidayManager holidayManager;
 
         public EmployeeManager()
         {
-            Employees = new Dictionary<int, Employee>(25);
+            Employees = new Dictionary<int, Employee>(40);
+        }
+
+        public EmployeeManager(HolidayManager _holidayManager)
+        {
+            Employees = new Dictionary<int, Employee>(40);
+            holidayManager = _holidayManager;
         }
 
         private int GetNewID()
@@ -33,7 +40,7 @@ namespace VacationCalc.Model
         public int AddEmployee(string _name, DateTime _hireDate, EmploymentType _accType, bool _fired, DateTime _birthday, string _mobile)
         {
             int id = GetNewID();
-            Employee employee = new Employee(_name, _hireDate, _accType, _fired, _birthday, _mobile);
+            Employee employee = new Employee(_name, _hireDate, _accType, _fired, _birthday, _mobile, holidayManager);
             Employees.Add(id, employee);
             return id;
         }
@@ -145,7 +152,7 @@ namespace VacationCalc.Model
                         {
                             DateTime start = DateTime.Parse(vacationElem.Element("StartDate").Value.ToString());
                             DateTime end = DateTime.Parse(vacationElem.Element("EndDate").Value.ToString());
-                            AddVacation(id, new Vacation(start, end));
+                            AddVacation(id, new Vacation(start, end, holidayManager));
                         }
                     }
                 }

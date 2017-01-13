@@ -16,6 +16,7 @@ namespace VacationCalc.Model
         private bool fired;
         private DateTime birthDate;
         private string mobilePhone;
+        public HolidayManager holidayManager;
 
         // calculator keeps all the calculated data inside
         public DaysCalculator calculator;        
@@ -29,6 +30,19 @@ namespace VacationCalc.Model
             birthDate = _birth;
             mobilePhone = _mobile;
             vacationList = new List<Vacation>();
+            calculator = new DaysCalculator(this);
+        }
+
+        public Employee(string _name, DateTime _hireDate, EmploymentType _type, bool _fired, DateTime _birth, string _mobile, HolidayManager _holidays)
+        {
+            name = _name;
+            hireDate = _hireDate;
+            accountType = _type;
+            fired = _fired;
+            birthDate = _birth;
+            mobilePhone = _mobile;
+            vacationList = new List<Vacation>();
+            holidayManager = _holidays;
             calculator = new DaysCalculator(this);
         }
 
@@ -108,7 +122,7 @@ namespace VacationCalc.Model
         public bool ChangeStartDate(DateTime newStart, DateTime endDate)
         {
             var oldVacationList = vacationList.Where(item => item.EndDate == endDate);
-            Vacation newVacation = new Vacation(newStart, endDate);
+            Vacation newVacation = new Vacation(newStart, endDate, holidayManager);
             Vacation oldVacationCopy = new Vacation(oldVacationList.First());
 
             DeleteVacation(oldVacationList.First());
@@ -127,7 +141,7 @@ namespace VacationCalc.Model
         public bool ChangeEndDate(DateTime startDate, DateTime newEnd)
         {
             var oldVacationList = vacationList.Where(item => item.StartDate == startDate);
-            Vacation newVacation = new Vacation(startDate, newEnd);
+            Vacation newVacation = new Vacation(startDate, newEnd, holidayManager);
             Vacation oldVacationCopy = new Vacation(oldVacationList.First());
 
             DeleteVacation(oldVacationList.First());

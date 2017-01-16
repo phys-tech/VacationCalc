@@ -21,7 +21,13 @@ namespace VacationCalc.Model
         public IEnumerable<DateTime> Holidays
         {
             get { return sortedDates; }
-            set { sortedDates = value; }
+        }
+
+        public void SetNewDates(IEnumerable<DateTime> newDates)
+        {
+            sortedDates = newDates;
+            sortedDates = sortedDates.OrderBy(u => u.Date);
+            // event fire or something
         }
 
         public void SaveDatesToXML()
@@ -46,7 +52,7 @@ namespace VacationCalc.Model
                 tempList.Add(date);
             }
             sortedDates = tempList;
-            sortedDates = sortedDates.OrderBy(u => u.Date);            
+            sortedDates = sortedDates.OrderBy(u => u.Date);
         }
     }
 }

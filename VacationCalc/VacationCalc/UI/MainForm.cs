@@ -25,7 +25,7 @@ namespace VacationCalc
         {
             InitializeComponent();
             holidayManager = new HolidayManager();
-            employeeManager = new EmployeeManager(holidayManager);
+            employeeManager = new EmployeeManager(ref holidayManager);
         }
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -171,7 +171,8 @@ namespace VacationCalc
         private void menuHolidaysCalendar_Click(object sender, EventArgs e)
         {
             HolidaysForm holidays = new HolidaysForm(holidayManager);
-            holidays.Show();
+            holidays.ShowDialog();
+            UpdateGrids();
         }
 
         private void menuPrintMobiles_Click(object sender, EventArgs e)

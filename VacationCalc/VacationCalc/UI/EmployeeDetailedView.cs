@@ -71,7 +71,7 @@ namespace VacationCalc
             {
                 DateTime start = (DateTime)e.Rows[0].Cells["colStartDate"].Value;
                 DateTime end = (DateTime)e.Rows[0].Cells["colEndDate"].Value;
-                Vacation newVacation = new Vacation(start, end, employee.holidayManager);
+                Vacation newVacation = new Vacation(start, end, ref employee.holidayManager);
                 if (!employee.AddVacation(newVacation))
                 {
                     MessageBox.Show("Даты отпуска пересекаются с уже существующим отпуском", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -94,7 +94,7 @@ namespace VacationCalc
             {
                 DateTime start = (DateTime)e.Rows[0].Cells["colStartDate"].Value;
                 DateTime end = (DateTime)e.Rows[0].Cells["colEndDate"].Value;
-                vacation = new Vacation(start, end, employee.holidayManager);
+                vacation = new Vacation(start, end, ref employee.holidayManager);
             }
             else
             {
@@ -112,7 +112,7 @@ namespace VacationCalc
             {
                 DateTime start = (DateTime)e.Row.Cells["colStartDate"].Value;
                 DateTime end = (DateTime)e.Row.Cells["colEndDate"].Value;
-                e.Row.Cells["colDuration"].Value = employee.CreateProperVacation(new Vacation(start, end, employee.holidayManager)).Duration.Days;
+                e.Row.Cells["colDuration"].Value = employee.CreateProperVacation(new Vacation(start, end, ref employee.holidayManager)).Duration.Days;
             }
         }
 

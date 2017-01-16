@@ -23,7 +23,7 @@ namespace VacationCalc.Model
             Employees = new Dictionary<int, Employee>(40);
         }
 
-        public EmployeeManager(HolidayManager _holidayManager)
+        public EmployeeManager(ref HolidayManager _holidayManager)
         {
             Employees = new Dictionary<int, Employee>(40);
             holidayManager = _holidayManager;
@@ -40,7 +40,7 @@ namespace VacationCalc.Model
         public int AddEmployee(string _name, DateTime _hireDate, EmploymentType _accType, bool _fired, DateTime _birthday, string _mobile)
         {
             int id = GetNewID();
-            Employee employee = new Employee(_name, _hireDate, _accType, _fired, _birthday, _mobile, holidayManager);
+            Employee employee = new Employee(_name, _hireDate, _accType, _fired, _birthday, _mobile, ref holidayManager);
             Employees.Add(id, employee);
             return id;
         }
@@ -152,7 +152,7 @@ namespace VacationCalc.Model
                         {
                             DateTime start = DateTime.Parse(vacationElem.Element("StartDate").Value.ToString());
                             DateTime end = DateTime.Parse(vacationElem.Element("EndDate").Value.ToString());
-                            AddVacation(id, new Vacation(start, end, holidayManager));
+                            AddVacation(id, new Vacation(start, end, ref holidayManager));
                         }
                     }
                 }

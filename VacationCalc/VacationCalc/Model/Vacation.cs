@@ -30,7 +30,7 @@ namespace VacationCalc.Model
             IsDateDefined = true;
         }
 
-        public Vacation(DateTime _startDate, DateTime _endDate, HolidayManager _holidays)
+        public Vacation(DateTime _startDate, DateTime _endDate, ref HolidayManager _holidays)
         {
             startDate = (_startDate < _endDate) ? (_startDate) : (_endDate);
             endDate = (_startDate < _endDate) ? (_endDate) : (_startDate);

@@ -33,7 +33,7 @@ namespace VacationCalc.Model
             calculator = new DaysCalculator(this);
         }
 
-        public Employee(string _name, DateTime _hireDate, EmploymentType _type, bool _fired, DateTime _birth, string _mobile, HolidayManager _holidays)
+        public Employee(string _name, DateTime _hireDate, EmploymentType _type, bool _fired, DateTime _birth, string _mobile, ref HolidayManager _holidays)
         {
             name = _name;
             hireDate = _hireDate;
@@ -122,7 +122,7 @@ namespace VacationCalc.Model
         public bool ChangeStartDate(DateTime newStart, DateTime endDate)
         {
             var oldVacationList = vacationList.Where(item => item.EndDate == endDate);
-            Vacation newVacation = new Vacation(newStart, endDate, holidayManager);
+            Vacation newVacation = new Vacation(newStart, endDate, ref holidayManager);
             Vacation oldVacationCopy = new Vacation(oldVacationList.First());
 
             DeleteVacation(oldVacationList.First());
@@ -141,7 +141,7 @@ namespace VacationCalc.Model
         public bool ChangeEndDate(DateTime startDate, DateTime newEnd)
         {
             var oldVacationList = vacationList.Where(item => item.StartDate == startDate);
-            Vacation newVacation = new Vacation(startDate, newEnd, holidayManager);
+            Vacation newVacation = new Vacation(startDate, newEnd, ref holidayManager);
             Vacation oldVacationCopy = new Vacation(oldVacationList.First());
 
             DeleteVacation(oldVacationList.First());

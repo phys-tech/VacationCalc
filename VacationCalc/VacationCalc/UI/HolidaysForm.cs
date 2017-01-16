@@ -35,7 +35,7 @@ namespace VacationCalc.UI
         {            
             IEnumerable<DateTime> tempDates = calendarHolidays.SelectedDates;
             tempDates = tempDates.OrderBy(u => u.Date);
-            holidayManager.Holidays = tempDates;
+            holidayManager.SetNewDates(tempDates);
             UpdateDatesOnLabel();
         }
 

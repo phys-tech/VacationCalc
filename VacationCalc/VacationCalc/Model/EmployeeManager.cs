@@ -146,7 +146,7 @@ namespace VacationCalc.Model
                         if (vacationElem.HasAttributes)
                         {
                             int duration = int.Parse(vacationElem.Attribute("Duration").Value.ToString());
-                            AddVacation(id, new Vacation(duration));
+                            AddVacation(id, new Vacation(duration, ref holidayManager));
                         }
                         else
                         {

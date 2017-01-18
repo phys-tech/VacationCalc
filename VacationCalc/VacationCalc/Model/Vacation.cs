@@ -41,10 +41,11 @@ namespace VacationCalc.Model
             holidayManager = _holidays;
         }
 
-        public Vacation(int DurationInDays)
+        public Vacation(int DurationInDays, ref HolidayManager _holidays)
         {
             duration = new TimeSpan(DurationInDays, 0, 0, 0);
             IsDateDefined = false;
+            holidayManager = _holidays;
         }
 
         public Vacation(Vacation copy)
@@ -54,9 +55,14 @@ namespace VacationCalc.Model
                 startDate = copy.startDate;
                 endDate = copy.endDate;
                 duration = copy.duration;
-                holidayManager = copy.holidayManager;
-                IsDateDefined = copy.IsDateDefined;
             }
+            else
+            {
+                duration = copy.duration;
+            }
+            IsDateDefined = copy.IsDateDefined;
+            holidayManager = copy.holidayManager;
+
             RecalcDuration();
         }
 

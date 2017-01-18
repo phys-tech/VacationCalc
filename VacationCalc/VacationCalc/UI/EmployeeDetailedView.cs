@@ -99,7 +99,7 @@ namespace VacationCalc
             else
             {
                 int duration = int.Parse(e.Rows[0].Cells["colDuration"].Value.ToString());
-                vacation = new Vacation(duration);
+                vacation = new Vacation(duration, ref employee.holidayManager);
             }
             employee.DeleteVacation(vacation);
             UpdateVacationInfo();

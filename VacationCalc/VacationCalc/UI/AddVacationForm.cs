@@ -55,7 +55,7 @@ namespace VacationCalc
             if (calendarDates.SelectedDates.Count == 2)
                 vacation = new Vacation(calendarDates.SelectedDates[0], calendarDates.SelectedDates[1], ref employee.holidayManager);
             else
-                vacation = new Vacation(int.Parse(tbDuration.Text));
+                vacation = new Vacation(int.Parse(tbDuration.Text), ref employee.holidayManager);
 
             bool valid = employee.AddVacation(vacation);
             if (!valid)

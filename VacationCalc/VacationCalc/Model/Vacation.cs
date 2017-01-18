@@ -14,6 +14,8 @@ namespace VacationCalc.Model
         protected HolidayManager holidayManager;
         public bool IsDateDefined;
 
+        public event EventHandler VacationChanged;
+
         protected Vacation()
         {
             startDate = new DateTime();
@@ -82,6 +84,20 @@ namespace VacationCalc.Model
             duration = duration.Add(new TimeSpan(1, 0, 0, 0));
         }
 
+        public virtual void OnHolidaysChanged(object sender, EventArgs e)
+        {
+            //System.Console.WriteLine("Vacation.HolidaysCalendarChanged - RecalcDuration");
+            this.RecalcDuration();
+            OnVacationChanged(null);
+        }
+
+        protected virtual void OnVacationChanged(EventArgs e)
+        {
+            EventHandler handler = VacationChanged;
+            if (handler != null)
+                handler(this, e);
+        }
+
     }
 
 
@@ -93,7 +109,9 @@ namespace VacationCalc.Model
 
         public VacationIp(Vacation copy)
             : base(copy)
-        { }
+        {
+            holidayManager.HolidaysChanged += OnHolidaysChanged;
+        }
 
         protected override void RecalcDuration()
         {
@@ -106,8 +124,15 @@ namespace VacationCalc.Model
                     days++;
             }
             duration = new TimeSpan(days, 0, 0, 0);
-            
         }
+
+        public override void OnHolidaysChanged(object sender, EventArgs e)
+        {
+            //System.Console.WriteLine("VacationIP.HolidaysCalendarChanged - RecalcDuration");
+            this.RecalcDuration();
+            OnVacationChanged(null);
+        }
+
     }
 
 
@@ -119,7 +144,9 @@ namespace VacationCalc.Model
 
         public VacationOoo(Vacation copy)
             : base(copy)
-        { }        
+        {
+            holidayManager.HolidaysChanged += OnHolidaysChanged;
+        }
 
         protected override void RecalcDuration()
         {
@@ -128,6 +155,12 @@ namespace VacationCalc.Model
             duration = duration.Add(new TimeSpan(1, 0, 0, 0));
         }
 
+        public override void OnHolidaysChanged(object sender, EventArgs e)
+        {
+            //System.Console.WriteLine("VacationOOO.HolidaysCalendarChanged - RecalcDuration");
+            this.RecalcDuration();
+            OnVacationChanged(null);
+        }
 
     }
 }

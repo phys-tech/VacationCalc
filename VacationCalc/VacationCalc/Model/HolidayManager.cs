@@ -12,6 +12,7 @@ namespace VacationCalc.Model
     {
         private IEnumerable<DateTime> sortedDates;
         private string XmlFilename = "Holidays.xml";
+        public event EventHandler HolidaysChanged;        
 
         public HolidayManager()
         {
@@ -27,10 +28,19 @@ namespace VacationCalc.Model
         {
             sortedDates = newDates;
             sortedDates = sortedDates.OrderBy(u => u.Date);
-            // event fire or something
+            //System.Console.WriteLine("HolidayManager.SetNewDates() - firing an event");
+            OnHolidaysChanged(null);
+            SaveDatesToXML();
         }
 
-        public void SaveDatesToXML()
+        protected virtual void OnHolidaysChanged(EventArgs e)
+        {
+            EventHandler handler = HolidaysChanged;
+            if (handler != null)
+                handler(this, e);
+        }
+
+        private void SaveDatesToXML()
         {
             XDocument doc = new XDocument(new XElement("Root"));
             foreach (DateTime date in sortedDates)

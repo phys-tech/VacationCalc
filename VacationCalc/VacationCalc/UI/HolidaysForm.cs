@@ -15,33 +15,34 @@ namespace VacationCalc.UI
     public partial class HolidaysForm : Telerik.WinControls.UI.RadForm
     {
         private HolidayManager holidayManager;
+        private IEnumerable<DateTime> localDates;
 
         public HolidaysForm(HolidayManager _holidayManager)
         {
             InitializeComponent();
             holidayManager = _holidayManager;
-            calendarHolidays.SelectedDates.AddRange(holidayManager.Holidays.ToArray());
+            localDates = holidayManager.Holidays;
+            calendarHolidays.SelectedDates.AddRange(localDates.ToArray());
             UpdateDatesOnLabel();        
         }
 
         private void UpdateDatesOnLabel()
         {
             listViewSelectedDates.Items.Clear();
-            foreach (DateTime date in holidayManager.Holidays)
+            foreach (DateTime date in localDates)
                 listViewSelectedDates.Items.Add(date.ToLongDateString());
         }
 
         private void calendarHolidays_SelectionChanged(object sender, EventArgs e)
         {            
-            IEnumerable<DateTime> tempDates = calendarHolidays.SelectedDates;
-            tempDates = tempDates.OrderBy(u => u.Date);
-            holidayManager.SetNewDates(tempDates);
+            localDates = calendarHolidays.SelectedDates;
+            localDates = localDates.OrderBy(u => u.Date);
             UpdateDatesOnLabel();
         }
 
         private void bOK_Click(object sender, EventArgs e)
         {
-            holidayManager.SaveDatesToXML();
+            holidayManager.SetNewDates(localDates);
             this.Close();
         }
 

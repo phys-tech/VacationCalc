@@ -16,10 +16,10 @@ namespace VacationCalc.Model
         private bool fired;
         private DateTime birthDate;
         private string mobilePhone;
-        public HolidayManager holidayManager;
 
         // calculator keeps all the calculated data inside
-        public DaysCalculator calculator;        
+        public DaysCalculator calculator;
+        public HolidayManager holidayManager;
 
         public Employee(string _name, DateTime _hireDate, EmploymentType _type, bool _fired, DateTime _birth, string _mobile)
         {
@@ -99,6 +99,7 @@ namespace VacationCalc.Model
                     return false;
 
             Vacation derived = CreateProperVacation(newVacation);
+            derived.VacationChanged += OnVacationChanged;
             vacationList.Add(derived);
             calculator.FillEmployeeData();
             return true;
@@ -187,6 +188,12 @@ namespace VacationCalc.Model
                         return true;
             return false;
         }
+
+        public void OnVacationChanged(object sender, EventArgs e)
+        {
+            calculator.FillEmployeeData();
+        }
+
     }
 
 }

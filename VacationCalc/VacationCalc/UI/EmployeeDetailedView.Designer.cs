@@ -1,4 +1,4 @@
-﻿namespace VacationCalc
+﻿namespace VacationCalc.UI
 {
     partial class EmployeeDetailedView
     {

@@ -8,7 +8,7 @@ using System.Windows.Forms;
 using Telerik.WinControls;
 using VacationCalc.Model;
 
-namespace VacationCalc
+namespace VacationCalc.UI
 {
     public partial class EmployeeDetailedView : Telerik.WinControls.UI.RadForm
     {
@@ -163,7 +163,7 @@ namespace VacationCalc
         private void bFireHire_Click(object sender, EventArgs e)
         {
             employee.IsFired = !employee.IsFired;
-            UpdateContract();            
+            UpdateContract();
         }
 
     }

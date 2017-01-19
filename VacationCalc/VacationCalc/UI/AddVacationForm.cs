@@ -8,7 +8,7 @@ using System.Windows.Forms;
 using Telerik.WinControls;
 using VacationCalc.Model;
 
-namespace VacationCalc
+namespace VacationCalc.UI
 {
     public partial class AddVacationForm : Telerik.WinControls.UI.RadForm
     {

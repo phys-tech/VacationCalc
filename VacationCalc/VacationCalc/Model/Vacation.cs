@@ -54,12 +54,8 @@ namespace VacationCalc.Model
             {
                 startDate = copy.startDate;
                 endDate = copy.endDate;
-                duration = copy.duration;
             }
-            else
-            {
-                duration = copy.duration;
-            }
+            duration = copy.duration;
             IsDateDefined = copy.IsDateDefined;
             holidayManager = copy.holidayManager;
 
@@ -86,8 +82,11 @@ namespace VacationCalc.Model
         protected virtual void RecalcDuration()
         {
             //System.Console.WriteLine("Base Vacation: RecalcDuration() call");
-            duration = endDate - startDate;
-            duration = duration.Add(new TimeSpan(1, 0, 0, 0));
+            if (IsDateDefined)
+            {
+                duration = endDate - startDate;
+                duration = duration.Add(new TimeSpan(1, 0, 0, 0));
+            }
         }
 
         public virtual void OnHolidaysChanged(object sender, EventArgs e)
@@ -122,14 +121,17 @@ namespace VacationCalc.Model
         protected override void RecalcDuration()
         {
             //System.Console.WriteLine("Derived VacationIP: RecalcDuration() call");
-            int days = 0;
-            for (DateTime current = startDate; current <= endDate; current = current.AddDays(1.0))
+            if (IsDateDefined)
             {
-                if (current.DayOfWeek != DayOfWeek.Saturday && current.DayOfWeek != DayOfWeek.Sunday &&
-                        !holidayManager.Holidays.Contains(current.Date))
-                    days++;
+                int days = 0;
+                for (DateTime current = startDate; current <= endDate; current = current.AddDays(1.0))
+                {
+                    if (current.DayOfWeek != DayOfWeek.Saturday && current.DayOfWeek != DayOfWeek.Sunday &&
+                            !holidayManager.Holidays.Contains(current.Date))
+                        days++;
+                }
+                duration = new TimeSpan(days, 0, 0, 0);
             }
-            duration = new TimeSpan(days, 0, 0, 0);
         }
 
         public override void OnHolidaysChanged(object sender, EventArgs e)
@@ -157,8 +159,11 @@ namespace VacationCalc.Model
         protected override void RecalcDuration()
         {
             //System.Console.WriteLine("Derived VacationOOO: RecalcDuration() call");
-            duration = endDate - startDate;
-            duration = duration.Add(new TimeSpan(1, 0, 0, 0));
+            if (IsDateDefined)
+            {
+                duration = endDate - startDate;
+                duration = duration.Add(new TimeSpan(1, 0, 0, 0));
+            }
         }
 
         public override void OnHolidaysChanged(object sender, EventArgs e)

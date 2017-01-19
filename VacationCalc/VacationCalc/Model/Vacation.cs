@@ -16,14 +16,6 @@ namespace VacationCalc.Model
 
         public event EventHandler VacationChanged;
 
-        protected Vacation()
-        {
-            startDate = new DateTime();
-            endDate = new DateTime();
-            duration = new TimeSpan();
-            IsDateDefined = false;
-        }
-
         public Vacation(DateTime _startDate, DateTime _endDate)
         {
             startDate = (_startDate < _endDate) ? (_startDate) : (_endDate);
@@ -108,10 +100,6 @@ namespace VacationCalc.Model
 
     public class VacationIp : Vacation
     {
-        public VacationIp(DateTime _startDate, DateTime _endDate)
-            : base(_startDate, _endDate)
-        { }
-
         public VacationIp(Vacation copy)
             : base(copy)
         {
@@ -146,10 +134,6 @@ namespace VacationCalc.Model
 
     public class VacationOoo : Vacation
     {
-        public VacationOoo(DateTime _startDate, DateTime _endDate)
-            : base(_startDate, _endDate)
-        { }
-
         public VacationOoo(Vacation copy)
             : base(copy)
         {

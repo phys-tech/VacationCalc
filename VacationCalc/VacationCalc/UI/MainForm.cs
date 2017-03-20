@@ -65,7 +65,7 @@ namespace VacationCalc
                     gridViewEmployees.Rows.Add(row);
                 else
                     gridViewFired.Rows.Add(row);
-            }        
+            }
         }
 
         private void UpdateStatusStrip()
@@ -86,6 +86,11 @@ namespace VacationCalc
         {
             if (e.Rows[0].Cells["colName"].Value != null && e.Rows[0].Cells["colHireDate"].Value != null && e.Rows[0].Cells["colAccType"].Value != null)
             {
+                if (e.Rows[0].Cells["colBirthDate"].Value == null)
+                    e.Rows[0].Cells["colBirthDate"].Value = "01.01.2000";
+                if (e.Rows[0].Cells["colMobile"].Value == null)
+                    e.Rows[0].Cells["colMobile"].Value = "(000)000-00-00";
+
                 string name = e.Rows[0].Cells["colName"].Value.ToString();
                 DateTime date = (DateTime)e.Rows[0].Cells["colHireDate"].Value;
                 EmploymentType type = (EmploymentType)Enum.Parse(typeof(EmploymentType), e.Rows[0].Cells["colAccType"].Value.ToString());
@@ -197,7 +202,7 @@ namespace VacationCalc
             printDocumentRad = new RadPrintDocument();
             printDocumentRad.DefaultPageSettings.Landscape = false;
             printDocumentRad.AssociatedObject = this.gridViewEmployees;
-            printDocumentRad.MiddleHeader = "Список дней рожденья сотрудников офиса Фастдев, Екатеринбург";
+            printDocumentRad.MiddleHeader = "Список дней рождения сотрудников офиса Фастдев, Екатеринбург";
             printDocumentRad.HeaderFont = new System.Drawing.Font(FontFamily.GenericSerif, 15.0F);
             printDocumentRad.LeftFooter = "Число сотрудников: " + employeeManager.NumberOfEmployees();
 

@@ -182,5 +182,28 @@ namespace VacationCalc.Model
             return onVacation;
         }
 
+        public DateTime NearestBirthday(out string empName)
+        {
+            TimeSpan min = new TimeSpan(365, 0, 0, 0);
+            DateTime nearest = DateTime.Now;
+            string celebrant = "";
+
+            foreach (Employee employee in Employees.Values)
+            {
+                if (employee.IsFired)
+                    continue;
+
+                DateTime birthday = new DateTime(DateTime.Now.Year, employee.BirthDate.Month, employee.BirthDate.Day);
+                if (birthday - DateTime.Now < min && (birthday-DateTime.Now).TotalDays > 0 )
+                {
+                    nearest = birthday;
+                    min = birthday - DateTime.Now;
+                    celebrant = employee.Name;
+                }
+            }
+            empName = celebrant;
+            return nearest;
+        }
+
     }
 }

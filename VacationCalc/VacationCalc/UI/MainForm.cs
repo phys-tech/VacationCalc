@@ -71,9 +71,12 @@ namespace VacationCalc
         private void UpdateStatusStrip()
         {
             string empOnVacation;
+            string happyBirthday;
             statusNumOfEmloyees.Text = "Всего сотрудников: " + employeeManager.NumberOfEmployees();
             statusOnVacation.Text = "В отпуске: " + employeeManager.NumberOfEmployeesOnVacation(out empOnVacation);
             statusOnVacation.ToolTipText = empOnVacation;
+            statusNearestBirthday.Text = "Ближайший ДР: " + employeeManager.NearestBirthday(out happyBirthday).ToShortDateString();
+            statusNearestBirthday.ToolTipText = happyBirthday;
         }
 
         private void UpdateVacationDays(int employeeID, GridViewRowInfo row)

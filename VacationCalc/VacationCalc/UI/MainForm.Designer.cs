@@ -65,6 +65,7 @@
             this.menuPrintMobiles = new Telerik.WinControls.UI.RadMenuItem();
             this.menuPrintBirthdates = new Telerik.WinControls.UI.RadMenuItem();
             this.printDocumentRad = new Telerik.WinControls.UI.RadPrintDocument();
+            this.statusNearestBirthday = new Telerik.WinControls.UI.RadLabelElement();
             ((System.ComponentModel.ISupportInitialize)(this.statusStrip)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pageView)).BeginInit();
             this.pageView.SuspendLayout();
@@ -82,7 +83,8 @@
             // 
             this.statusStrip.Items.AddRange(new Telerik.WinControls.RadItem[] {
             this.statusNumOfEmloyees,
-            this.statusOnVacation});
+            this.statusOnVacation,
+            this.statusNearestBirthday});
             this.statusStrip.Location = new System.Drawing.Point(0, 542);
             this.statusStrip.Name = "statusStrip";
             this.statusStrip.Size = new System.Drawing.Size(951, 24);
@@ -406,6 +408,16 @@
             this.printDocumentRad.RightHeader = "Right2";
             this.printDocumentRad.Watermark = radPrintWatermark1;
             // 
+            // statusNearestBirthday
+            // 
+            this.statusNearestBirthday.AccessibleDescription = "NearestBithday";
+            this.statusNearestBirthday.AccessibleName = "NearestBithday";
+            this.statusNearestBirthday.Name = "statusNearestBirthday";
+            this.statusStrip.SetSpring(this.statusNearestBirthday, false);
+            this.statusNearestBirthday.Text = "NearestBithday";
+            this.statusNearestBirthday.TextWrap = true;
+            this.statusNearestBirthday.Visibility = Telerik.WinControls.ElementVisibility.Visible;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -457,6 +469,7 @@
         private Telerik.WinControls.UI.RadMenuItem menuItemMain;
         private Telerik.WinControls.UI.RadMenuSeparatorItem menuSeparator1;
         private Telerik.WinControls.UI.RadMenuItem menuPrintBirthdates;
+        private Telerik.WinControls.UI.RadLabelElement statusNearestBirthday;
 
     }
 }

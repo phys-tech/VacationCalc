@@ -8,10 +8,13 @@ namespace VacationCalc.Model
 {
     public class Vacation
     {
-        private DateTime startDate;
-        private DateTime endDate;
-        private TimeSpan duration;
+        protected DateTime startDate;
+        protected DateTime endDate;
+        protected TimeSpan duration;
+        protected HolidayManager holidayManager;
         public bool IsDateDefined;
+
+        public event EventHandler VacationChanged;
 
         public Vacation(DateTime _startDate, DateTime _endDate)
         {
@@ -21,10 +24,20 @@ namespace VacationCalc.Model
             IsDateDefined = true;
         }
 
-        public Vacation(int DurationInDays)
+        public Vacation(DateTime _startDate, DateTime _endDate, ref HolidayManager _holidays)
+        {
+            startDate = (_startDate < _endDate) ? (_startDate) : (_endDate);
+            endDate = (_startDate < _endDate) ? (_endDate) : (_startDate);
+            RecalcDuration();
+            IsDateDefined = true;
+            holidayManager = _holidays;
+        }
+
+        public Vacation(int DurationInDays, ref HolidayManager _holidays)
         {
             duration = new TimeSpan(DurationInDays, 0, 0, 0);
             IsDateDefined = false;
+            holidayManager = _holidays;
         }
 
         public Vacation(Vacation copy)
@@ -33,9 +46,12 @@ namespace VacationCalc.Model
             {
                 startDate = copy.startDate;
                 endDate = copy.endDate;
-                duration = copy.duration;
-                IsDateDefined = copy.IsDateDefined;
             }
+            duration = copy.duration;
+            IsDateDefined = copy.IsDateDefined;
+            holidayManager = copy.holidayManager;
+
+            RecalcDuration();
         }
 
         public DateTime StartDate
@@ -50,15 +66,95 @@ namespace VacationCalc.Model
             set { endDate = value; RecalcDuration(); }
         }
 
-        public TimeSpan Duration
+        public virtual TimeSpan Duration
         {
             get { return duration; }
         }
 
-        private void RecalcDuration()
+        protected virtual void RecalcDuration()
         {
-            duration = endDate - startDate;
-            duration = duration.Add(new TimeSpan(1, 0, 0, 0));
+            //System.Console.WriteLine("Base Vacation: RecalcDuration() call");
+            if (IsDateDefined)
+            {
+                duration = endDate - startDate;
+                duration = duration.Add(new TimeSpan(1, 0, 0, 0));
+            }
+        }
+
+        public virtual void OnHolidaysChanged(object sender, EventArgs e)
+        {
+            //System.Console.WriteLine("Vacation.HolidaysCalendarChanged - RecalcDuration");
+            this.RecalcDuration();
+            OnVacationChanged(null);
+        }
+
+        protected virtual void OnVacationChanged(EventArgs e)
+        {
+            EventHandler handler = VacationChanged;
+            if (handler != null)
+                handler(this, e);
+        }
+
+    }
+
+
+    public class VacationIp : Vacation
+    {
+        public VacationIp(Vacation copy)
+            : base(copy)
+        {
+            holidayManager.HolidaysChanged += OnHolidaysChanged;
+        }
+
+        protected override void RecalcDuration()
+        {
+            //System.Console.WriteLine("Derived VacationIP: RecalcDuration() call");
+            if (IsDateDefined)
+            {
+                int days = 0;
+                for (DateTime current = startDate; current <= endDate; current = current.AddDays(1.0))
+                {
+                    if (current.DayOfWeek != DayOfWeek.Saturday && current.DayOfWeek != DayOfWeek.Sunday &&
+                            !holidayManager.Holidays.Contains(current.Date))
+                        days++;
+                }
+                duration = new TimeSpan(days, 0, 0, 0);
+            }
+        }
+
+        public override void OnHolidaysChanged(object sender, EventArgs e)
+        {
+            //System.Console.WriteLine("VacationIP.HolidaysCalendarChanged - RecalcDuration");
+            this.RecalcDuration();
+            OnVacationChanged(null);
+        }
+
+    }
+
+
+    public class VacationOoo : Vacation
+    {
+        public VacationOoo(Vacation copy)
+            : base(copy)
+        {
+            holidayManager.HolidaysChanged += OnHolidaysChanged;
+        }
+
+        protected override void RecalcDuration()
+        {
+            //System.Console.WriteLine("Derived VacationOOO: RecalcDuration() call");
+            if (IsDateDefined)
+            {
+                duration = endDate - startDate;
+                duration = duration.Add(new TimeSpan(1, 0, 0, 0));
+            }
+        }
+
+        public override void OnHolidaysChanged(object sender, EventArgs e)
+        {
+            //System.Console.WriteLine("VacationOOO.HolidaysCalendarChanged - RecalcDuration");
+            this.RecalcDuration();
+            OnVacationChanged(null);
         }
 
     }

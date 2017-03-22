@@ -17,13 +17,15 @@ namespace VacationCalc
     public partial class MainForm : Telerik.WinControls.UI.RadForm
     {
         private EmployeeManager employeeManager;
+        private HolidayManager holidayManager;
         private bool saveOnExit;
         
 
         public MainForm()
         {
             InitializeComponent();
-            employeeManager = new EmployeeManager();
+            holidayManager = new HolidayManager();
+            employeeManager = new EmployeeManager(ref holidayManager);
         }
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -55,7 +57,7 @@ namespace VacationCalc
                 string name = emp.Name;
                 DateTime date = emp.HireDate;
                 EmploymentType type = emp.AccountType;
-                int vacation = emp.VacationDaysLeft;
+                int vacation = emp.calculator.VacationDaysLeft;
                 DateTime birth = emp.BirthDate;
                 string mobile = emp.MobilePhone;
                 object[] row = { empID, name, date, type, vacation, birth, mobile };
@@ -63,7 +65,7 @@ namespace VacationCalc
                     gridViewEmployees.Rows.Add(row);
                 else
                     gridViewFired.Rows.Add(row);
-            }        
+            }
         }
 
         private void UpdateStatusStrip()
@@ -76,7 +78,7 @@ namespace VacationCalc
 
         private void UpdateVacationDays(int employeeID, GridViewRowInfo row)
         {
-            int vacationLeft = employeeManager.GetEmployee(employeeID).VacationDaysLeft;
+            int vacationLeft = employeeManager.GetEmployee(employeeID).calculator.VacationDaysLeft;
             row.Cells["colVacationLeft"].Value = vacationLeft;
         }
 
@@ -84,12 +86,17 @@ namespace VacationCalc
         {
             if (e.Rows[0].Cells["colName"].Value != null && e.Rows[0].Cells["colHireDate"].Value != null && e.Rows[0].Cells["colAccType"].Value != null)
             {
+                if (e.Rows[0].Cells["colBirthDate"].Value == null)
+                    e.Rows[0].Cells["colBirthDate"].Value = "01.01.2000";
+                if (e.Rows[0].Cells["colMobile"].Value == null)
+                    e.Rows[0].Cells["colMobile"].Value = "(000)000-00-00";
+
                 string name = e.Rows[0].Cells["colName"].Value.ToString();
                 DateTime date = (DateTime)e.Rows[0].Cells["colHireDate"].Value;
                 EmploymentType type = (EmploymentType)Enum.Parse(typeof(EmploymentType), e.Rows[0].Cells["colAccType"].Value.ToString());
                 DateTime birthday = (DateTime)e.Rows[0].Cells["colBirthDate"].Value;
                 string mobile = e.Rows[0].Cells["colMobile"].Value.ToString();
-                int id = employeeManager.AddEmployee(name, date, type, birthday, mobile);
+                int id = employeeManager.AddEmployee(name, date, type, false, birthday, mobile);
                 e.Rows[0].Cells["colID"].Value = id;
                 UpdateVacationDays(id, e.Rows[0]);
                 UpdateStatusStrip();
@@ -168,8 +175,9 @@ namespace VacationCalc
 
         private void menuHolidaysCalendar_Click(object sender, EventArgs e)
         {
-            HolidaysForm holidays = new HolidaysForm();
-            holidays.Show();
+            HolidaysForm holidays = new HolidaysForm(holidayManager);
+            holidays.ShowDialog();
+            UpdateGrids();
         }
 
         private void menuPrintMobiles_Click(object sender, EventArgs e)
@@ -194,7 +202,7 @@ namespace VacationCalc
             printDocumentRad = new RadPrintDocument();
             printDocumentRad.DefaultPageSettings.Landscape = false;
             printDocumentRad.AssociatedObject = this.gridViewEmployees;
-            printDocumentRad.MiddleHeader = "Список дней рожденья сотрудников офиса Фастдев, Екатеринбург";
+            printDocumentRad.MiddleHeader = "Список дней рождения сотрудников офиса Фастдев, Екатеринбург";
             printDocumentRad.HeaderFont = new System.Drawing.Font(FontFamily.GenericSerif, 15.0F);
             printDocumentRad.LeftFooter = "Число сотрудников: " + employeeManager.NumberOfEmployees();
 

@@ -13,14 +13,13 @@ namespace VacationCalc.Model
         private DateTime hireDate;
         private EmploymentType accountType;
         private List<Vacation> vacationList;
-        private DaysCalculator calculator;
         private bool fired;
         private DateTime birthDate;
         private string mobilePhone;
 
-        // calculated
-        public int TotalVacationDays;
-        public int VacationDaysLeft;
+        // calculator keeps all the calculated data inside
+        public DaysCalculator calculator;
+        public HolidayManager holidayManager;
 
         public Employee(string _name, DateTime _hireDate, EmploymentType _type, bool _fired, DateTime _birth, string _mobile)
         {
@@ -31,6 +30,19 @@ namespace VacationCalc.Model
             birthDate = _birth;
             mobilePhone = _mobile;
             vacationList = new List<Vacation>();
+            calculator = new DaysCalculator(this);
+        }
+
+        public Employee(string _name, DateTime _hireDate, EmploymentType _type, bool _fired, DateTime _birth, string _mobile, ref HolidayManager _holidays)
+        {
+            name = _name;
+            hireDate = _hireDate;
+            accountType = _type;
+            fired = _fired;
+            birthDate = _birth;
+            mobilePhone = _mobile;
+            vacationList = new List<Vacation>();
+            holidayManager = _holidays;
             calculator = new DaysCalculator(this);
         }
 
@@ -68,7 +80,17 @@ namespace VacationCalc.Model
         {
             get { return mobilePhone; }
             set { mobilePhone = value; }
-        }        
+        }
+
+        public Vacation CreateProperVacation(Vacation vacationBase)
+        {
+            Vacation derived;
+            if (accountType == EmploymentType.IP)
+                derived = new VacationIp(vacationBase);
+            else
+                derived = new VacationOoo(vacationBase);
+            return derived;
+        }
 
         public bool AddVacation(Vacation newVacation)
         {
@@ -76,7 +98,9 @@ namespace VacationCalc.Model
                 if (IsVacationInterfering(newVacation))
                     return false;
 
-            vacationList.Add(newVacation);
+            Vacation derived = CreateProperVacation(newVacation);
+            derived.VacationChanged += OnVacationChanged;
+            vacationList.Add(derived);
             calculator.FillEmployeeData();
             return true;
         }
@@ -99,7 +123,7 @@ namespace VacationCalc.Model
         public bool ChangeStartDate(DateTime newStart, DateTime endDate)
         {
             var oldVacationList = vacationList.Where(item => item.EndDate == endDate);
-            Vacation newVacation = new Vacation(newStart, endDate);
+            Vacation newVacation = new Vacation(newStart, endDate, ref holidayManager);
             Vacation oldVacationCopy = new Vacation(oldVacationList.First());
 
             DeleteVacation(oldVacationList.First());
@@ -118,7 +142,7 @@ namespace VacationCalc.Model
         public bool ChangeEndDate(DateTime startDate, DateTime newEnd)
         {
             var oldVacationList = vacationList.Where(item => item.StartDate == startDate);
-            Vacation newVacation = new Vacation(startDate, newEnd);
+            Vacation newVacation = new Vacation(startDate, newEnd, ref holidayManager);
             Vacation oldVacationCopy = new Vacation(oldVacationList.First());
 
             DeleteVacation(oldVacationList.First());
@@ -155,32 +179,6 @@ namespace VacationCalc.Model
             return vacationList;
         }
 
-        public int VacationDaysSpent()
-        {
-            int days = 0;
-            foreach (Vacation item in vacationList)
-            {
-                if (item.IsDateDefined)
-                    days += VacationDuration(item.StartDate, item.EndDate);
-                else
-                    days += item.Duration.Days;
-            }
-            return days;
-        }
-
-        public int VacationDuration(DateTime start, DateTime end)
-        {
-            int days = 0;
-            if (accountType == EmploymentType.OOO)
-                days += new Vacation(start, end).Duration.Days;
-
-            else if (accountType == EmploymentType.IP)
-                for (DateTime current = start; current <= end; current = current.AddDays(1.0))
-                    if (current.DayOfWeek != DayOfWeek.Saturday && current.DayOfWeek != DayOfWeek.Sunday)
-                        days++;
-            return days;
-        }
-
         public bool IsOnVacation()
         { 
             DateTime today = DateTime.Today;
@@ -190,6 +188,12 @@ namespace VacationCalc.Model
                         return true;
             return false;
         }
+
+        public void OnVacationChanged(object sender, EventArgs e)
+        {
+            calculator.FillEmployeeData();
+        }
+
     }
 
 }

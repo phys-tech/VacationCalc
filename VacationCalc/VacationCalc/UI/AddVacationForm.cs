@@ -8,7 +8,7 @@ using System.Windows.Forms;
 using Telerik.WinControls;
 using VacationCalc.Model;
 
-namespace VacationCalc
+namespace VacationCalc.UI
 {
     public partial class AddVacationForm : Telerik.WinControls.UI.RadForm
     {
@@ -30,7 +30,7 @@ namespace VacationCalc
             {
                 DateTime start = (dates[0] < dates[1]) ? (dates[0]) : (dates[1]);
                 DateTime end = (dates[0] < dates[1]) ? (dates[1]) : (dates[0]);
-                int duration = employee.VacationDuration(start, end);
+                int duration = employee.CreateProperVacation(new Vacation(start, end, ref employee.holidayManager)).Duration.Days;
                 tbDuration.Text = duration.ToString();
             }
             else if (dates.Count > 2)
@@ -53,9 +53,9 @@ namespace VacationCalc
 
             Vacation vacation;
             if (calendarDates.SelectedDates.Count == 2)
-                vacation = new Vacation(calendarDates.SelectedDates[0], calendarDates.SelectedDates[1]);
+                vacation = new Vacation(calendarDates.SelectedDates[0], calendarDates.SelectedDates[1], ref employee.holidayManager);
             else
-                vacation = new Vacation(int.Parse(tbDuration.Text));
+                vacation = new Vacation(int.Parse(tbDuration.Text), ref employee.holidayManager);
 
             bool valid = employee.AddVacation(vacation);
             if (!valid)

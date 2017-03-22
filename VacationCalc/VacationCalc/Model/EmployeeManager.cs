@@ -16,10 +16,17 @@ namespace VacationCalc.Model
     {
         private EmployeeDict Employees;
         private const string XmlFilename = "EmployeesVacations.xml";
+        private HolidayManager holidayManager;
 
         public EmployeeManager()
         {
-            Employees = new Dictionary<int, Employee>(25);
+            Employees = new Dictionary<int, Employee>(40);
+        }
+
+        public EmployeeManager(ref HolidayManager _holidayManager)
+        {
+            Employees = new Dictionary<int, Employee>(40);
+            holidayManager = _holidayManager;
         }
 
         private int GetNewID()
@@ -30,10 +37,10 @@ namespace VacationCalc.Model
                     return id;        
         }
 
-        public int AddEmployee(string _name, DateTime _hireDate, EmploymentType _accType, DateTime _birthday, string _mobile)
+        public int AddEmployee(string _name, DateTime _hireDate, EmploymentType _accType, bool _fired, DateTime _birthday, string _mobile)
         {
             int id = GetNewID();
-            Employee employee = new Employee(_name, _hireDate, _accType, false, _birthday, _mobile);
+            Employee employee = new Employee(_name, _hireDate, _accType, _fired, _birthday, _mobile, ref holidayManager);
             Employees.Add(id, employee);
             return id;
         }
@@ -132,21 +139,20 @@ namespace VacationCalc.Model
                     var tempMobile = element.Elements("MobilePhone").DefaultIfEmpty(new XElement("Def", "(000)000-00-00"));
                     string mobile = tempMobile.First().Value.ToString();
 
-                    int id = GetNewID();
-                    Employees.Add(id, new Employee(name, date, type, fired, birth, mobile));
+                    int id = AddEmployee(name, date, type, fired, birth, mobile);
                     XElement vacations = element.Element("Vacations");
                     foreach (XElement vacationElem in vacations.Elements())
                     {
                         if (vacationElem.HasAttributes)
                         {
                             int duration = int.Parse(vacationElem.Attribute("Duration").Value.ToString());
-                            AddVacation(id, new Vacation(duration));
+                            AddVacation(id, new Vacation(duration, ref holidayManager));
                         }
                         else
                         {
                             DateTime start = DateTime.Parse(vacationElem.Element("StartDate").Value.ToString());
                             DateTime end = DateTime.Parse(vacationElem.Element("EndDate").Value.ToString());
-                            AddVacation(id, new Vacation(start, end));
+                            AddVacation(id, new Vacation(start, end, ref holidayManager));
                         }
                     }
                 }

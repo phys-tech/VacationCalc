@@ -182,7 +182,7 @@ namespace VacationCalc.Model
             return onVacation;
         }
 
-        public DateTime NearestBirthday(out string empName)
+        public DateTime NearestBirthday(out string empNames)
         {
             // C++ implementation
             /*
@@ -208,15 +208,18 @@ namespace VacationCalc.Model
             */
 
             // C# implementation
-            var step0 = Employees.Where(e => !e.Value.IsFired);
-            var step1 = step0.Select(u => new KeyValuePair<DateTime,string>(new DateTime(DateTime.Now.Year, u.Value.BirthDate.Month, u.Value.BirthDate.Day), u.Value.Name));
-            var step2 = step1.OrderBy(u => u.Key.Date);
-            var step3 = step2.Where( u => u.Key.Date >= DateTime.Now);
-            var step4 = step3.First();
+            var notFired = Employees.Where(e => !e.Value.IsFired);
+            var birthdays = notFired.Select(u => new KeyValuePair<DateTime,string>(new DateTime(DateTime.Now.Year, u.Value.BirthDate.Month, u.Value.BirthDate.Day), u.Value.Name));
+            var past = birthdays.Where(u => u.Key.Date < DateTime.Now).Select(i => new KeyValuePair<DateTime, string>(i.Key.AddYears(1), i.Value));
+            var future = birthdays.Where( u => u.Key.Date >= DateTime.Now);
+            var nextYear = future.Union(past);
+            var ordered = nextYear.OrderBy(u => u.Key.Date);
+            DateTime nextBirthday = ordered.First().Key;
+            var celebrants = ordered.Where(u => u.Key.Date == nextBirthday);
+            var names = celebrants.Select(u => u.Value);
+            empNames = names.Aggregate((total, next) => total += "\n" + next);
 
-            empName = step4.Value;
-            return step4.Key;
-            
+            return nextBirthday;
         }
 
     }

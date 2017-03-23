@@ -184,6 +184,8 @@ namespace VacationCalc.Model
 
         public DateTime NearestBirthday(out string empName)
         {
+            // C++ implementation
+            /*
             TimeSpan min = new TimeSpan(365, 0, 0, 0);
             DateTime nearest = DateTime.Now;
             string celebrant = "";
@@ -203,6 +205,18 @@ namespace VacationCalc.Model
             }
             empName = celebrant;
             return nearest;
+            */
+
+            // C# implementation
+            var step0 = Employees.Where(e => !e.Value.IsFired);
+            var step1 = step0.Select(u => new KeyValuePair<DateTime,string>(new DateTime(DateTime.Now.Year, u.Value.BirthDate.Month, u.Value.BirthDate.Day), u.Value.Name));
+            var step2 = step1.OrderBy(u => u.Key.Date);
+            var step3 = step2.Where( u => u.Key.Date >= DateTime.Now);
+            var step4 = step3.First();
+
+            empName = step4.Value;
+            return step4.Key;
+            
         }
 
     }

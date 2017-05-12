@@ -210,8 +210,8 @@ namespace VacationCalc.Model
             // C# implementation
             var notFired = Employees.Where(e => !e.Value.IsFired);
             var birthdays = notFired.Select(u => new KeyValuePair<DateTime,string>(new DateTime(DateTime.Now.Year, u.Value.BirthDate.Month, u.Value.BirthDate.Day), u.Value.Name));
-            var past = birthdays.Where(u => u.Key.Date < DateTime.Now).Select(i => new KeyValuePair<DateTime, string>(i.Key.AddYears(1), i.Value));
-            var future = birthdays.Where( u => u.Key.Date >= DateTime.Now);
+            var past = birthdays.Where(u => u.Key.Date < DateTime.Now.Date).Select(i => new KeyValuePair<DateTime, string>(i.Key.AddYears(1), i.Value));
+            var future = birthdays.Where( u => u.Key.Date >= DateTime.Now.Date);
             var nextYear = future.Union(past);
             var ordered = nextYear.OrderBy(u => u.Key.Date);
             DateTime nextBirthday = ordered.First().Key;

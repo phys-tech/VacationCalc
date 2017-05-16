@@ -53,6 +53,7 @@
             this.statusStrip = new Telerik.WinControls.UI.RadStatusStrip();
             this.statusNumOfEmloyees = new Telerik.WinControls.UI.RadLabelElement();
             this.statusOnVacation = new Telerik.WinControls.UI.RadLabelElement();
+            this.statusNearestBirthday = new Telerik.WinControls.UI.RadLabelElement();
             this.pageView = new Telerik.WinControls.UI.RadPageView();
             this.pageWorkers = new Telerik.WinControls.UI.RadPageViewPage();
             this.gridViewEmployees = new Telerik.WinControls.UI.RadGridView();
@@ -65,7 +66,6 @@
             this.menuPrintMobiles = new Telerik.WinControls.UI.RadMenuItem();
             this.menuPrintBirthdates = new Telerik.WinControls.UI.RadMenuItem();
             this.printDocumentRad = new Telerik.WinControls.UI.RadPrintDocument();
-            this.statusNearestBirthday = new Telerik.WinControls.UI.RadLabelElement();
             ((System.ComponentModel.ISupportInitialize)(this.statusStrip)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pageView)).BeginInit();
             this.pageView.SuspendLayout();
@@ -111,6 +111,16 @@
             this.statusOnVacation.TextWrap = true;
             this.statusOnVacation.ToolTipText = "WTF man";
             this.statusOnVacation.Visibility = Telerik.WinControls.ElementVisibility.Visible;
+            // 
+            // statusNearestBirthday
+            // 
+            this.statusNearestBirthday.AccessibleDescription = "NearestBithday";
+            this.statusNearestBirthday.AccessibleName = "NearestBithday";
+            this.statusNearestBirthday.Name = "statusNearestBirthday";
+            this.statusStrip.SetSpring(this.statusNearestBirthday, false);
+            this.statusNearestBirthday.Text = "NearestBithday";
+            this.statusNearestBirthday.TextWrap = true;
+            this.statusNearestBirthday.Visibility = Telerik.WinControls.ElementVisibility.Visible;
             // 
             // pageView
             // 
@@ -167,27 +177,28 @@
             gridViewTextBoxColumn2.MinWidth = 200;
             gridViewTextBoxColumn2.Name = "colName";
             gridViewTextBoxColumn2.SortOrder = Telerik.WinControls.UI.RadSortOrder.Ascending;
-            gridViewTextBoxColumn2.Width = 205;
+            gridViewTextBoxColumn2.Width = 211;
             gridViewDateTimeColumn1.EnableExpressionEditor = false;
             gridViewDateTimeColumn1.FilteringMode = Telerik.WinControls.UI.GridViewTimeFilteringMode.Date;
-            gridViewDateTimeColumn1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            gridViewDateTimeColumn1.FormatString = "{0:D}";
+            gridViewDateTimeColumn1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            gridViewDateTimeColumn1.FormatString = "{0:dd.MM.yyyy}";
             gridViewDateTimeColumn1.HeaderText = "Дата приема";
-            gridViewDateTimeColumn1.MinWidth = 105;
+            gridViewDateTimeColumn1.MaxWidth = 100;
+            gridViewDateTimeColumn1.MinWidth = 80;
             gridViewDateTimeColumn1.Name = "colHireDate";
-            gridViewDateTimeColumn1.Width = 107;
+            gridViewDateTimeColumn1.Width = 84;
             gridViewComboBoxColumn1.EnableExpressionEditor = false;
             gridViewComboBoxColumn1.HeaderText = "Тип занятости";
             gridViewComboBoxColumn1.MinWidth = 80;
             gridViewComboBoxColumn1.Name = "colAccType";
-            gridViewComboBoxColumn1.Width = 82;
+            gridViewComboBoxColumn1.Width = 84;
             gridViewTextBoxColumn3.EnableExpressionEditor = false;
             gridViewTextBoxColumn3.HeaderText = "Кол-во оставшихся дней отпуска";
             gridViewTextBoxColumn3.MaxWidth = 200;
             gridViewTextBoxColumn3.MinWidth = 180;
             gridViewTextBoxColumn3.Name = "colVacationLeft";
             gridViewTextBoxColumn3.ReadOnly = true;
-            gridViewTextBoxColumn3.Width = 184;
+            gridViewTextBoxColumn3.Width = 190;
             conditionalFormattingObject1.CellBackColor = System.Drawing.Color.Empty;
             conditionalFormattingObject1.CellForeColor = System.Drawing.Color.Red;
             conditionalFormattingObject1.ConditionType = Telerik.WinControls.UI.ConditionTypes.GreaterOrEqual;
@@ -203,7 +214,7 @@
             gridViewDateTimeColumn2.MaxWidth = 130;
             gridViewDateTimeColumn2.MinWidth = 90;
             gridViewDateTimeColumn2.Name = "colBirthDate";
-            gridViewDateTimeColumn2.Width = 92;
+            gridViewDateTimeColumn2.Width = 95;
             conditionalFormattingObject2.CellBackColor = System.Drawing.Color.Empty;
             conditionalFormattingObject2.CellForeColor = System.Drawing.Color.Red;
             conditionalFormattingObject2.Name = "MobileNotSet";
@@ -219,21 +230,21 @@
             gridViewMaskBoxColumn1.MaxWidth = 130;
             gridViewMaskBoxColumn1.MinWidth = 100;
             gridViewMaskBoxColumn1.Name = "colMobile";
-            gridViewMaskBoxColumn1.Width = 102;
+            gridViewMaskBoxColumn1.Width = 105;
             gridViewCommandColumn1.DefaultText = "Добавить...";
             gridViewCommandColumn1.EnableExpressionEditor = false;
             gridViewCommandColumn1.HeaderText = "Отпуск";
             gridViewCommandColumn1.MinWidth = 70;
             gridViewCommandColumn1.Name = "colAddVacation";
             gridViewCommandColumn1.UseDefaultText = true;
-            gridViewCommandColumn1.Width = 72;
+            gridViewCommandColumn1.Width = 74;
             gridViewCommandColumn2.DefaultText = "Просмотр";
             gridViewCommandColumn2.EnableExpressionEditor = false;
             gridViewCommandColumn2.HeaderText = "Инфо";
             gridViewCommandColumn2.MinWidth = 70;
             gridViewCommandColumn2.Name = "colView";
             gridViewCommandColumn2.UseDefaultText = true;
-            gridViewCommandColumn2.Width = 72;
+            gridViewCommandColumn2.Width = 73;
             this.gridViewEmployees.MasterTemplate.Columns.AddRange(new Telerik.WinControls.UI.GridViewDataColumn[] {
             gridViewTextBoxColumn1,
             gridViewTextBoxColumn2,
@@ -407,16 +418,6 @@
             this.printDocumentRad.RightFooter = "Rightr1";
             this.printDocumentRad.RightHeader = "Right2";
             this.printDocumentRad.Watermark = radPrintWatermark1;
-            // 
-            // statusNearestBirthday
-            // 
-            this.statusNearestBirthday.AccessibleDescription = "NearestBithday";
-            this.statusNearestBirthday.AccessibleName = "NearestBithday";
-            this.statusNearestBirthday.Name = "statusNearestBirthday";
-            this.statusStrip.SetSpring(this.statusNearestBirthday, false);
-            this.statusNearestBirthday.Text = "NearestBithday";
-            this.statusNearestBirthday.TextWrap = true;
-            this.statusNearestBirthday.Visibility = Telerik.WinControls.ElementVisibility.Visible;
             // 
             // MainForm
             // 

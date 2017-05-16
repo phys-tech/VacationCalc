@@ -20,19 +20,19 @@ namespace VacationCalc.Model
             FillEmployeeData();
         }
     
-        private int TotalDaysOfWork()
+        private int TotalDaysOfWork(DateTime dateToCount)
         {
-            var days = (DateTime.Today - CurrentEmployee.HireDate).TotalDays;
+            var days = (dateToCount - CurrentEmployee.HireDate).TotalDays;
             var floored = Math.Floor(days);
             int result = (int)floored;
             return result;        
         }
 
-        private int TotalVacationEarned()
+        private int TotalVacationEarned(DateTime dateToCount)
         {
-            int workingDays = TotalDaysOfWork();
+            int daysWorked = TotalDaysOfWork(dateToCount);
             int vacationPerYear = CurrentEmployee.AccountType.GetVacationDaysPerYear();
-            var vacation = (double) workingDays / 365.0 * vacationPerYear;
+            var vacation = (double) daysWorked / 365.0 * vacationPerYear;
             return (int) vacation;
         }
 
@@ -44,22 +44,17 @@ namespace VacationCalc.Model
             return days;
         }
 
-        private int CountVacationAtYearEnd()
-        { 
-            DateTime endOfYear = new DateTime(DateTime.Today.Year, 12, 31);
-            var daysWorkedAtEnd = (endOfYear - CurrentEmployee.HireDate).TotalDays;
-            var floored = Math.Floor(daysWorkedAtEnd);
-            int vacationPerYear = CurrentEmployee.AccountType.GetVacationDaysPerYear();
-            var vacation = floored / 365.0 * vacationPerYear;
-            return (int)vacation;
+        private DateTime EndOfYear
+        {
+            get { return new DateTime(DateTime.Today.Year, 12, 31); }
         }
 
         public void FillEmployeeData()
         {
-            TotalVacationDays = TotalVacationEarned();
+            TotalVacationDays = TotalVacationEarned(DateTime.Today);
             VacationDaysSpent = CountVacationDaysSpent();
             VacationDaysLeft = TotalVacationDays - VacationDaysSpent;
-            VacationDaysAtYearEnd = CountVacationAtYearEnd() - VacationDaysSpent;
+            VacationDaysAtYearEnd = TotalVacationEarned(EndOfYear) - VacationDaysSpent;
         }
     
     }

@@ -52,6 +52,8 @@
             this.comBarLabelVacationSpent = new Telerik.WinControls.UI.CommandBarLabel();
             this.comBarSeparator3 = new Telerik.WinControls.UI.CommandBarSeparator();
             this.comBarLabelVacationLeft = new Telerik.WinControls.UI.CommandBarLabel();
+            this.comBarSeparator5 = new Telerik.WinControls.UI.CommandBarSeparator();
+            this.comBarLabelVacationYearEnd = new Telerik.WinControls.UI.CommandBarLabel();
             this.comBarRow3 = new Telerik.WinControls.UI.CommandBarRowElement();
             this.comBarStrip3 = new Telerik.WinControls.UI.CommandBarStripElement();
             this.comBarLabelBirthday = new Telerik.WinControls.UI.CommandBarLabel();
@@ -280,7 +282,9 @@
             this.comBarSeparator2,
             this.comBarLabelVacationSpent,
             this.comBarSeparator3,
-            this.comBarLabelVacationLeft});
+            this.comBarLabelVacationLeft,
+            this.comBarSeparator5,
+            this.comBarLabelVacationYearEnd});
             this.comBarStrip2.Name = "commandBarStripElement2";
             // 
             // 
@@ -333,6 +337,24 @@
             this.comBarLabelVacationLeft.Text = "Осталось:";
             this.comBarLabelVacationLeft.Visibility = Telerik.WinControls.ElementVisibility.Visible;
             this.comBarLabelVacationLeft.VisibleInOverflowMenu = false;
+            // 
+            // comBarSeparator5
+            // 
+            this.comBarSeparator5.AccessibleDescription = "comBarSeparator5";
+            this.comBarSeparator5.AccessibleName = "comBarSeparator5";
+            this.comBarSeparator5.DisplayName = "commandBarSeparator1";
+            this.comBarSeparator5.Name = "comBarSeparator5";
+            this.comBarSeparator5.Visibility = Telerik.WinControls.ElementVisibility.Visible;
+            this.comBarSeparator5.VisibleInOverflowMenu = false;
+            // 
+            // comBarLabelVacationYearEnd
+            // 
+            this.comBarLabelVacationYearEnd.AccessibleDescription = "Отпуск на конец года:";
+            this.comBarLabelVacationYearEnd.AccessibleName = "Отпуск на конец года:";
+            this.comBarLabelVacationYearEnd.DisplayName = "commandBarLabel1";
+            this.comBarLabelVacationYearEnd.Name = "comBarLabelVacationYearEnd";
+            this.comBarLabelVacationYearEnd.Text = "Отпуск на конец года:";
+            this.comBarLabelVacationYearEnd.Visibility = Telerik.WinControls.ElementVisibility.Visible;
             // 
             // comBarRow3
             // 
@@ -489,5 +511,7 @@
         private Telerik.WinControls.UI.CommandBarStripElement comBarStrip3;
         private Telerik.WinControls.UI.CommandBarLabel comBarLabelMobile;
         private Telerik.WinControls.UI.RadButton bFireHire;
+        private Telerik.WinControls.UI.CommandBarLabel comBarLabelVacationYearEnd;
+        private Telerik.WinControls.UI.CommandBarSeparator comBarSeparator5;
     }
 }

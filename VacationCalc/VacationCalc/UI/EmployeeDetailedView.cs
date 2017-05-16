@@ -53,6 +53,7 @@ namespace VacationCalc.UI
             comBarLabelTotalVacation.Text = "Дней отпуска всего: " + employee.calculator.TotalVacationDays.ToString();
             comBarLabelVacationSpent.Text = "Отгуляно: " + employee.calculator.VacationDaysSpent;
             comBarLabelVacationLeft.Text = "Осталось: " + employee.calculator.VacationDaysLeft;
+            comBarLabelVacationYearEnd.Text = "На конец года: " + employee.calculator.VacationDaysAtYearEnd;
             lOnVacation.Visible = employee.IsOnVacation();
         }
 

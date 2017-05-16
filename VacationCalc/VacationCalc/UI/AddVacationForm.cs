@@ -28,9 +28,7 @@ namespace VacationCalc.UI
             var dates = calendarDates.SelectedDates;
             if (dates.Count == 2)
             {
-                DateTime start = (dates[0] < dates[1]) ? (dates[0]) : (dates[1]);
-                DateTime end = (dates[0] < dates[1]) ? (dates[1]) : (dates[0]);
-                int duration = employee.CreateProperVacation(new Vacation(start, end, ref employee.holidayManager)).Duration.Days;
+                int duration = employee.CreateProperVacation(new Vacation(dates[0], dates[1], ref employee.holidayManager)).Duration.Days;
                 tbDuration.Text = duration.ToString();
             }
             else if (dates.Count > 2)

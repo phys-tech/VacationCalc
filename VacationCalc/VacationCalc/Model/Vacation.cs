@@ -16,13 +16,13 @@ namespace VacationCalc.Model
 
         public event EventHandler VacationChanged;
 
-        public Vacation(DateTime _startDate, DateTime _endDate)
+        /*public Vacation(DateTime _startDate, DateTime _endDate)
         {
             startDate = (_startDate < _endDate) ? (_startDate) : (_endDate);
             endDate = (_startDate < _endDate) ? (_endDate) : (_startDate);
             RecalcDuration();
             IsDateDefined = true;
-        }
+        }*/
 
         public Vacation(DateTime _startDate, DateTime _endDate, ref HolidayManager _holidays)
         {
@@ -145,8 +145,15 @@ namespace VacationCalc.Model
             //System.Console.WriteLine("Derived VacationOOO: RecalcDuration() call");
             if (IsDateDefined)
             {
-                duration = endDate - startDate;
-                duration = duration.Add(new TimeSpan(1, 0, 0, 0));
+                //duration = endDate - startDate;
+                //duration = duration.Add(new TimeSpan(1, 0, 0, 0));
+                int days = 0;
+                for (DateTime current = startDate; current <= endDate; current = current.AddDays(1.0))
+                {
+                    if (!holidayManager.Holidays.Contains(current.Date))
+                        days++;
+                }
+                duration = new TimeSpan(days, 0, 0, 0);
             }
         }
 

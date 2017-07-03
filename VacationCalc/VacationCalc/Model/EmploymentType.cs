@@ -60,7 +60,10 @@ namespace VacationCalc.Model
 
         [RussianName("ООО")]
         [VacationDaysPerYear(28)]
-        OOO
+        OOO,
+        [RussianName("Швеция")]
+        [VacationDaysPerYear(25)]
+        SVE
     }
 
     public class TypeDataSource

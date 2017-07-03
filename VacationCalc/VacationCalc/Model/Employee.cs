@@ -87,8 +87,10 @@ namespace VacationCalc.Model
             Vacation derived;
             if (accountType == EmploymentType.IP)
                 derived = new VacationIp(vacationBase);
-            else
+            else if (accountType == EmploymentType.OOO)
                 derived = new VacationOoo(vacationBase);
+            else //if (accountType == EmploymentType.SVE)
+                derived = new VacationSve(vacationBase);
             return derived;
         }
 

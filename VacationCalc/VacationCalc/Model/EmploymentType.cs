@@ -82,13 +82,11 @@ namespace VacationCalc.Model
         public int iValue
         {
             get { return Value; }
-            set { Value = value; }
         }
 
         public string sDisplay
         {
             get { return Display; }
-            set { Display = value; }
         }
     }
 

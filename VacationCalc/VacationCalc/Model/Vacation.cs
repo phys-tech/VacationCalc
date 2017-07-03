@@ -16,14 +16,6 @@ namespace VacationCalc.Model
 
         public event EventHandler VacationChanged;
 
-        /*public Vacation(DateTime _startDate, DateTime _endDate)
-        {
-            startDate = (_startDate < _endDate) ? (_startDate) : (_endDate);
-            endDate = (_startDate < _endDate) ? (_endDate) : (_startDate);
-            RecalcDuration();
-            IsDateDefined = true;
-        }*/
-
         public Vacation(DateTime _startDate, DateTime _endDate, ref HolidayManager _holidays)
         {
             startDate = (_startDate < _endDate) ? (_startDate) : (_endDate);
@@ -165,4 +157,35 @@ namespace VacationCalc.Model
         }
 
     }
+
+    public class VacationSve : Vacation
+    {
+        public VacationSve(Vacation copy)
+            : base(copy)
+        {
+            System.Console.WriteLine("Derived VacationSVE: Constructor");
+            holidayManager.HolidaysChanged += OnHolidaysChanged;
+        }
+
+        protected override void RecalcDuration()
+        {
+            System.Console.WriteLine("Derived VacationSVE: RecalcDuration() call");
+            if (IsDateDefined)
+            {
+                int days = 0;
+                for (DateTime current = startDate; current <= endDate; current = current.AddDays(1.0))
+                {
+                    if (current.DayOfWeek != DayOfWeek.Saturday && current.DayOfWeek != DayOfWeek.Sunday && !holidayManager.Holidays.Contains(current.Date))
+                        days++;
+                }
+                duration = new TimeSpan(days, 0, 0, 0);
+            }
+        }
+
+        public override void OnHolidaysChanged(object sender, EventArgs e)
+        {
+            this.RecalcDuration();
+            OnVacationChanged(null);
+        }
+    }    
 }

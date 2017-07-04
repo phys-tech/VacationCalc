@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using Telerik.WinControls;
+using Telerik.WinControls.UI;
 using VacationCalc.Model;
 
 namespace VacationCalc.UI
@@ -50,7 +51,7 @@ namespace VacationCalc.UI
 
         private void UpdateVacationInfo()
         {
-            comBarLabelTotalVacation.Text = "Дней отпуска всего: " + employee.calculator.TotalVacationDays.ToString();
+            comBarLabelTotalVacation.Text = "Дней отпуска всего: " + employee.calculator.TotalVacationDays;
             comBarLabelVacationSpent.Text = "Отгуляно: " + employee.calculator.VacationDaysSpent;
             comBarLabelVacationLeft.Text = "Осталось: " + employee.calculator.VacationDaysLeft;
             comBarLabelVacationYearEnd.Text = "На конец года: " + employee.calculator.VacationDaysAtYearEnd;
@@ -165,6 +166,16 @@ namespace VacationCalc.UI
         {
             employee.IsFired = !employee.IsFired;
             UpdateContract();
+        }
+
+        private void bPrint_Click(object sender, EventArgs e)
+        {
+            PrintEmployee myPrinter = new PrintEmployee(employee);
+            myPrinter.Landscape = false;
+            myPrinter.AssociatedObject = gridViewVacations;
+            RadPrintPreviewDialog dialog = new RadPrintPreviewDialog();
+            dialog.Document = myPrinter;
+            dialog.ShowDialog();
         }
 
     }

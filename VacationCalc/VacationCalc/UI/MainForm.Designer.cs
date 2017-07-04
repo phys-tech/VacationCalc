@@ -410,13 +410,7 @@
             // 
             this.printDocumentRad.AssociatedObject = this.gridViewEmployees;
             this.printDocumentRad.FooterFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.printDocumentRad.HeaderFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.printDocumentRad.LeftFooter = "Left1";
-            this.printDocumentRad.LeftHeader = "Left2";
-            this.printDocumentRad.MiddleFooter = "Mid1";
-            this.printDocumentRad.MiddleHeader = "Mid2";
-            this.printDocumentRad.RightFooter = "Rightr1";
-            this.printDocumentRad.RightHeader = "Right2";
+            this.printDocumentRad.HeaderFont = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.printDocumentRad.Watermark = radPrintWatermark1;
             // 
             // MainForm

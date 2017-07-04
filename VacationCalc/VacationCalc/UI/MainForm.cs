@@ -186,11 +186,8 @@ namespace VacationCalc
 
         private void menuPrintMobiles_Click(object sender, EventArgs e)
         {
-            printDocumentRad = new RadPrintDocument();
             printDocumentRad.DefaultPageSettings.Landscape = false;
-            printDocumentRad.AssociatedObject = this.gridViewEmployees;
             printDocumentRad.MiddleHeader = "Список телефонов сотрудников офиса Фастдев, Екатеринбург";
-            printDocumentRad.HeaderFont = new System.Drawing.Font(FontFamily.GenericSerif, 15.0F);
             printDocumentRad.LeftFooter = "Число сотрудников: " + employeeManager.NumberOfEmployees();
 
             ShowColumns(false, true);
@@ -203,11 +200,8 @@ namespace VacationCalc
 
         private void menuPrintBirthdates_Click(object sender, EventArgs e)
         {
-            printDocumentRad = new RadPrintDocument();
             printDocumentRad.DefaultPageSettings.Landscape = false;
-            printDocumentRad.AssociatedObject = this.gridViewEmployees;
             printDocumentRad.MiddleHeader = "Список дней рождения сотрудников офиса Фастдев, Екатеринбург";
-            printDocumentRad.HeaderFont = new System.Drawing.Font(FontFamily.GenericSerif, 15.0F);
             printDocumentRad.LeftFooter = "Число сотрудников: " + employeeManager.NumberOfEmployees();
 
             ShowColumns(false, false);

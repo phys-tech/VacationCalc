@@ -61,6 +61,7 @@
             this.comBarLabelMobile = new Telerik.WinControls.UI.CommandBarLabel();
             this.lEmployeeName = new Telerik.WinControls.UI.RadLabel();
             this.panelBottom = new Telerik.WinControls.UI.RadPanel();
+            this.bPrint = new Telerik.WinControls.UI.RadButton();
             this.bFireHire = new Telerik.WinControls.UI.RadButton();
             this.bOK = new Telerik.WinControls.UI.RadButton();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewVacations)).BeginInit();
@@ -73,6 +74,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.lEmployeeName)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelBottom)).BeginInit();
             this.panelBottom.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bPrint)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bFireHire)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bOK)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
@@ -414,6 +416,7 @@
             // 
             // panelBottom
             // 
+            this.panelBottom.Controls.Add(this.bPrint);
             this.panelBottom.Controls.Add(this.bFireHire);
             this.panelBottom.Controls.Add(this.bOK);
             this.panelBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -421,6 +424,15 @@
             this.panelBottom.Name = "panelBottom";
             this.panelBottom.Size = new System.Drawing.Size(577, 58);
             this.panelBottom.TabIndex = 4;
+            // 
+            // bPrint
+            // 
+            this.bPrint.Location = new System.Drawing.Point(321, 10);
+            this.bPrint.Name = "bPrint";
+            this.bPrint.Size = new System.Drawing.Size(110, 36);
+            this.bPrint.TabIndex = 5;
+            this.bPrint.Text = "Печать...";
+            this.bPrint.Click += new System.EventHandler(this.bPrint_Click);
             // 
             // bFireHire
             // 
@@ -475,6 +487,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.lEmployeeName)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelBottom)).EndInit();
             this.panelBottom.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.bPrint)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bFireHire)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bOK)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
@@ -513,5 +526,6 @@
         private Telerik.WinControls.UI.RadButton bFireHire;
         private Telerik.WinControls.UI.CommandBarLabel comBarLabelVacationYearEnd;
         private Telerik.WinControls.UI.CommandBarSeparator comBarSeparator5;
+        private Telerik.WinControls.UI.RadButton bPrint;
     }
 }

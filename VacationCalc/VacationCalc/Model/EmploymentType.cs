@@ -61,6 +61,7 @@ namespace VacationCalc.Model
         [RussianName("ООО")]
         [VacationDaysPerYear(28)]
         OOO,
+
         [RussianName("Швеция")]
         [VacationDaysPerYear(25)]
         SVE

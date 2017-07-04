@@ -82,6 +82,9 @@
     <Compile Include="Model\EmployeeManager.cs" />
     <Compile Include="Model\EmploymentType.cs" />
     <Compile Include="Model\HolidayManager.cs" />
+    <Compile Include="Model\PrintEmployee.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Model\Vacation.cs" />
     <Compile Include="UI\AddVacationForm.cs">
       <SubType>Form</SubType>
@@ -110,6 +113,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Model\PrintEmployee.resx">
+      <DependentUpon>PrintEmployee.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\AddVacationForm.resx">
       <DependentUpon>AddVacationForm.cs</DependentUpon>
     </EmbeddedResource>

@@ -95,31 +95,28 @@
             this.gridViewVacations.MasterTemplate.AddNewRowPosition = Telerik.WinControls.UI.SystemRowPosition.Bottom;
             this.gridViewVacations.MasterTemplate.AllowDragToGroup = false;
             this.gridViewVacations.MasterTemplate.AutoSizeColumnsMode = Telerik.WinControls.UI.GridViewAutoSizeColumnsMode.Fill;
-            gridViewTextBoxColumn1.AllowResize = false;
             gridViewTextBoxColumn1.EnableExpressionEditor = false;
             gridViewTextBoxColumn1.HeaderText = "Номер";
-            gridViewTextBoxColumn1.IsPinned = true;
             gridViewTextBoxColumn1.Name = "colNumber";
-            gridViewTextBoxColumn1.PinPosition = Telerik.WinControls.UI.PinnedColumnPosition.Left;
             gridViewTextBoxColumn1.ReadOnly = true;
             gridViewTextBoxColumn1.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            gridViewTextBoxColumn1.Width = 92;
+            gridViewTextBoxColumn1.Width = 88;
             gridViewDateTimeColumn1.EnableExpressionEditor = false;
             gridViewDateTimeColumn1.Format = System.Windows.Forms.DateTimePickerFormat.Long;
             gridViewDateTimeColumn1.FormatString = "{0:D}";
             gridViewDateTimeColumn1.HeaderText = "Начало отпуска";
             gridViewDateTimeColumn1.Name = "colStartDate";
-            gridViewDateTimeColumn1.Width = 140;
+            gridViewDateTimeColumn1.Width = 141;
             gridViewDateTimeColumn2.EnableExpressionEditor = false;
             gridViewDateTimeColumn2.Format = System.Windows.Forms.DateTimePickerFormat.Long;
             gridViewDateTimeColumn2.FormatString = "{0:D}";
             gridViewDateTimeColumn2.HeaderText = "Конец отпуска";
             gridViewDateTimeColumn2.Name = "colEndDate";
-            gridViewDateTimeColumn2.Width = 149;
+            gridViewDateTimeColumn2.Width = 151;
             gridViewTextBoxColumn2.EnableExpressionEditor = false;
             gridViewTextBoxColumn2.HeaderText = "Продолжительность";
             gridViewTextBoxColumn2.Name = "colDuration";
-            gridViewTextBoxColumn2.Width = 178;
+            gridViewTextBoxColumn2.Width = 179;
             this.gridViewVacations.MasterTemplate.Columns.AddRange(new Telerik.WinControls.UI.GridViewDataColumn[] {
             gridViewTextBoxColumn1,
             gridViewDateTimeColumn1,

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Linq;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
@@ -36,8 +37,9 @@ namespace VacationCalc.UI
             UpdateVacationInfo();
 
             List<Vacation> list = employee.GetVacationsList();
+            var ordered = list.OrderBy(u => u.StartDate);
             int number = 1;
-            foreach (Vacation vacation in list)
+            foreach (Vacation vacation in ordered)
             {
                 object[] row;
                 if (vacation.IsDateDefined)

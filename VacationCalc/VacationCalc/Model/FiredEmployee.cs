@@ -34,15 +34,6 @@ namespace VacationCalc.Model
     }
 
     
-    public static class EmployeeFactory
-    {
-        public static Employee Create(string _name, DateTime _hireDate, EmploymentType _accType, bool _fired, DateTime _birthday, string _mobile, ref HolidayManager _holidays)
-        {
-            if (_fired)
-                return new FiredEmployee(_name, _hireDate, _accType, _fired, _birthday, _mobile, ref _holidays);
-            else
-                return new Employee(_name, _hireDate, _accType, _fired, _birthday, _mobile, ref _holidays);
-        }
-    }
+
     
 }

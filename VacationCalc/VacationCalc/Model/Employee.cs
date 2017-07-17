@@ -96,14 +96,7 @@ namespace VacationCalc.Model
 
         public Vacation CreateProperVacation(Vacation vacationBase)
         {
-            Vacation derived;
-            if (accountType == EmploymentType.IP)
-                derived = new VacationIp(vacationBase);
-            else if (accountType == EmploymentType.OOO)
-                derived = new VacationOoo(vacationBase);
-            else //if (accountType == EmploymentType.SVE)
-                derived = new VacationSve(vacationBase);
-            return derived;
+            return VacationFactory.Create(AccountType, vacationBase);
         }
 
         public bool AddVacation(Vacation newVacation)

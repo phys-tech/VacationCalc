@@ -81,6 +81,7 @@
     <Compile Include="Model\Employee.cs" />
     <Compile Include="Model\EmployeeManager.cs" />
     <Compile Include="Model\EmploymentType.cs" />
+    <Compile Include="Model\Factories.cs" />
     <Compile Include="Model\FiredEmployee.cs" />
     <Compile Include="Model\HolidayManager.cs" />
     <Compile Include="Model\PrintEmployee.cs">

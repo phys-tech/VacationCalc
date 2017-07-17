@@ -65,7 +65,6 @@ namespace VacationCalc.Model
 
         protected virtual void RecalcDuration()
         {
-            //System.Console.WriteLine("Base Vacation: RecalcDuration() call");
             if (IsDateDefined)
             {
                 duration = endDate - startDate;
@@ -75,7 +74,6 @@ namespace VacationCalc.Model
 
         public virtual void OnHolidaysChanged(object sender, EventArgs e)
         {
-            //System.Console.WriteLine("Vacation.HolidaysCalendarChanged - RecalcDuration");
             this.RecalcDuration();
             OnVacationChanged(null);
         }
@@ -100,7 +98,6 @@ namespace VacationCalc.Model
 
         protected override void RecalcDuration()
         {
-            //System.Console.WriteLine("Derived VacationIP: RecalcDuration() call");
             if (IsDateDefined)
             {
                 int days = 0;
@@ -116,7 +113,6 @@ namespace VacationCalc.Model
 
         public override void OnHolidaysChanged(object sender, EventArgs e)
         {
-            //System.Console.WriteLine("VacationIP.HolidaysCalendarChanged - RecalcDuration");
             this.RecalcDuration();
             OnVacationChanged(null);
         }
@@ -134,11 +130,8 @@ namespace VacationCalc.Model
 
         protected override void RecalcDuration()
         {
-            //System.Console.WriteLine("Derived VacationOOO: RecalcDuration() call");
             if (IsDateDefined)
             {
-                //duration = endDate - startDate;
-                //duration = duration.Add(new TimeSpan(1, 0, 0, 0));
                 int days = 0;
                 for (DateTime current = startDate; current <= endDate; current = current.AddDays(1.0))
                 {
@@ -151,7 +144,6 @@ namespace VacationCalc.Model
 
         public override void OnHolidaysChanged(object sender, EventArgs e)
         {
-            //System.Console.WriteLine("VacationOOO.HolidaysCalendarChanged - RecalcDuration");
             this.RecalcDuration();
             OnVacationChanged(null);
         }
@@ -163,13 +155,11 @@ namespace VacationCalc.Model
         public VacationSve(Vacation copy)
             : base(copy)
         {
-            System.Console.WriteLine("Derived VacationSVE: Constructor");
             holidayManager.HolidaysChanged += OnHolidaysChanged;
         }
 
         protected override void RecalcDuration()
         {
-            System.Console.WriteLine("Derived VacationSVE: RecalcDuration() call");
             if (IsDateDefined)
             {
                 int days = 0;

@@ -40,7 +40,7 @@ namespace VacationCalc.Model
         public int AddEmployee(string _name, DateTime _hireDate, EmploymentType _accType, bool _fired, DateTime _birthday, string _mobile)
         {
             int id = GetNewID();
-            Employee employee = new Employee(_name, _hireDate, _accType, _fired, _birthday, _mobile, ref holidayManager);
+            Employee employee = EmployeeFactory.Create(_name, _hireDate, _accType, _fired, _birthday, _mobile, ref holidayManager);
             Employees.Add(id, employee);
             return id;
         }

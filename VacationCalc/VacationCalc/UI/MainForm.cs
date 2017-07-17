@@ -26,25 +26,32 @@ namespace VacationCalc
             InitializeComponent();
             holidayManager = new HolidayManager();
             employeeManager = new EmployeeManager(ref holidayManager);
-            
         }
 
         private void MainForm_Load(object sender, EventArgs e)
         {
             RadGridLocalizationProvider.CurrentProvider = new RussianGridViewLocalization();
             saveOnExit = employeeManager.LoadDataFromXml();
-            GridViewComboBoxColumn column = gridViewEmployees.Columns["colAccType"] as GridViewComboBoxColumn;
 
-            EmploymentTypeList temp = new EmploymentTypeList();
-            column.DataSource = temp.GetDataList();
-            column.ValueMember = "iValue";
-            column.DisplayMember = "sDisplay";
-
+            SetUpGrids();
             UpdateGrids();
             UpdateStatusStrip();
             //SetDateTimePicker();
             if (!saveOnExit)
                 MessageBox.Show("Произошла ошибка при загрузке данных. Данные не будут сохранены при окончании работы, обратитесь в техподдержку.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void SetUpGrids()
+        {
+            GridViewComboBoxColumn column = gridViewEmployees.Columns["colAccType"] as GridViewComboBoxColumn;
+            GridViewComboBoxColumn column2 = gridViewFired.Columns["colAccType"] as GridViewComboBoxColumn;
+            EmploymentTypeList temp = new EmploymentTypeList();
+            column.DataSource = temp.GetDataList();
+            column.ValueMember = "iValue";
+            column.DisplayMember = "sDisplay";
+            column2.DataSource = temp.GetDataList();
+            column2.ValueMember = "iValue";
+            column2.DisplayMember = "sDisplay";        
         }
 
         private void UpdateGrids()
@@ -54,15 +61,10 @@ namespace VacationCalc
             Dictionary<int, Employee> employees = employeeManager.GetAllEmployees();
             foreach (int empID in employees.Keys)
             {
-                Employee emp = employees[empID];
-                string name = emp.Name;
-                DateTime date = emp.HireDate;
-                EmploymentType type = emp.AccountType;
-                int vacation = emp.calculator.VacationDaysLeft;
-                DateTime birth = emp.BirthDate;
-                string mobile = emp.MobilePhone;
-                object[] row = { empID, name, date, type, vacation, birth, mobile };
-                if (!emp.IsFired)
+                Employee employee = employees[empID];
+                Object[] row = employee.GetAsDataRow();
+                row.SetValue(empID, 0);
+                if (!employee.IsFired)
                     gridViewEmployees.Rows.Add(row);
                 else
                     gridViewFired.Rows.Add(row);

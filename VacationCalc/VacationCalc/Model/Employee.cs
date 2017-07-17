@@ -21,7 +21,7 @@ namespace VacationCalc.Model
         public DaysCalculator calculator;
         public HolidayManager holidayManager;
 
-        public Employee(string _name, DateTime _hireDate, EmploymentType _type, bool _fired, DateTime _birth, string _mobile)
+        /*public Employee(string _name, DateTime _hireDate, EmploymentType _type, bool _fired, DateTime _birth, string _mobile)
         {
             name = _name;
             hireDate = _hireDate;
@@ -31,7 +31,7 @@ namespace VacationCalc.Model
             mobilePhone = _mobile;
             vacationList = new List<Vacation>();
             calculator = new DaysCalculator(this);
-        }
+        }*/
 
         public Employee(string _name, DateTime _hireDate, EmploymentType _type, bool _fired, DateTime _birth, string _mobile, ref HolidayManager _holidays)
         {
@@ -80,6 +80,18 @@ namespace VacationCalc.Model
         {
             get { return mobilePhone; }
             set { mobilePhone = value; }
+        }
+
+        public virtual object[] GetAsDataRow()
+        {
+            string name = Name;
+            DateTime date = HireDate;
+            EmploymentType type = AccountType;
+            int vacation = calculator.VacationDaysLeft;
+            DateTime birth = BirthDate;
+            string mobile = MobilePhone;
+            object[] row = { 0, name, date, type, vacation, birth, mobile };
+            return row;
         }
 
         public Vacation CreateProperVacation(Vacation vacationBase)

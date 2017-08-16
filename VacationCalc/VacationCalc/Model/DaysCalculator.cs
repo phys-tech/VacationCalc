@@ -17,7 +17,7 @@ namespace VacationCalc.Model
         public DaysCalculator(Employee _employee)
         {
             CurrentEmployee = _employee;
-            FillEmployeeData();
+            this.FillEmployeeData();
         }
     
         private int TotalDaysOfWork(DateTime dateToCount)
@@ -57,5 +57,26 @@ namespace VacationCalc.Model
             VacationDaysAtYearEnd = TotalVacationEarned(EndOfYear) - VacationDaysSpent;
         }
     
+    }
+
+    public class FiredDaysCalculator : DaysCalculator
+    {
+        private FiredEmployee CurrentEmployee2;
+        public TimeSpan durationOfWork;
+
+        public FiredDaysCalculator(FiredEmployee _firedEmployee)
+            : base (_firedEmployee)
+        {
+            CurrentEmployee2 = _firedEmployee;
+            FillEmployeeData();
+        }
+
+        public new void FillEmployeeData()
+        {
+            base.FillEmployeeData();
+            durationOfWork = CurrentEmployee2.FireDate - CurrentEmployee2.HireDate;
+
+        }
+
     }
 }

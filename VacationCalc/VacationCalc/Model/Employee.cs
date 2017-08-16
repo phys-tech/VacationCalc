@@ -20,6 +20,7 @@ namespace VacationCalc.Model
         // calculator keeps all the calculated data inside
         public DaysCalculator calculator;
         public HolidayManager holidayManager;
+        public event EventHandler FiredOrHired;
 
         /*public Employee(string _name, DateTime _hireDate, EmploymentType _type, bool _fired, DateTime _birth, string _mobile)
         {
@@ -66,8 +67,8 @@ namespace VacationCalc.Model
 
         public bool IsFired 
         {
-            get { return fired; }
-            set { fired = value; }
+            get { return fired; }    //return (this.GetType() == typeof(FiredEmployee));
+            set { fired = value; FiredOrHired.Invoke(this, null); }
         }
 
         public DateTime BirthDate

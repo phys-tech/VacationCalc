@@ -18,17 +18,20 @@ namespace VacationCalc.Model
 
         public FiredEmployee(string _name, DateTime _hireDate, EmploymentType _type, bool _fired, DateTime _birth, string _mobile, ref HolidayManager _holidays)
             : base(_name, _hireDate, _type, _fired, _birth, _mobile, ref _holidays)
-        {            
-            //calculator = new DaysCalculator(this);
+        {
+            FireDate = DateTime.Now;
+            calculator = new FiredDaysCalculator(this);
         }
 
         public sealed override object[] GetAsDataRow()
         {
             string name = Name;
             DateTime date = HireDate;
+            FireDate = DateTime.Now;
             EmploymentType type = AccountType;
-            int vacation = 33;//  calculator.VacationDaysLeft;
-            object[] row = { 0, name, date, type, vacation };
+            string duration = ((FiredDaysCalculator)calculator).durationOfWork.ToString("dd");
+            int vacation = calculator.VacationDaysLeft;
+            object[] row = { 0, name, date, FireDate, type, duration, vacation };
             return row;
         }
     }

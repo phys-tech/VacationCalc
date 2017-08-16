@@ -42,6 +42,7 @@ namespace VacationCalc.Model
             int id = GetNewID();
             Employee employee = EmployeeFactory.Create(_name, _hireDate, _accType, _fired, _birthday, _mobile, ref holidayManager);
             Employees.Add(id, employee);
+            employee.FiredOrHired += onFiredChanged;
             return id;
         }
 
@@ -184,30 +185,6 @@ namespace VacationCalc.Model
 
         public DateTime NearestBirthday(out string empNames)
         {
-            // C++ implementation
-            /*
-            TimeSpan min = new TimeSpan(365, 0, 0, 0);
-            DateTime nearest = DateTime.Now;
-            string celebrant = "";
-
-            foreach (Employee employee in Employees.Values)
-            {
-                if (employee.IsFired)
-                    continue;
-
-                DateTime birthday = new DateTime(DateTime.Now.Year, employee.BirthDate.Month, employee.BirthDate.Day);
-                if (birthday - DateTime.Now < min && (birthday-DateTime.Now).TotalDays > 0 )
-                {
-                    nearest = birthday;
-                    min = birthday - DateTime.Now;
-                    celebrant = employee.Name;
-                }
-            }
-            empName = celebrant;
-            return nearest;
-            */
-
-            // C# implementation
             var notFired = Employees.Where(e => !e.Value.IsFired);
             var birthdays = notFired.Select(u => new KeyValuePair<DateTime,string>(new DateTime(DateTime.Now.Year, u.Value.BirthDate.Month, u.Value.BirthDate.Day), u.Value.Name));
             var past = birthdays.Where(u => u.Key.Date < DateTime.Now.Date).Select(i => new KeyValuePair<DateTime, string>(i.Key.AddYears(1), i.Value));
@@ -220,6 +197,15 @@ namespace VacationCalc.Model
             empNames = names.Aggregate((total, next) => total += "\n" + next);
 
             return nextBirthday;
+        }
+
+        public void onFiredChanged(object sender, EventArgs e)
+        {
+            Employee mover = (Employee)sender;
+            //System.Console.WriteLine("Emploiyee Manager checked event: " + mover.Name);
+            var pair = Employees.Single(u => u.Value.Name == mover.Name && u.Value.HireDate == mover.HireDate);
+            Employees.Remove(pair.Key);
+            AddEmployee(mover.Name, mover.HireDate, mover.AccountType, mover.IsFired, mover.BirthDate, mover.MobilePhone);
         }
 
     }

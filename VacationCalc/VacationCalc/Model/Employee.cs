@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Xml.Linq;
 using System.Threading.Tasks;
 
 namespace VacationCalc.Model
@@ -93,6 +94,19 @@ namespace VacationCalc.Model
             string mobile = MobilePhone;
             object[] row = { 0, name, date, type, vacation, birth, mobile };
             return row;
+        }
+
+        public virtual XElement GetAsXElement()
+        {
+            XElement element = new XElement("Employee",
+                                new XElement("Name", Name),
+                                new XElement("HireDate", this.HireDate),
+                                new XElement("AccountType", this.AccountType),
+                                new XElement("IsFired", this.IsFired),
+                                new XElement("BirthDate", this.BirthDate),
+                                new XElement("MobilePhone", this.MobilePhone),
+                                new XElement("Vacations"));
+            return element;
         }
 
         public Vacation CreateProperVacation(Vacation vacationBase)

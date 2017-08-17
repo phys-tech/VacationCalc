@@ -96,14 +96,7 @@ namespace VacationCalc.Model
             XDocument doc = new XDocument(new XElement("Root"));
             foreach (Employee employee in Employees.Values)
             {
-                XElement element = new XElement("Employee",
-                                    new XElement("Name", employee.Name),
-                                    new XElement("HireDate", employee.HireDate),
-                                    new XElement("AccountType", employee.AccountType),
-                                    new XElement("IsFired", employee.IsFired),
-                                    new XElement("BirthDate", employee.BirthDate),
-                                    new XElement("MobilePhone", employee.MobilePhone),
-                                    new XElement("Vacations"));
+                XElement element = employee.GetAsXElement();
                 var list = employee.GetVacationsList();
                 foreach (Vacation item in list)
                 {
@@ -132,6 +125,8 @@ namespace VacationCalc.Model
                     string name = element.Element("Name").Value.ToString();
                     DateTime date = DateTime.Parse(element.Element("HireDate").Value.ToString());
                     EmploymentType type = (EmploymentType)Enum.Parse(typeof(EmploymentType), element.Element("AccountType").Value.ToString());
+                    var tempStatus = element.Elements("FireDate").DefaultIfEmpty(new XElement("def", DateTime.MaxValue));
+                    DateTime fireDate = DateTime.Parse(tempStatus.First().Value.ToString());
                     bool fired = bool.Parse(element.Element("IsFired").Value);
 
                     var tempDate = element.Elements("BirthDate").DefaultIfEmpty(new XElement("Def", new DateTime(2000, 1, 1)));

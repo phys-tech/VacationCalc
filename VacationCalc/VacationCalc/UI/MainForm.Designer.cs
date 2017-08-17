@@ -355,6 +355,7 @@
             this.gridViewFired.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.gridViewFired.Size = new System.Drawing.Size(930, 474);
             this.gridViewFired.TabIndex = 1;
+            this.gridViewFired.CellValueChanged += new Telerik.WinControls.UI.GridViewCellEventHandler(this.gridViewEmployees_CellValueChanged);
             this.gridViewFired.CommandCellClick += new Telerik.WinControls.UI.CommandCellClickEventHandler(this.MasterTemplate_CommandCellClick);
             // 
             // menuHolidaysCalendar

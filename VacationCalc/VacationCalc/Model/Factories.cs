@@ -9,12 +9,13 @@ namespace VacationCalc.Model
 
     public static class EmployeeFactory
     {
-        public static Employee Create(string _name, DateTime _hireDate, EmploymentType _accType, bool _fired, DateTime _birthday, string _mobile, ref HolidayManager _holidays)
+        public static Employee Create(string _name, DateTime _hireDate, EmploymentType _accType, DateTime _fireDate, DateTime _birthday, string _mobile, ref HolidayManager _holidays)
         {
-            if (_fired)
-                return new FiredEmployee(_name, _hireDate, _accType, _fired, _birthday, _mobile, ref _holidays);
+            bool fired = _fireDate != DateTime.MaxValue;
+            if (fired)
+                return new FiredEmployee(_name, _hireDate, _accType, _fireDate, _birthday, _mobile, ref _holidays);
             else
-                return new Employee(_name, _hireDate, _accType, _fired, _birthday, _mobile, ref _holidays);
+                return new Employee(_name, _hireDate, _accType, false, _birthday, _mobile, ref _holidays);
         }
     }
 

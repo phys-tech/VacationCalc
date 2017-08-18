@@ -17,10 +17,10 @@ namespace VacationCalc.Model
             set { fireDate = value; }
         }
 
-        public FiredEmployee(string _name, DateTime _hireDate, EmploymentType _type, bool _fired, DateTime _birth, string _mobile, ref HolidayManager _holidays)
-            : base(_name, _hireDate, _type, _fired, _birth, _mobile, ref _holidays)
+        public FiredEmployee(string _name, DateTime _hireDate, EmploymentType _type, DateTime _fireDate, DateTime _birth, string _mobile, ref HolidayManager _holidays)
+            : base(_name, _hireDate, _type, true, _birth, _mobile, ref _holidays)
         {
-            FireDate = DateTime.Now;
+            FireDate = _fireDate;
             calculator = new FiredDaysCalculator(this);
         }
 
@@ -28,7 +28,6 @@ namespace VacationCalc.Model
         {
             string name = Name;
             DateTime date = HireDate;
-            FireDate = DateTime.Now;
             EmploymentType type = AccountType;
             string duration = ((FiredDaysCalculator)calculator).durationOfWork.ToString("dd");
             int vacation = calculator.VacationDaysLeft;
@@ -36,7 +35,7 @@ namespace VacationCalc.Model
             return row;
         }
 
-        public override System.Xml.Linq.XElement GetAsXElement()
+        public override XElement GetAsXElement()
         {
             XElement element = new XElement("Employee",
                     new XElement("Name", Name),

@@ -37,10 +37,10 @@ namespace VacationCalc.Model
                     return id;        
         }
 
-        public int AddEmployee(string _name, DateTime _hireDate, EmploymentType _accType, bool _fired, DateTime _birthday, string _mobile)
+        public int AddEmployee(string _name, DateTime _hireDate, EmploymentType _accType, DateTime _fireDate, DateTime _birthday, string _mobile)
         {
             int id = GetNewID();
-            Employee employee = EmployeeFactory.Create(_name, _hireDate, _accType, _fired, _birthday, _mobile, ref holidayManager);
+            Employee employee = EmployeeFactory.Create(_name, _hireDate, _accType, _fireDate, _birthday, _mobile, ref holidayManager);
             Employees.Add(id, employee);
             employee.FiredOrHired += onFiredChanged;
             return id;
@@ -91,6 +91,15 @@ namespace VacationCalc.Model
             return Employees[id].AddVacation(vacation);
         }
 
+        public bool ChangeFireDate(int id, DateTime newDate)
+        {
+            if (Employees[id].GetType() == typeof (FiredEmployee))
+            {
+                ((FiredEmployee)Employees[id]).FireDate = newDate;
+            }
+            return false;
+        }
+
         public void SaveDataToXML()
         {
             XDocument doc = new XDocument(new XElement("Root"));
@@ -127,7 +136,7 @@ namespace VacationCalc.Model
                     EmploymentType type = (EmploymentType)Enum.Parse(typeof(EmploymentType), element.Element("AccountType").Value.ToString());
                     var tempStatus = element.Elements("FireDate").DefaultIfEmpty(new XElement("def", DateTime.MaxValue));
                     DateTime fireDate = DateTime.Parse(tempStatus.First().Value.ToString());
-                    bool fired = bool.Parse(element.Element("IsFired").Value);
+                    //bool fired = bool.Parse(element.Element("IsFired").Value);
 
                     var tempDate = element.Elements("BirthDate").DefaultIfEmpty(new XElement("Def", new DateTime(2000, 1, 1)));
                     DateTime birth = DateTime.Parse(tempDate.First().Value.ToString());
@@ -135,7 +144,7 @@ namespace VacationCalc.Model
                     var tempMobile = element.Elements("MobilePhone").DefaultIfEmpty(new XElement("Def", "(000)000-00-00"));
                     string mobile = tempMobile.First().Value.ToString();
 
-                    int id = AddEmployee(name, date, type, fired, birth, mobile);
+                    int id = AddEmployee(name, date, type, fireDate, birth, mobile);
                     XElement vacations = element.Element("Vacations");
                     foreach (XElement vacationElem in vacations.Elements())
                     {
@@ -200,7 +209,8 @@ namespace VacationCalc.Model
             //System.Console.WriteLine("Emploiyee Manager checked event: " + mover.Name);
             var pair = Employees.Single(u => u.Value.Name == mover.Name && u.Value.HireDate == mover.HireDate);
             Employees.Remove(pair.Key);
-            AddEmployee(mover.Name, mover.HireDate, mover.AccountType, mover.IsFired, mover.BirthDate, mover.MobilePhone);
+            DateTime fireDate = DateTime.Now; // think about it
+            AddEmployee(mover.Name, mover.HireDate, mover.AccountType, fireDate, mover.BirthDate, mover.MobilePhone);
         }
 
     }

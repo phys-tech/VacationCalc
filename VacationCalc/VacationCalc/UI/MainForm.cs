@@ -102,7 +102,7 @@ namespace VacationCalc
                 EmploymentType type = (EmploymentType)Enum.Parse(typeof(EmploymentType), e.Rows[0].Cells["colAccType"].Value.ToString());
                 DateTime birthday = (DateTime)e.Rows[0].Cells["colBirthDate"].Value;
                 string mobile = e.Rows[0].Cells["colMobile"].Value.ToString();
-                int id = employeeManager.AddEmployee(name, date, type, false, birthday, mobile);
+                int id = employeeManager.AddEmployee(name, date, type, DateTime.MaxValue, birthday, mobile);
                 e.Rows[0].Cells["colID"].Value = id;
                 UpdateVacationDays(id, e.Rows[0]);
                 UpdateStatusStrip();
@@ -141,6 +141,8 @@ namespace VacationCalc
                 employeeManager.ChangeBirthday(id, (DateTime)e.Value);
             else if (e.Column.Name == "colMobile")
                 employeeManager.ChangeMobilePhone(id, e.Value.ToString());
+            else if (e.Column.Name == "colFireDate")
+                employeeManager.ChangeFireDate(id, (DateTime)e.Value);
 
             UpdateVacationDays(id, e.Row);
         }
